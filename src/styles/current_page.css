@@ -1,0 +1,58 @@
+.current_page {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.current_page_nav {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	/* background: green; */
+	/* height: 50px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.current_page_nav_button {
+	cursor: pointer;
+}
+
+.current_page_nav_button.back {
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+
+.current_page_title {
+	font-size: 30px;
+}
+
+.current_page_folders_container {
+	width: 100%;
+	height: 60px;
+	/* background: green; */
+	overflow: scroll;
+	display: flex;
+	padding: 10px;
+	cursor: pointer;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.current_page_folder_menu_folder {
+	/* height: 50px; */
+	/* width: 50px;  */
+	background: orange;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 20px;
+	padding: 20px;
+	border-radius: 20px;
+    filter: drop-shadow(5px 5px 5px rgb(20, 20, 20));
+}
