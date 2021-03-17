@@ -43,7 +43,7 @@ function App() {
 	}, [homePreferences])
 
 	// console.log(preferences)
-	// console.log(folders)
+	console.log(folders)
 
 	// localStorage.clear()
 

@@ -6,7 +6,7 @@ export default function CurrentFolder({ state, setState }) {
     
 	let folders = Object.keys(state.folders[state.currentFolder].folders).map(
 		(item) => {
-			console.log(item)
+			// console.log(item)
             return (
                 <div class={"character_categories "+ item}>
                     <h1 class="character_category_title">{ item.toUpperCase()}</h1>
