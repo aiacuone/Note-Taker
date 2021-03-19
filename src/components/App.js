@@ -1,18 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react'
 // import folders from '../variables/folders'
 import CurrentFolder from './CurrentFolder'
+import Home from './Home'
 
 function App() {
-	////////////////   STATE & VARIABLES   /////////////////
+	////////////////   STATE & USEREF   /////////////////
 	let [directory, setDirectory] = useState([])
 	let [folders, setFolders] = useState({})
-	// let [currentFolder, setCurrentFolder] = useState()
-	// let [homeFoldersArr,setHomeFoldersArr]=useState([])
 
 	let state = { directory, folders }
 	let setState = { setDirectory, setFolders }
 
-	let home_add_folder_input = useRef()
+	// let home_add_folder_input = useRef()
 
 	///////////CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT//////////
 	let directoryChain = []
@@ -24,7 +23,7 @@ function App() {
 
 	////////// LOCATES THE CURRENT FOLDER USING THE DIRECTORY CHAIN /////////////
 	// let currentFolder = directoryChain.reduce((a, b) => {
-	let currentFolder=directoryChain.reduce((a, b) => {
+	let currentFolder = directoryChain.reduce((a, b) => {
 		return a[b]
 	}, folders)
 
@@ -41,66 +40,44 @@ function App() {
 	}
 
 	/////////////CREATES ELEMENTS FOR HOME FOLDERS/////////////
-	let homeFolders
-	if (Object.keys(folders).length > 0) {
-		homeFolders = Object.keys(folders).map((item) => {
-			return (
-				<div
-					onClick={() => {
-						let newArr = [item]
-						// home_add_folder_input.current.value=''
-						setDirectory(newArr)
-						
-					}}
-					class="home_folder">
-					<h3 class="home_folder_title">{folders[item].name.toUpperCase()}</h3>
-				</div>
-			)
-		})
-	} else {
-		homeFolders = (
-			<div>
-				<h3>NO FOLDERS</h3>
-			</div>
-		)
-	}
+	// let homeFolders
+	// if (Object.keys(folders).length > 0) {
+	// 	homeFolders = Object.keys(folders).map((item) => {
+	// 		return (
+	// 			<div
+	// 				onClick={() => {
+	// 					let newArr = [item]
+	// 					// home_add_folder_input.current.value=''
+	// 					setDirectory(newArr)
+	// 				}}
+	// 				class="home_folder">
+	// 				<h3 class="home_folder_title">{folders[item].name.toUpperCase()}</h3>
+	// 			</div>
+	// 		)
+	// 	})
+	// } else {
+	// 	homeFolders = (
+	// 		<div>
+	// 			<h3>NO FOLDERS</h3>
+	// 		</div>
+	// 	)
+	// }
 
-	////////////INPUT ELEMENTS TO CREATE FOLDERS///////////////
-	let addFolderInput = (
-		<>
-			<input
-				ref={home_add_folder_input}
-				class="home_add_folder"
-				type="text"
-				placeholder="Folder Name..."></input>
-			<button
-				onClick={() => {
-					let newObj = { ...folders }
-					newObj[home_add_folder_input.current.value] = new Folder({
-						name: home_add_folder_input.current.value,
-						dateCreated: Date.now(),
-					})
-					setFolders(newObj)
-				}}>
-				ADD FOLDER
-			</button>
-		</>
-	)
 
 	///////////////////// VARIABLES /////////////////
-	let vars = { directoryChain,currentFolder }
+	let vars = { directoryChain, currentFolder }
 
 	return (
 		<div className="app">
-			{directory.length == 0 && addFolderInput}
-			{directory.length == 0 && homeFolders}
-
-			{directory.length > 0 && currentFolder&&(
+			{directory.length == 0 && (
+				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
+			)}
+			{directory.length > 0 && currentFolder && (
 				<CurrentFolder
 					state={state}
 					setState={setState}
 					vars={vars}
-					Folder={ Folder}
+					Folder={Folder}
 				/>
 			)}
 		</div>

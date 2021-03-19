@@ -81,7 +81,7 @@ export default function CurrentFolder({
                 onClick={() => {
                     add_folder_input.current.value = null
 					let newFolders = { ...state.folders }
-                    let newObj = {}
+                    let newObj = {...vars.currentFolder.folders}
 					newObj[addFolderInputText] = new Folder({
 						name: addFolderInputText,
 						dateCreated: Date.now(),

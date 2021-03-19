@@ -57,9 +57,7 @@
     filter: drop-shadow(5px 5px 5px rgb(20, 20, 20));
 }
 
-.home_add_folder{
-color: black;
-}
+
 
 .current_page_add_folder_input_field,.current_page_add_folder_input_button{
     color: black;
