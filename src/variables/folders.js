@@ -4,6 +4,7 @@ let folders = {
 		name: 'steve',
 		timesSelected: '',
 		dateCreated: '',
+		notes:'',
 		background: '',
 		folders: {
 			general: {},
