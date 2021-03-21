@@ -45,8 +45,6 @@
 }
 
 .current_page_folder_menu_folder {
-	/* height: 50px; */
-	/* width: 50px;  */
 	background: orange;
 	display: flex;
 	justify-content: center;

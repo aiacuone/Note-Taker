@@ -4,30 +4,37 @@ import CurrentFolder from './CurrentFolder'
 import Home from './Home'
 
 function App() {
-	////////////////   STATE & USEREF   /////////////////
+	// STATE & USEREF
+
 	let [directory, setDirectory] = useState([])
 	let [folders, setFolders] = useState({})
+	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 
-	let state = { directory, folders }
-	let setState = { setDirectory, setFolders }
+	let state = { directory, folders, toggleHomeFolderMenu }
+	let setState = {
+		setDirectory,
+		setFolders,
+		setToggleHomeFolderMenu,
+	}
 
-	// let home_add_folder_input = useRef()
+	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
 
-	///////////CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT//////////
-	let directoryChain = []
-	directory.map((folder, index) => {
-		index == 0
-			? directoryChain.push(folder)
-			: directoryChain.push('folders', folder)
-	})
+	let directoryChain = () => {
+		let arr = []
+		directory.map((folder, index) => {
+			index == 0 ? arr.push(folder) : arr.push('folders', folder)
+		})
+		return arr
+	}
 
-	////////// LOCATES THE CURRENT FOLDER USING THE DIRECTORY CHAIN /////////////
-	// let currentFolder = directoryChain.reduce((a, b) => {
-	let currentFolder = directoryChain.reduce((a, b) => {
+	// AN OBJECT OF THE CURRENT FOLDER, USING THE DIRECTORY CHAIN
+
+	let currentFolder = directoryChain().reduce((a, b) => {
 		return a[b]
 	}, folders)
 
-	//////// CONSTRUCTOR METHOD TO CREATE NEW FOLDER ////////////
+	// CONSTRUCTOR METHOD TO CREATE NEW FOLDER
+
 	function Folder({ name, dateCreated }) {
 		this.name = name
 		this.dateCreated = dateCreated
@@ -36,43 +43,32 @@ function App() {
 		this.background = ''
 		this.folders = {}
 		this.notes = {}
-		this.folderColor = ''
+		this.folderColor = 'grey'
 	}
 
-	/////////////CREATES ELEMENTS FOR HOME FOLDERS/////////////
-	// let homeFolders
-	// if (Object.keys(folders).length > 0) {
-	// 	homeFolders = Object.keys(folders).map((item) => {
-	// 		return (
-	// 			<div
-	// 				onClick={() => {
-	// 					let newArr = [item]
-	// 					// home_add_folder_input.current.value=''
-	// 					setDirectory(newArr)
-	// 				}}
-	// 				class="home_folder">
-	// 				<h3 class="home_folder_title">{folders[item].name.toUpperCase()}</h3>
-	// 			</div>
-	// 		)
-	// 	})
-	// } else {
-	// 	homeFolders = (
-	// 		<div>
-	// 			<h3>NO FOLDERS</h3>
-	// 		</div>
-	// 	)
-	// }
+	// GLOBAL VARIABLES
 
-
-	///////////////////// VARIABLES /////////////////
-	let vars = { directoryChain, currentFolder }
+	let vars = {
+		directoryChain,
+		currentFolder,
+		colors: [
+			'purple',
+			'rgb(55, 194, 180)',
+			'green',
+			'grey',
+			'rgb(240, 171, 43)',
+			'rgb(127, 66, 184)',
+			'rgb(28, 73, 197)',
+			'olive',
+		],
+	}
 
 	return (
 		<div className="app">
 			{directory.length == 0 && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
 			)}
-			{directory.length > 0 && currentFolder && (
+			{directory.length > 0 && (
 				<CurrentFolder
 					state={state}
 					setState={setState}
