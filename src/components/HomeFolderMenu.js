@@ -17,11 +17,23 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 								let newFolders = { ...state.folders }
 								newFolders[state.toggleHomeFolderMenu[0]].folderColor = item
 								setState.setFolders(newFolders)
+								setState.setToggleHomeFolderMenu(null)
 							}}
 							style={{ background: item }}></div>
 					)
 				}
 			})
+		} else if (
+			state.toggleHomeFolderMenu &&
+			state.toggleHomeFolderMenu[1] == 'delete'
+		) {
+			return (
+		
+				<div class='home_folder_delete_confirm'><p class='home_folder_delete_confirm'>Are you sure you want to delete?</p></div>
+		
+			)
+
+		
 		} else {
 			return arr.map((item) => {
 				return (
@@ -38,6 +50,6 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 			})
 		}
 	}
-
+	// console.log(state.toggleHomeFolderMenu)
 	return <div class="home_folder_menu">{menuOptions()}</div>
 }

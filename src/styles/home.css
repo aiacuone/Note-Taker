@@ -44,6 +44,13 @@
 
 .home_add_folder {
 	color: black;
+	background: rgb(238, 238, 238);
+	border-style: none;
+	/* border: 2px white solid; */
+	padding: 5px;
+	border-radius: 10px;
+	text-align: center;
+	filter: drop-shadow(2px 2px 2px rgb(155, 154, 154));
 }
 
 .menuButton {
@@ -54,16 +61,15 @@
 	top: 2px;
 }
 
-.home_folder_menu_color_option{
-background: red;
-border: 2px solid red;
+.home_folder_menu_color_option {
+	background: red;
+	border: 2px solid red;
 }
 
-.home_folder_color_option{
-
+.home_folder_color_option {
 }
 
-.home_folder_color_options{
+.home_folder_color_options {
 	height: 150px;
 	width: 400px;
 	background: purple;
@@ -71,31 +77,31 @@ border: 2px solid red;
 	right: 0;
 }
 
-.home_folder_menu{
-	height:15px;
+.home_folder_menu {
+	height: 15px;
 	width: 300px;
 	/* background: rgb(175, 175, 175); */
 	position: absolute;
 	right: -3px;
 	top: -22px;
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
-.home_folder_sub_menu{
-	height:15px;
+.home_folder_sub_menu {
+	height: 15px;
 	width: 300px;
 	position: absolute;
-	background: orange;
+	/* background: orange; */
 	right: -3px;
 	top: 47px;
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
-.home_folder_menu_options{
+.home_folder_menu_options {
 	height: 100%;
 	width: 100%;
 	/* background: green; */
@@ -108,14 +114,54 @@ border: 2px solid red;
 	position: static;
 }
 
-.home_folder_menu_sub_options{
+.home_folder_menu_sub_options {
 	position: absolute;
 	width: 300px;
 	background: orange;
 	bottom: 0px;
 }
 
-.home_folder_color_option{
+.home_folder_color_option {
 	height: 15px;
 	width: 100%;
+}
+
+.home_add_folder_input_error {
+	/* height: 50px; */
+	/* width: 300px; */
+	position: absolute;
+	top: -25px;
+	right: -40px;
+	color: red;
+	font-size: 15px;
+	/* background: purple; */
+	white-space: nowrap;
+}
+
+.home_add_folder_container {
+	position: relative;
+}
+
+.home_folder_title_rename_input{
+	text-align: center;
+	height: 25px;
+}
+
+.home_rename_folder_input_error{
+	position: absolute;
+	top: -25px;
+	color: red;
+}
+
+.home_folder_delete_confirm{
+	display: flex;
+}
+
+.home_folder_delete_confirm.yes,.no{
+font-size: 20px;
+margin: 0 5px;
+}
+
+.home_folder_delete_confirm.yes{
+color: red;
 }

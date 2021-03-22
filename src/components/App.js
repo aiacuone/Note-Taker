@@ -9,12 +9,22 @@ function App() {
 	let [directory, setDirectory] = useState([])
 	let [folders, setFolders] = useState({})
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
+	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
+	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
 
-	let state = { directory, folders, toggleHomeFolderMenu }
+	let state = {
+		directory,
+		folders,
+		toggleHomeFolderMenu,
+		homeAddFolderInput,
+		homeRenameFolderInput,
+	}
 	let setState = {
 		setDirectory,
 		setFolders,
 		setToggleHomeFolderMenu,
+		setHomeAddFolderInput,
+		setHomeRenameFolderInput,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -52,14 +62,18 @@ function App() {
 		directoryChain,
 		currentFolder,
 		colors: [
-			'purple',
-			'rgb(55, 194, 180)',
-			'green',
-			'grey',
-			'rgb(240, 171, 43)',
-			'rgb(127, 66, 184)',
-			'rgb(28, 73, 197)',
-			'olive',
+			'#ED3A3A',//red
+			'#C93AC9',//pink
+			'#8E33EF',//light purple
+			'#5043C9',//dark purple
+			'#355BC9',//blue
+			'#2DA1E2',//baby blue
+			'#4A8269',//olive
+			'#4FC12F',//light green
+			'#FFED0D',//yelow
+			'#FFA300',//orange
+			'#A0A0A0',//grey
+			'#000000',//black
 		],
 	}
 
