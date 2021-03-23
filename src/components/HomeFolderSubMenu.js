@@ -2,20 +2,15 @@ import React from 'react'
 
 export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 	let colors = vars.colors.map((item, index) => {
-		
 		if (index >= vars.colors.length / 2) {
 			return (
 				<div
 					class="home_folder_color_option"
 					onMouseDown={() => {
 						let newFolders = { ...state.folders }
-						newFolders[state.toggleHomeFolderMenu[0]].folderColor = item
+						newFolders[state.home.toggleHomeFolderMenu[0]].folderColor = item
 						setState.setFolders(newFolders)
-						//TO KEEP
-						let newHome = { ...state.home, toggleHomeFolderMenu: null }
-						setState.setHome(newHome)
-						//TO DELETE
-						setState.setToggleHomeFolderMenu(null)
+						setState.setHome({ ...state.home, toggleHomeFolderMenu: null })
 					}}
 					style={{ background: item }}></div>
 			)
@@ -24,14 +19,14 @@ export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 
 	let subMenu = () => {
 		if (
-			state.toggleHomeFolderMenu &&
-			state.toggleHomeFolderMenu[1] == 'color'
+			state.home.toggleHomeFolderMenu &&
+			state.home.toggleHomeFolderMenu[1] == 'color'
 		) {
 			return colors
 		} else if (
-			state.toggleHomeFolderMenu &&
-			state.toggleHomeFolderMenu[1] == 'delete' &&
-			state.toggleHomeFolderMenu[2] == 'yes'
+			state.home.toggleHomeFolderMenu &&
+			state.home.toggleHomeFolderMenu[1] == 'delete' &&
+			state.home.toggleHomeFolderMenu[2] == 'yes'
 		) {
 			return (
 				<div>
@@ -40,8 +35,9 @@ export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 						style={{ color: 'red' }}
 						onClick={() => {
 							let newFolders = { ...state.folders }
-							delete newFolders[state.toggleHomeFolderMenu[0]]
+							delete newFolders[state.home.toggleHomeFolderMenu[0]]
 							setState.setFolders(newFolders)
+							setState.setHome({ ...state.home, toggleHomeFolderMenu: null })
 						}}>
 						DELETE
 					</p>
@@ -50,11 +46,5 @@ export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 		}
 	}
 
-
-	return (
-		<div class="home_folder_sub_menu">
-
-			{subMenu()}
-		</div>
-	)
+	return <div class="home_folder_sub_menu">{subMenu()}</div>
 }

@@ -9,13 +9,10 @@ function App() {
 
 	let [directory, setDirectory] = useState([])
 	let [folders, setFolders] = useState({})
-	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
 	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
-	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
-	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
 	let [home, setHome] = useState({
-		toggleHomeFolderMenu: null,
+		toggleHomeFolderMenu: undefined,
 		homeAddFolderInput: '',
 		homeRenameFolderInput: '',
 		homeFoldersSettings: null,
@@ -25,21 +22,15 @@ function App() {
 	let state = {
 		directory,
 		folders,
-		toggleHomeFolderMenu,
 		homeAddFolderInput,
 		homeRenameFolderInput,
-		homeFoldersSettings,
-		sortHomeFolders,
 		home
 	}
 	let setState = {
 		setDirectory,
 		setFolders,
-		setToggleHomeFolderMenu,
 		setHomeAddFolderInput,
 		setHomeRenameFolderInput,
-		setHomeFoldersSettings,
-		setSortHomeFolders,
 		setHome
 	}
 
@@ -94,11 +85,7 @@ function App() {
 		// homeFoldersSort:'DATE CREATED',
 	}
 
-	useEffect(() => {
-		// console.log('refreshed')
-		console.log(vars.homeFoldersSort, 'useEffect')
-	})
-	// console.log(vars.homeFoldersSort)
+	
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>

@@ -5,8 +5,8 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 	let menuOptions = () => {
 		let arr = ['delete', 'rename', 'color']
 		if (
-			state.toggleHomeFolderMenu &&
-			state.toggleHomeFolderMenu[1] == 'color'
+			state.home.toggleHomeFolderMenu &&
+			state.home.toggleHomeFolderMenu[1] == 'color'
 		) {
 			return vars.colors.map((item, index) => {
 				if (index < vars.colors.length / 2) {
@@ -15,21 +15,17 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 							class="home_folder_color_option"
 							onMouseDown={() => {
 								let newFolders = { ...state.folders }
-								newFolders[state.toggleHomeFolderMenu[0]].folderColor = item
+								newFolders[state.home.toggleHomeFolderMenu[0]].folderColor = item
 								setState.setFolders(newFolders)
-								//TO KEEP
-								let newHome = { ...state.home, toggleHomeFolderMenu: null }
-								setState.setHome(newHome)
-								//TO DELETE
-								setState.setToggleHomeFolderMenu(null)
+								setState.setHome({ ...state.home, toggleHomeFolderMenu: null })
 							}}
 							style={{ background: item }}></div>
 					)
 				}
 			})
 		} else if (
-			state.toggleHomeFolderMenu &&
-			state.toggleHomeFolderMenu[1] == 'delete'
+			state.home.toggleHomeFolderMenu &&
+			state.home.toggleHomeFolderMenu[1] == 'delete'
 		) {
 			return (
 		
@@ -44,13 +40,9 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 					<p
 						class="home_folder_menu_options"
 						onMouseDown={() => {
-							let newArr = [...state.toggleHomeFolderMenu]
+							let newArr = [...state.home.toggleHomeFolderMenu]
 							newArr[1] = item
-							//TO KEEP
-							let newHome = { ...state.home, toggleHomeFolderMenu: newArr }
-							setState.setHome(newHome)
-							//TO DELETE
-							setState.setToggleHomeFolderMenu(newArr)
+							setState.setHome({ ...state.home, toggleHomeFolderMenu: newArr })
 						}}>
 						{item.toUpperCase()}
 					</p>

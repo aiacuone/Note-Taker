@@ -8,9 +8,9 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 				<div>
 					<p
 						onClick={() => {
-							let newArr = [...state.homeFoldersSettings]
+							let newArr = [...state.home.homeFoldersSettings]
 							newArr[0] = item
-							setState.setHomeFoldersSettings(newArr)
+							setState.setHome({ ...state.home, homeFoldersSettings: newArr })
 						}}
 						class="home_folder_settings_option">
 						{item}
@@ -27,10 +27,11 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 				<div>
 					<p
 						onMouseDown={() => {
-                            setState.setSortHomeFolders(item)
-                            vars.homeFoldersSort = item
-                            console.log(vars.homeFoldersSort,'vars.homeFoldersSort mousedown')
-							setState.setHomeFoldersSettings(null)
+							setState.setHome({
+								...state.home,
+								sortHomeFolders: item,
+								homeFoldersSettings: null,
+							})
 						}}
 						class="home_folder_settings_option">
 						{item}
@@ -43,9 +44,9 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 	return (
 		<div class="home_folder_settings">
 			{/* <h1 class="home_folder_settings_title">SETTINGS</h1> */}
-			{!state.homeFoldersSettings[0] && settingsOptions()}
+			{!state.home.homeFoldersSettings[0] && settingsOptions()}
 			{/* {settingsOptions()} */}
-			{state.homeFoldersSettings[0] == 'SORT BY' && sortByOptions()}
+			{state.home.homeFoldersSettings[0] == 'SORT BY' && sortByOptions()}
 		</div>
 	)
 }
