@@ -20,8 +20,12 @@
 	background: rgb(39, 39, 39);
 }
 
-.test_input{
-	color: black;
+.settings_icon{
+	height: 40px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 1;
 }
 
 

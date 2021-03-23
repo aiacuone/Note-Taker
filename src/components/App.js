@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 // import folders from '../variables/folders'
 import CurrentFolder from './CurrentFolder'
 import Home from './Home'
+import settingsIcon from '../images/settings.svg'
 
 function App() {
 	// STATE & USEREF
@@ -11,6 +12,15 @@ function App() {
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
 	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
+	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
+	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
+	let [home, setHome] = useState({
+		toggleHomeFolderMenu: null,
+		homeAddFolderInput: '',
+		homeRenameFolderInput: '',
+		homeFoldersSettings: null,
+		sortHomeFolders: 'DATE CREATED',
+	})
 
 	let state = {
 		directory,
@@ -18,6 +28,9 @@ function App() {
 		toggleHomeFolderMenu,
 		homeAddFolderInput,
 		homeRenameFolderInput,
+		homeFoldersSettings,
+		sortHomeFolders,
+		home
 	}
 	let setState = {
 		setDirectory,
@@ -25,6 +38,9 @@ function App() {
 		setToggleHomeFolderMenu,
 		setHomeAddFolderInput,
 		setHomeRenameFolderInput,
+		setHomeFoldersSettings,
+		setSortHomeFolders,
+		setHome
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -62,23 +78,30 @@ function App() {
 		directoryChain,
 		currentFolder,
 		colors: [
-			'#ED3A3A',//red
-			'#C93AC9',//pink
-			'#8E33EF',//light purple
-			'#5043C9',//dark purple
-			'#355BC9',//blue
-			'#2DA1E2',//baby blue
-			'#4A8269',//olive
-			'#4FC12F',//light green
-			'#FFED0D',//yelow
-			'#FFA300',//orange
-			'#A0A0A0',//grey
-			'#000000',//black
+			'#ED3A3A', //red
+			'#C93AC9', //pink
+			'#8E33EF', //light purple
+			'#5043C9', //dark purple
+			'#355BC9', //blue
+			'#2DA1E2', //baby blue
+			'#4A8269', //olive
+			'#4FC12F', //light green
+			'#FFED0D', //yelow
+			'#FFA300', //orange
+			'#A0A0A0', //grey
+			'#000000', //black
 		],
+		// homeFoldersSort:'DATE CREATED',
 	}
 
+	useEffect(() => {
+		// console.log('refreshed')
+		console.log(vars.homeFoldersSort, 'useEffect')
+	})
+	// console.log(vars.homeFoldersSort)
 	return (
 		<div className="app">
+			<img class="settings_icon" src={settingsIcon}></img>
 			{directory.length == 0 && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
 			)}

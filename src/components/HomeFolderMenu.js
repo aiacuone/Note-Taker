@@ -17,6 +17,10 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 								let newFolders = { ...state.folders }
 								newFolders[state.toggleHomeFolderMenu[0]].folderColor = item
 								setState.setFolders(newFolders)
+								//TO KEEP
+								let newHome = { ...state.home, toggleHomeFolderMenu: null }
+								setState.setHome(newHome)
+								//TO DELETE
 								setState.setToggleHomeFolderMenu(null)
 							}}
 							style={{ background: item }}></div>
@@ -42,6 +46,10 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 						onMouseDown={() => {
 							let newArr = [...state.toggleHomeFolderMenu]
 							newArr[1] = item
+							//TO KEEP
+							let newHome = { ...state.home, toggleHomeFolderMenu: newArr }
+							setState.setHome(newHome)
+							//TO DELETE
 							setState.setToggleHomeFolderMenu(newArr)
 						}}>
 						{item.toUpperCase()}
@@ -50,6 +58,5 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 			})
 		}
 	}
-	// console.log(state.toggleHomeFolderMenu)
 	return <div class="home_folder_menu">{menuOptions()}</div>
 }
