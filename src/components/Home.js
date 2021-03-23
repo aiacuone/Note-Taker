@@ -113,40 +113,61 @@ export default function Home({ state, setState, vars, Folder }) {
 			// document.removeEventListener('keydown', enterInput)
 		}
 	}, [])
-
+	console.log(state.home.toggleHomeFolderMenu,'outside')
 	useEffect(() => {
 		function handleKeyDown(e) {
 			if (
 				//HOME FOLDER ENTER INPUT
-				e.key == 'Enter' 
+				e.key == 'Enter' &&
+				home_add_folder_input &&
+				home_add_folder_input.current &&
+				home_add_folder_input.current.value
 			) {
-				console.log(state.homeAddFolderInput, 'first layer')
-				if (!state.folders[state.homeAddFolderInput]) {
-					console.log(state.homeAddFolderInput, 'second layer')
-				}
-				// console.log(state.folders[state.homeAddFolderInput])
+				setState.setFolders(() => {
+					return {
+						...state.folders,
+						[home_add_folder_input.current.value.toLowerCase()]: new Folder({
+							name: home_add_folder_input.current.value,
+							dateCreated: Date.now(),
+						}),
+					}
+				})
+				setState.setHomeAddFolderInput('')
+				home_add_folder_input.current.placeholder = 'Add Folder'
+				home_add_folder_input.current.value = ''
+			} else if (
+				//RENAME FOLDER INPUT
+				e.key == 'Enter' &&
+				folder_rename_input &&
+				folder_rename_input.current &&
+				folder_rename_input.current.value &&
+				!state.folders[state.homeRenameFolderInput]
+			) {
 
-				// let newObj = { ...state.folders }
-				// newObj[state.homeAddFolderInput] = new Folder({
-				// 	name: state.homeAddFolderInput,
-				// 	dateCreated: Date.now(),
+				// setState.setFolders(() => {
+					// let newFolders = { ...state.folders,[state.home.toggleHomeFolderMenu[0].name]:folder_rename_input.current.value.toLowerCase() }
+				let newFolders = { ...state.folders }
+				// newFolders[state.home.toggleHomeFolderMenu[0]].name=folder_rename_input.current.value.toLowerCase() 
+				// 	newFolders =
+				// 		
+				// 	newFolders[folder_rename_input.current.value.toLowerCase()] =
+				// 		newFolders[state.home.toggleHomeFolderMenu[0]]
+				// 	delete newFolders[state.home.toggleHomeFolderMenu[0]]
+				// 	return newFolders
 				// })
-
-				// setState.setFolders(newObj)
-				// setState.setHomeAddFolderInput('')
-				// if (home_add_folder_input && home_add_folder_input.current) {
-				// 	home_add_folder_input.current.placeholder = 'Add Folder'
-				// }
+				console.log(state.home.toggleHomeFolderMenu,'inside')
+				console.log(newFolders)
+				// setState.setHome({ ...state.home, toggleHomeFolderMenu: null })
+				setState.setHomeRenameFolderInput('')
 			}
 		}
-
 		document.addEventListener('keydown', handleKeyDown)
 		return () => {
 			// document.removeEventListener('mousedown', addHomeFolderInputClear)
 			// document.removeEventListener('mousedown', toggleMenuOff)
 			document.removeEventListener('keydown', handleKeyDown)
 		}
-	}, [state.homeAddFolderInput])
+	}, [state.folders]) //Event listener needs to be fired every time a new folder is added
 
 	let homeFolders = () => {
 		//HOME FOLDERS

@@ -13,8 +13,6 @@ function App() {
 	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
 	let [home, setHome] = useState({
 		toggleHomeFolderMenu: undefined,
-		homeAddFolderInput: '',
-		homeRenameFolderInput: '',
 		homeFoldersSettings: null,
 		sortHomeFolders: 'DATE CREATED',
 	})
