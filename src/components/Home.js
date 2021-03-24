@@ -7,56 +7,38 @@ import HomeFolderSubMenu from './HomeFolderSubMenu'
 
 export default function Home({ state, setState, vars, Folder }) {
 	let folder_rename_input = useRef()
+	let add_home_folder_input = useRef()
 	// let [folder_rename_input, focus_folder_rename_input]=useFocus()
 
 	useEffect(() => {
-
-		function addHomeFolderInputClear(e) {
-			if (e.target.className!=='home_add_folder') {
-				setState.setHomeAddFolderInput('')
-			}
-		}
-
-		function toggleMenuOff(e) {
-			//TOGGLES THE FOLDER MENU OFF
+		function handleEnter(e) {
 			if (
-				e.key !== 'Enter' &&
-				e.target.className !== 'home_folder_menu' &&
-				e.target.className !== 'home_folder_menu_color' &&
-				e.target.className !== 'home_folder_menu_color_option' &&
-				e.target.className !== 'home_folder_menu_options' &&
-				e.target.className !== 'menuButton home' &&
-				e.target.className !== 'home_folder_title_rename_input' &&
-				e.target.className !== 'home_folder_delete_confirm' &&
-				e.target.className !== 'home_folder_delete_confirm yes' &&
-				e.target.className !== 'home_folder_delete_confirm no' &&
-				e.target.className !== 'home_rename_folder_input_error' &&
-				e.target.className !== 'testbutton'
-			) {
-				setState.setToggleHomeFolderMenu(null)
-				setState.setHomeRenameFolderInput('')
-			}
-		}
-
-		function enterInput(e) {
-			//SUBMITS TEXT OF CREATE HOME FOLDER INPUT
-			if (
-				//HOME FOLDER ENTER INPUT
 				e.key == 'Enter' &&
 				state.homeAddFolderInput &&
 				!state.folders[state.homeAddFolderInput]
 			) {
-				let newObj = { ...state.folders }
-				newObj[state.homeAddFolderInput] = new Folder({
-					name: state.homeAddFolderInput,
-					dateCreated: Date.now(),
+				setState.setFolders((e) => {
+					return {
+						...state.folders,
+						[state.homeAddFolderInput]: new Folder({
+							name: state.homeAddFolderInput,
+							dateCreated: Date.now(),
+						}),
+					}
 				})
 
-				setState.setFolders(newObj)
 				setState.setHomeAddFolderInput('')
 			}
+		}
+		document.addEventListener('keydown', handleEnter)
+		return () => {
+			document.removeEventListener('keydown', handleEnter)
+		}
+	}, [state.homeAddFolderInput])
+
+	useEffect(() => {
+		function handleEnter(e) {
 			if (
-				//RENAME FOLDER INPUT
 				e.key == 'Enter' &&
 				!state.folders[state.homeRenameFolderInput] &&
 				state.toggleHomeFolderMenu
@@ -70,17 +52,14 @@ export default function Home({ state, setState, vars, Folder }) {
 				state.homeRenameFolderInput = null
 				setState.setFolders(newFolders)
 				setState.setToggleHomeFolderMenu('')
+				setState.setHomeRenameFolderInput('')
 			}
 		}
-		document.addEventListener('mousedown', addHomeFolderInputClear)
-		document.addEventListener('mousedown', toggleMenuOff)
-		document.addEventListener('keydown', enterInput)
+		document.addEventListener('keydown', handleEnter)
 		return () => {
-			document.removeEventListener('mousedown', addHomeFolderInputClear)
-			document.removeEventListener('mousedown', toggleMenuOff)
-			document.removeEventListener('keydown', enterInput)
+			document.removeEventListener('keydown', handleEnter)
 		}
-	})
+	}, [state.homeRenameFolderInput])
 
 	let homeFolders = () => {
 		//HOME FOLDERS
@@ -201,7 +180,7 @@ export default function Home({ state, setState, vars, Folder }) {
 						{state.toggleHomeFolderMenu &&
 							item == state.toggleHomeFolderMenu[0] &&
 							state.toggleHomeFolderMenu[1] &&
-							state.toggleHomeFolderMenu[1]!=='rename' &&(
+							state.toggleHomeFolderMenu[1] !== 'rename' && (
 								<HomeFolderSubMenu
 									folder={item}
 									state={state}
@@ -236,18 +215,19 @@ export default function Home({ state, setState, vars, Folder }) {
 			<div class="home_add_folder_container">
 				{homeFolderErrorMessage()}
 				<input
+					class="home_add_folder"
 					onChange={(e) =>
 						setState.setHomeAddFolderInput(e.target.value.toLowerCase())
 					}
-					class="home_add_folder"
+					ref={add_home_folder_input}
 					value={state.homeAddFolderInput.toLowerCase()}
 					type="text"
-					placeholder="Folder Name..."></input>
+					placeholder="Add Folder..."></input>
 			</div>
 		</>
 	)
 
-	console.log(state.toggleHomeFolderMenu)
+	// console.log(state.toggleHomeFolderMenu)
 	return (
 		<div class="home">
 			<div class="home_header">{addFolderInput}</div>
