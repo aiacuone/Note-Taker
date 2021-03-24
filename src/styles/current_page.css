@@ -5,6 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	position: relative;
 }
 
 .current_page_nav {
@@ -16,6 +17,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	/* background: purple; */
 }
 
 .current_page_nav_button {
@@ -23,9 +25,14 @@
 }
 
 .current_page_nav_button.back {
+	left: 20px;
 	position: absolute;
 	top: 0;
-	left: 10px;
+}
+
+.current_page_nav_button.back,.home_nav{
+	margin: 10px 0 0 0;
+	/* background: yellow; */
 }
 
 .current_page_title {

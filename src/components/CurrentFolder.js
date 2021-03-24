@@ -8,10 +8,15 @@ export default function CurrentFolder({
 	vars,
 	Folder,
 }) {
+	//STATE
     let [addFolderInputText, setAddFolderInputText]=useState()
-
+	//USEREF
 	let add_folder_input = useRef()
-	console.log(vars.currentFolder)
+	//VARIABLES
+	let currentFolder = vars.currentFolder
+	let directoryChain=vars.directoryChain
+	console.log(directoryChain())
+
 	let foldersSelect = Object.keys(vars.currentFolder.folders).map((folder) => {
 		return (
 			<div
@@ -50,10 +55,12 @@ export default function CurrentFolder({
 
 	let navigationBar = (
 		<div class="current_page_nav">
+		
 			<h3
 				onClick={() => {
 					let arr = [...state.directory]
 					arr.splice(arr.length - 1, 1)
+					// console.log(arr)
 					setState.setDirectory(arr)
 				}}
 				class="current_page_nav_button back">
@@ -62,10 +69,12 @@ export default function CurrentFolder({
 			<h3
 				onClick={() => {
 					setState.setDirectory([])
+					// console.log('home')
 				}}
-				class="current_page_nav_button home">
+				class="current_page_nav_button home_nav">
 				HOME
 			</h3>
+			
 		</div>
 	)
 
@@ -86,7 +95,7 @@ export default function CurrentFolder({
 						name: addFolderInputText,
 						dateCreated: Date.now(),
                     })
-                    let newDirectoryChain=[...vars.directoryChain,'folders']
+                    let newDirectoryChain=[...directoryChain(),'folders']
                     _.set(newFolders,newDirectoryChain.join('.'),newObj)
                     setState.setFolders(newFolders)
 				}}

@@ -6,8 +6,21 @@ import settingsIcon from '../images/settings.svg'
 
 function App() {
 	// STATE & USEREF
-	let [directory, setDirectory] = useState([])
-	let [folders, setFolders] = useState({})
+	let [directory, setDirectory] = useState([]) //ORIGINAL
+	// let [directory, setDirectory] = useState(['steve'])
+	let [folders, setFolders] = useState({}) //ORIGINAL
+	// let [folders, setFolders] = useState({
+	// 	steve: {
+	// 		name: 'steve',
+	// 		dateCreated: Date.now(),
+	// 		lastSelected: Date.now(),
+	// 		timesSelected: 1,
+	// 		background: '',
+	// 		folders: {},
+	// 		notes: {},
+	// 		folderColor: 'grey',
+	// 	},
+	// })
 	//HOME
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
