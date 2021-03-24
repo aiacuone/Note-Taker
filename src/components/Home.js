@@ -247,25 +247,23 @@ export default function Home({ state, setState, vars, Folder }) {
 	}
 	// console.log('hello')
 	let addFolderInput = (
-		<>
-			<div class="home_add_folder_container">
-				{homeFolderErrorMessage()}
-				<input
-					class="home_add_folder"
-					ref={home_add_folder_input}
-					onMouseDown={(e) => {
-						if (home_add_folder_input && home_add_folder_input.current) {
-							home_add_folder_input.current.placeholder = ''
-						}
-					}}
-					onChange={(e) =>
-						setState.setHomeAddFolderInput(e.target.value.toLowerCase())
+		<div class="home_add_folder_container">
+			{homeFolderErrorMessage()}
+			<input
+				class="home_add_folder"
+				ref={home_add_folder_input}
+				onMouseDown={(e) => {
+					if (home_add_folder_input && home_add_folder_input.current) {
+						home_add_folder_input.current.placeholder = ''
 					}
-					value={state.homeAddFolderInput.toLowerCase()}
-					type="text"
-					placeholder="Add Folder..."></input>
-			</div>
-		</>
+				}}
+				onChange={(e) =>
+					setState.setHomeAddFolderInput(e.target.value.toLowerCase())
+				}
+				value={state.homeAddFolderInput.toLowerCase()}
+				type="text"
+				placeholder="Add Folder..."></input>
+		</div>
 	)
 
 	return (

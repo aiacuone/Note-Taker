@@ -6,27 +6,29 @@ import settingsIcon from '../images/settings.svg'
 
 function App() {
 	// STATE & USEREF
-	let [directory, setDirectory] = useState([]) //ORIGINAL
-	// let [directory, setDirectory] = useState(['steve'])
-	let [folders, setFolders] = useState({}) //ORIGINAL
-	// let [folders, setFolders] = useState({
-	// 	steve: {
-	// 		name: 'steve',
-	// 		dateCreated: Date.now(),
-	// 		lastSelected: Date.now(),
-	// 		timesSelected: 1,
-	// 		background: '',
-	// 		folders: {},
-	// 		notes: {},
-	// 		folderColor: 'grey',
-	// 	},
-	// })
+	// let [directory, setDirectory] = useState([]) //ORIGINAL
+	let [directory, setDirectory] = useState(['steve'])
+	// let [folders, setFolders] = useState({}) //ORIGINAL
+	let [folders, setFolders] = useState({
+		steve: {
+			name: 'steve',
+			dateCreated: Date.now(),
+			lastSelected: Date.now(),
+			timesSelected: 1,
+			background: '',
+			folders: {},
+			notes: {},
+			folderColor: 'grey',
+		},
+	})
 	//HOME
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
 	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
 	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
 	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
+	//CURRENT FOLDER
+	let [currentFolderAddFolderInput,setCurrentFolderAddFolderInput]=useState('')
 
 	let state = {
 		directory,
@@ -36,6 +38,7 @@ function App() {
 		homeRenameFolderInput,
 		homeFoldersSettings,
 		sortHomeFolders,
+		currentFolderAddFolderInput
 	}
 	let setState = {
 		setDirectory,
@@ -45,6 +48,7 @@ function App() {
 		setHomeRenameFolderInput,
 		setHomeFoldersSettings,
 		setSortHomeFolders,
+		setCurrentFolderAddFolderInput
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -100,9 +104,9 @@ function App() {
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>
-			{directory.length == 0 && (
+			{/* {directory.length == 0 && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
-			)}
+			)} */}
 			{directory.length > 0 && (
 				<CurrentFolder
 					state={state}

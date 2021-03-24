@@ -1,21 +1,54 @@
-import React, { useRef,useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import '../styles/current_page.css'
-import _ from 'lodash';
+import _ from 'lodash'
 
-export default function CurrentFolder({
-	state,
-	setState,
-	vars,
-	Folder,
-}) {
-	//STATE
-    let [addFolderInputText, setAddFolderInputText]=useState()
+export default function CurrentFolder({ state, setState, vars, Folder }) {
 	//USEREF
 	let add_folder_input = useRef()
 	//VARIABLES
 	let currentFolder = vars.currentFolder
-	let directoryChain=vars.directoryChain
+	let directoryChain = vars.directoryChain
 	console.log(directoryChain())
+
+	useEffect(() => {
+		function handleMouseDown(e) {
+			if (
+				e.target.className !== 'current_page_add_folder_input' &&
+				state.currentFolderAddFolderInput
+			) {
+				add_folder_input.current.placeholder = 'Add Folder'
+				setState.setCurrentFolderAddFolderInput('')
+			}
+		}
+
+		document.addEventListener('mousedown', handleMouseDown)
+		return () => {
+			document.removeEventListener('mousedown', handleMouseDown)
+		}
+	}, [state.currentFolderAddFolderInput])
+
+	useEffect(() => {
+		function handleEnter(e) {
+			if (e.key == 'Enter' && state.currentFolderAddFolderInput) {
+				add_folder_input.current.value = null
+				let newFolders = { ...state.folders }
+				let newObj = { ...vars.currentFolder.folders }
+				newObj[state.currentFolderAddFolderInput] = new Folder({
+					name: state.currentFolderAddFolderInput,
+					dateCreated: Date.now(),
+				})
+				let newDirectoryChain = [...directoryChain(), 'folders']
+				_.set(newFolders, newDirectoryChain.join('.'), newObj)
+				setState.setFolders(newFolders)
+				setState.setCurrentFolderAddFolderInput('')
+			}
+		}
+
+		document.addEventListener('keydown', handleEnter)
+		return () => {
+			document.removeEventListener('keydown', handleEnter)
+		}
+	}, [state.currentFolderAddFolderInput])
 
 	let foldersSelect = Object.keys(vars.currentFolder.folders).map((folder) => {
 		return (
@@ -29,8 +62,8 @@ export default function CurrentFolder({
 				<h3 class="current_page_folder_menu_title">{folder.toUpperCase()}</h3>
 			</div>
 		)
-    })
-    
+	})
+
 	let pageNotes
 	if (vars.currentFolder.notes) {
 		pageNotes = Object.keys(vars.currentFolder.notes).map((note) => {
@@ -55,7 +88,6 @@ export default function CurrentFolder({
 
 	let navigationBar = (
 		<div class="current_page_nav">
-		
 			<h3
 				onClick={() => {
 					let arr = [...state.directory]
@@ -74,43 +106,32 @@ export default function CurrentFolder({
 				class="current_page_nav_button home_nav">
 				HOME
 			</h3>
-			
 		</div>
 	)
 
 	let addFolderInput = (
 		<div class="current_page_add_folder_input_container">
-            <input
-                onChange={(e)=>setAddFolderInputText(e.target.value)}
+			<input
+				class="current_page_add_folder_input"
+				onChange={(e) =>
+					setState.setCurrentFolderAddFolderInput(e.target.value)
+				}
 				ref={add_folder_input}
-				class="current_page_add_folder_input_field"
-                type="text"></input>
-                
-			<button
-                onClick={() => {
-                    add_folder_input.current.value = null
-					let newFolders = { ...state.folders }
-                    let newObj = {...vars.currentFolder.folders}
-					newObj[addFolderInputText] = new Folder({
-						name: addFolderInputText,
-						dateCreated: Date.now(),
-                    })
-                    let newDirectoryChain=[...directoryChain(),'folders']
-                    _.set(newFolders,newDirectoryChain.join('.'),newObj)
-                    setState.setFolders(newFolders)
-				}}
-				class="current_page_add_folder_input_button">
-				ADD FOLDER
-			</button>
+				placeholder="Add Folder"
+				type="text"
+				value={state.currentFolderAddFolderInput}></input>
 		</div>
-    )
+	)
 
 	return (
 		<div class="current_page">
+			<div class="current_folder_header">{addFolderInput}<div class="current_page_folders_container">{foldersSelect}</div></div>
 			{navigationBar}
-			{addFolderInput}
-			<h3 class="current_page_title">{vars.currentFolder.name.toUpperCase()}</h3>
-			<div class="current_page_folders_container">{foldersSelect}</div>
+
+			<h3 class="current_page_title">
+				{vars.currentFolder.name.toUpperCase()}
+			</h3>
+			
 			{pageNotes}
 		</div>
 	)
