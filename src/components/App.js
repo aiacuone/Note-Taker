@@ -82,14 +82,8 @@ function App() {
 			'#A0A0A0', //grey
 			'#000000', //black
 		],
-		// homeFoldersSort:'DATE CREATED',
 	}
-
-	useEffect(() => {
-		// console.log('refreshed')
-		console.log(vars.homeFoldersSort, 'useEffect')
-	})
-	// console.log(vars.homeFoldersSort)
+	// console.log(toggleHomeFolderMenu)
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import _ from 'lodash'
 
 export default function HomeFolderMenu({ folder, state, setState, vars }) {
@@ -17,10 +17,6 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 								let newFolders = { ...state.folders }
 								newFolders[state.toggleHomeFolderMenu[0]].folderColor = item
 								setState.setFolders(newFolders)
-								//TO KEEP
-								let newHome = { ...state.home, toggleHomeFolderMenu: null }
-								setState.setHome(newHome)
-								//TO DELETE
 								setState.setToggleHomeFolderMenu(null)
 							}}
 							style={{ background: item }}></div>
@@ -32,12 +28,12 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 			state.toggleHomeFolderMenu[1] == 'delete'
 		) {
 			return (
-		
-				<div class='home_folder_delete_confirm'><p class='home_folder_delete_confirm'>Are you sure you want to delete?</p></div>
-		
+				<div class="home_folder_delete_confirm">
+					<p class="home_folder_delete_confirm">
+						Are you sure you want to delete?
+					</p>
+				</div>
 			)
-
-		
 		} else {
 			return arr.map((item) => {
 				return (
@@ -46,10 +42,6 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 						onMouseDown={() => {
 							let newArr = [...state.toggleHomeFolderMenu]
 							newArr[1] = item
-							//TO KEEP
-							let newHome = { ...state.home, toggleHomeFolderMenu: newArr }
-							setState.setHome(newHome)
-							//TO DELETE
 							setState.setToggleHomeFolderMenu(newArr)
 						}}>
 						{item.toUpperCase()}
@@ -58,5 +50,26 @@ export default function HomeFolderMenu({ folder, state, setState, vars }) {
 			})
 		}
 	}
+
+	useEffect(() => {
+		function handleMouseDown(e) {
+			if (
+				e.target.parentElement &&
+				e.target.parentElement.className !== 'home_folder_menu' &&
+				e.target.parentElement.className !== 'home_folder_sub_menu' &&
+				e.target.parentElement.className !== 'home_folder_delete_confirm' &&
+				e.target.className !== 'home_folder_delete_confirm' &&
+				e.target.className!=='home_folder_title_rename_input'
+			) {
+				setState.setToggleHomeFolderMenu('')
+				setState.setHomeRenameFolderInput('')
+			}
+		}
+		document.addEventListener('mousedown', handleMouseDown)
+		return () => {
+			document.removeEventListener('mousedown', handleMouseDown)
+		}
+	}, [state.toggleHomeFolderMenu])
+
 	return <div class="home_folder_menu">{menuOptions()}</div>
 }

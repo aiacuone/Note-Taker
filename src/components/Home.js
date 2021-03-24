@@ -25,7 +25,6 @@ export default function Home({ state, setState, vars, Folder }) {
 						}),
 					}
 				})
-
 				setState.setHomeAddFolderInput('')
 				home_add_folder_input.current.placeholder = 'Add Folder'
 			}
@@ -51,10 +50,6 @@ export default function Home({ state, setState, vars, Folder }) {
 				delete newFolders[state.toggleHomeFolderMenu[0]]
 				state.homeRenameFolderInput = null
 				setState.setFolders(newFolders)
-				//TO KEEP
-				let newHome = { ...state.home, toggleHomeFolderMenu: null }
-				setState.setHome(newHome)
-				//TO DELETE
 				setState.setToggleHomeFolderMenu('')
 				setState.setHomeRenameFolderInput('')
 			}
@@ -64,6 +59,8 @@ export default function Home({ state, setState, vars, Folder }) {
 			document.removeEventListener('keydown', handleEnter)
 		}
 	}, [state.homeRenameFolderInput])
+
+
 
 	let homeFolders = () => {
 		//HOME FOLDERS
@@ -151,13 +148,6 @@ export default function Home({ state, setState, vars, Folder }) {
 									onMouseDown={() => {
 										let newArr = [...state.toggleHomeFolderMenu]
 										newArr[2] = 'yes'
-										//TO KEEP
-										let newHome = {
-											...state.home,
-											toggleHomeFolderMenu: newArr,
-										}
-										setState.setHome(newHome)
-										//TO DELETE
 										setState.setToggleHomeFolderMenu(newArr)
 									}}>
 									YES
@@ -165,10 +155,6 @@ export default function Home({ state, setState, vars, Folder }) {
 								<p
 									class="home_folder_delete_confirm no"
 									onMouseDown={() => {
-										//TO KEEP
-										let newHome = { ...state.home, toggleHomeFolderMenu: null }
-										setState.setHome(newHome)
-										//TO DELETE
 										setState.setToggleHomeFolderMenu(null)
 									}}>
 									/ NO
@@ -204,13 +190,6 @@ export default function Home({ state, setState, vars, Folder }) {
 									setState.setFolders(newFolders)
 								}
 							} else if (e.target.className == 'menuButton home') {
-								//TO KEEP
-								let newHome = {
-									...state.home,
-									toggleHomeFolderMenu: [item.name],
-								}
-								setState.setHome(newHome)
-								//TO DELETE
 								setState.setToggleHomeFolderMenu([item.name]) //TOGGLES THE FOLDER MENU
 							}
 						}}
@@ -224,7 +203,7 @@ export default function Home({ state, setState, vars, Folder }) {
 
 						{state.toggleHomeFolderMenu &&
 							item.name == state.toggleHomeFolderMenu[0] &&
-							state.toggleHomeFolderMenu[1] !== 'rename' && ( //LOADS THE FOLDER MENU AND SUB MENU
+							( //LOADS THE FOLDER MENU AND SUB MENU
 								<HomeFolderMenu
 									folder={item.name}
 									state={state}
