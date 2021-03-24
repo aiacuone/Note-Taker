@@ -60,7 +60,18 @@ export default function Home({ state, setState, vars, Folder }) {
 		}
 	}, [state.homeRenameFolderInput])
 
-
+	useEffect(() => {
+		function handleMouseDown(e) {
+			if (e.target.className !== 'home_add_folder') {
+				home_add_folder_input.current.placeholder = 'Add Folder'
+				setState.setHomeAddFolderInput('')
+			}
+		}
+		document.addEventListener('mousedown', handleMouseDown)
+		return () => {
+			document.removeEventListener('mousedown', handleMouseDown)
+		}
+	}, [])
 
 	let homeFolders = () => {
 		//HOME FOLDERS
@@ -202,8 +213,7 @@ export default function Home({ state, setState, vars, Folder }) {
 						<img class="menuButton home" src={menuButton} />
 
 						{state.toggleHomeFolderMenu &&
-							item.name == state.toggleHomeFolderMenu[0] &&
-							( //LOADS THE FOLDER MENU AND SUB MENU
+							item.name == state.toggleHomeFolderMenu[0] && ( //LOADS THE FOLDER MENU AND SUB MENU
 								<HomeFolderMenu
 									folder={item.name}
 									state={state}
