@@ -44,21 +44,27 @@
 
 .home_add_folder {
 	color: black;
-	background: rgb(238, 238, 238);
+	/* background: rgb(238, 238, 238); */
+	background: none;
 	border-style: none;
 	/* border: 2px white solid; */
 	padding: 5px;
 	border-radius: 10px;
 	text-align: center;
-	filter: drop-shadow(2px 2px 2px rgb(155, 154, 154));
+	/* filter: drop-shadow(2px 2px 2px rgb(155, 154, 154)); */
+}
+
+.home_add_folder:focus{
+	border: none;
+	outline: none;
 }
 
 .menuButton {
-	height: 16px;
-	width: 60px;
+	height: 30px;
+	width: 70px;
 	position: absolute;
-	right: 5px;
-	top: 2px;
+	right: -5px;
+	top: -7px;
 }
 
 .home_folder_menu_color_option {
@@ -164,4 +170,41 @@ margin: 0 5px;
 
 .home_folder_delete_confirm.yes{
 color: red;
+}
+
+.home_folders_container{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background: yellow;
+}
+
+.home_folder_settings_button{
+position: absolute;
+top: 180px;
+height: 50px;
+right: 0;
+/* background: yellow; */
+}
+
+.home_folder_settings{
+	/* background: green; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.home_folder_settings_title{
+	font-size: 30px;
+	margin: 0 0 10px 0;
+}
+
+.home_folder_settings_option{
+	font-size: 20px;
+	border: 1px white solid;
+	padding: 10px 20px;
+	border-radius: 15px;
+	margin: 10px 0;
+	cursor: pointer;
 }

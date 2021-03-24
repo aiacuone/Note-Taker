@@ -11,7 +11,7 @@ export default function CurrentFolder({
     let [addFolderInputText, setAddFolderInputText]=useState()
 
 	let add_folder_input = useRef()
-
+	console.log(vars.currentFolder)
 	let foldersSelect = Object.keys(vars.currentFolder.folders).map((folder) => {
 		return (
 			<div

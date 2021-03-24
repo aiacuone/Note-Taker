@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useFocus } from 'react'
+import React, { useEffect, useRef } from 'react'
 import '../styles/home.css'
 import menuButton from '../images/menu.svg'
 import HomeFolderMenu from './HomeFolderMenu'
 import HomeFolderSubMenu from './HomeFolderSubMenu'
-// import RenameInput from './RenameInput'
+import HomeFoldersSettings from './HomeFoldersSettings'
 
 export default function Home({ state, setState, vars, Folder }) {
 	let folder_rename_input = useRef()
-	let add_home_folder_input = useRef()
-	// let [folder_rename_input, focus_folder_rename_input]=useFocus()
+	let home_add_folder_input = useRef()
 
 	useEffect(() => {
 		function handleEnter(e) {
@@ -28,6 +27,7 @@ export default function Home({ state, setState, vars, Folder }) {
 				})
 
 				setState.setHomeAddFolderInput('')
+				home_add_folder_input.current.placeholder = 'Add Folder'
 			}
 		}
 		document.addEventListener('keydown', handleEnter)
@@ -40,8 +40,8 @@ export default function Home({ state, setState, vars, Folder }) {
 		function handleEnter(e) {
 			if (
 				e.key == 'Enter' &&
-				!state.folders[state.homeRenameFolderInput] &&
-				state.toggleHomeFolderMenu
+				state.homeRenameFolderInput &&
+				!state.folders[state.homeRenameFolderInput]
 			) {
 				let newFolders = { ...state.folders }
 				newFolders[state.toggleHomeFolderMenu[0]].name =
@@ -51,6 +51,10 @@ export default function Home({ state, setState, vars, Folder }) {
 				delete newFolders[state.toggleHomeFolderMenu[0]]
 				state.homeRenameFolderInput = null
 				setState.setFolders(newFolders)
+				//TO KEEP
+				let newHome = { ...state.home, toggleHomeFolderMenu: null }
+				setState.setHome(newHome)
+				//TO DELETE
 				setState.setToggleHomeFolderMenu('')
 				setState.setHomeRenameFolderInput('')
 			}
@@ -64,14 +68,48 @@ export default function Home({ state, setState, vars, Folder }) {
 	let homeFolders = () => {
 		//HOME FOLDERS
 
-		if (Object.keys(state.folders).length > 0) {
-			return Object.keys(state.folders).map((item) => {
-				let newArr = [item]
+		let foldersArray = () => {
+			let newFoldersArray = []
+			Object.keys(state.folders).map((item) => {
+				newFoldersArray.push(state.folders[item])
+			})
+			//SORTS ARRAY
+			if (vars.homeFoldersSort == 'RECENT') {
+				console.log('recent sort')
+				return newFoldersArray
+					.sort((a, b) => {
+						return a['lastSelected'] - b['lastSelected']
+					})
+					.reverse()
+			} else if (
+				vars.homeFoldersSort == 'DATE CREATED' ||
+				!vars.homeFoldersSort
+			) {
+				console.log('date sort')
+				return newFoldersArray.sort((a, b) => {
+					return a['dateCreated'] - b['dateCreated']
+				})
+			} else if (vars.homeFoldersSort == 'NAME') {
+				console.log('name sort')
+				return newFoldersArray.sort((a, b) => {
+					if (a['name'] < b['name']) {
+						return -1
+					}
+					if (a['name'] > b['name']) {
+						return 1
+					}
+					return 0
+				})
+			}
+		}
+		if (foldersArray().length > 0) {
+			return foldersArray().map((item) => {
+				let newArr = [item.name]
 
 				let insideFolder = () => {
 					if (
 						state.toggleHomeFolderMenu && // FOLDER TITLE AREA
-						state.toggleHomeFolderMenu[0] == item &&
+						state.toggleHomeFolderMenu[0] == item.name &&
 						state.toggleHomeFolderMenu[1] == 'rename'
 					) {
 						return (
@@ -109,7 +147,7 @@ export default function Home({ state, setState, vars, Folder }) {
 						)
 					} else if (
 						state.toggleHomeFolderMenu && // FOLDER TITLE AREA
-						state.toggleHomeFolderMenu[0] == item &&
+						state.toggleHomeFolderMenu[0] == item.name &&
 						state.toggleHomeFolderMenu[1] == 'delete'
 					) {
 						return (
@@ -119,6 +157,13 @@ export default function Home({ state, setState, vars, Folder }) {
 									onMouseDown={() => {
 										let newArr = [...state.toggleHomeFolderMenu]
 										newArr[2] = 'yes'
+										//TO KEEP
+										let newHome = {
+											...state.home,
+											toggleHomeFolderMenu: newArr,
+										}
+										setState.setHome(newHome)
+										//TO DELETE
 										setState.setToggleHomeFolderMenu(newArr)
 									}}>
 									YES
@@ -126,6 +171,10 @@ export default function Home({ state, setState, vars, Folder }) {
 								<p
 									class="home_folder_delete_confirm no"
 									onMouseDown={() => {
+										//TO KEEP
+										let newHome = { ...state.home, toggleHomeFolderMenu: null }
+										setState.setHome(newHome)
+										//TO DELETE
 										setState.setToggleHomeFolderMenu(null)
 									}}>
 									/ NO
@@ -135,7 +184,7 @@ export default function Home({ state, setState, vars, Folder }) {
 					} else {
 						return (
 							<h3 class="home_folder_title">
-								{state.folders[item].name.toUpperCase()}
+								{state.folders[item.name].name.toUpperCase()}
 							</h3>
 						)
 					}
@@ -152,37 +201,49 @@ export default function Home({ state, setState, vars, Folder }) {
 							) {
 								if (!state.toggleHomeFolderMenu) {
 									//ENSURES THE MENU ISNT OPEN
-									let newArr = [item]
+									let newArr = [item.name]
 									setState.setDirectory(newArr) //ADDS TO DIRECTORY IN STATE WHICH LOADS NEW FOLDER
+									let newFolders = { ...state.folders }
+									newFolders[item.name].lastSelected = Date.now() //ADDS NEW DATE TO VALUE OF 'lastSelected' PROPERTY
+									newFolders[item.name].timesSelected =
+										+newFolders[item.name].timesSelected + 1 //ADDS TO VALUE TO 'timesSelected' PROPERTY
+									setState.setFolders(newFolders)
 								}
 							} else if (e.target.className == 'menuButton home') {
-								setState.setToggleHomeFolderMenu([item]) //TOGGLES THE FOLDER MENU
+								//TO KEEP
+								let newHome = {
+									...state.home,
+									toggleHomeFolderMenu: [item.name],
+								}
+								setState.setHome(newHome)
+								//TO DELETE
+								setState.setToggleHomeFolderMenu([item.name]) //TOGGLES THE FOLDER MENU
 							}
 						}}
 						style={{
 							//STYLING
-							border: '5px ' + state.folders[item].folderColor + ' solid',
+							border: '5px ' + state.folders[item.name].folderColor + ' solid',
 						}}>
 						{insideFolder()}
 
 						<img class="menuButton home" src={menuButton} />
 
 						{state.toggleHomeFolderMenu &&
-							item == state.toggleHomeFolderMenu[0] &&
+							item.name == state.toggleHomeFolderMenu[0] &&
 							state.toggleHomeFolderMenu[1] !== 'rename' && ( //LOADS THE FOLDER MENU AND SUB MENU
 								<HomeFolderMenu
-									folder={item}
+									folder={item.name}
 									state={state}
 									setState={setState}
 									vars={vars}
 								/>
 							)}
 						{state.toggleHomeFolderMenu &&
-							item == state.toggleHomeFolderMenu[0] &&
+							item.name == state.toggleHomeFolderMenu[0] &&
 							state.toggleHomeFolderMenu[1] &&
 							state.toggleHomeFolderMenu[1] !== 'rename' && (
 								<HomeFolderSubMenu
-									folder={item}
+									folder={item.name}
 									state={state}
 									setState={setState}
 									vars={vars}
@@ -209,17 +270,24 @@ export default function Home({ state, setState, vars, Folder }) {
 			)
 		}
 	}
-
+	// console.log('hello')
 	let addFolderInput = (
 		<>
 			<div class="home_add_folder_container">
 				{homeFolderErrorMessage()}
 				<input
 					class="home_add_folder"
+					ref={home_add_folder_input}
+					// onMouseDown={(e)=>{e.target.placeholder=''} }
+					onMouseDown={(e) => {
+						if (home_add_folder_input && home_add_folder_input.current) {
+							home_add_folder_input.current.placeholder = ''
+						}
+					}}
 					onChange={(e) =>
 						setState.setHomeAddFolderInput(e.target.value.toLowerCase())
 					}
-					ref={add_home_folder_input}
+					// ref={add_home_folder_input}
 					value={state.homeAddFolderInput.toLowerCase()}
 					type="text"
 					placeholder="Add Folder..."></input>
@@ -228,11 +296,20 @@ export default function Home({ state, setState, vars, Folder }) {
 	)
 
 	// console.log(state.toggleHomeFolderMenu)
+
 	return (
 		<div class="home">
 			<div class="home_header">{addFolderInput}</div>
-
-			{homeFolders()}
+			<img
+				onMouseDown={() => setState.setHomeFoldersSettings([])}
+				class="home_folder_settings_button"
+				src={menuButton}
+				style={{ cursor: 'pointer' }}
+			/>
+			{!state.homeFoldersSettings && homeFolders()}
+			{state.homeFoldersSettings && (
+				<HomeFoldersSettings state={state} setState={setState} vars={vars} />
+			)}
 		</div>
 	)
 }
