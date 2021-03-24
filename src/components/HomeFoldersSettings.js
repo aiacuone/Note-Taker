@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function HomeFoldersSettings({ vars, state, setState }) {
 	let settingsOptions = () => {
@@ -27,9 +27,7 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 				<div>
 					<p
 						onMouseDown={() => {
-                            setState.setSortHomeFolders(item)
-                            // vars.homeFoldersSort = item
-                            console.log(state.sortHomeFolders,'state.sortHomeFolders')
+							setState.setSortHomeFolders(item)
 							setState.setHomeFoldersSettings(null)
 						}}
 						class="home_folder_settings_option">
@@ -40,11 +38,20 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 		})
 	}
 
+	useEffect(() => {
+		function handleMouseDown(e) {
+			if (e.target.className !== 'home_folder_settings_option') {
+				setState.setHomeFoldersSettings('')
+			}
+		}
+		document.addEventListener('mousedown', handleMouseDown)
+		return () => {
+			document.removeEventListener('mousedown', handleMouseDown)
+		}
+	}, [])
 	return (
 		<div class="home_folder_settings">
-			{/* <h1 class="home_folder_settings_title">SETTINGS</h1> */}
 			{!state.homeFoldersSettings[0] && settingsOptions()}
-			{/* {settingsOptions()} */}
 			{state.homeFoldersSettings[0] == 'SORT BY' && sortByOptions()}
 		</div>
 	)

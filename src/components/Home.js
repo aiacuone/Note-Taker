@@ -62,7 +62,11 @@ export default function Home({ state, setState, vars, Folder }) {
 
 	useEffect(() => {
 		function handleMouseDown(e) {
-			if (e.target.className !== 'home_add_folder') {
+			if (
+				e.target.className !== 'home_add_folder' &&
+				home_add_folder_input &&
+				home_add_folder_input.current
+			) {
 				home_add_folder_input.current.placeholder = 'Add Folder'
 				setState.setHomeAddFolderInput('')
 			}
@@ -124,22 +128,10 @@ export default function Home({ state, setState, vars, Folder }) {
 										)
 									}
 									value={state.homeRenameFolderInput}
-									// autofocus="true"
-									// autoFocus
-									// autofocus='true'
-									// autoFocus={true}
-									// autofocus={ true}
 									ref={folder_rename_input}
 									class="home_folder_title_rename_input"
 									type="text"
 									style={{ color: 'black' }}></input>
-								{/* MY ATTEMPTS SO FAR */}
-								{/* <button class='testbutton' onClick={()=> folder_rename_input.current.focus()}>FOCUS</button> */}
-								{/* {console.log('focus')} */}
-								{/* {folder_rename_input&&folder_rename_input.current&&folder_rename_input.current.focus()} */}
-								{/* {folder_rename_input && folder_rename_input.current && console.log('focus')}
-								{folder_rename_input && console.log(folder_rename_input)} */}
-								{/* {folder_rename_input&&folder_rename_input.current.focus()} */}
 								{state.folders[state.homeRenameFolderInput] && (
 									<p class="home_rename_folder_input_error">
 										Sorry, this name already exists!
@@ -261,7 +253,6 @@ export default function Home({ state, setState, vars, Folder }) {
 				<input
 					class="home_add_folder"
 					ref={home_add_folder_input}
-					// onMouseDown={(e)=>{e.target.placeholder=''} }
 					onMouseDown={(e) => {
 						if (home_add_folder_input && home_add_folder_input.current) {
 							home_add_folder_input.current.placeholder = ''
@@ -270,15 +261,12 @@ export default function Home({ state, setState, vars, Folder }) {
 					onChange={(e) =>
 						setState.setHomeAddFolderInput(e.target.value.toLowerCase())
 					}
-					// ref={add_home_folder_input}
 					value={state.homeAddFolderInput.toLowerCase()}
 					type="text"
 					placeholder="Add Folder..."></input>
 			</div>
 		</>
 	)
-
-	// console.log(state.toggleHomeFolderMenu)
 
 	return (
 		<div class="home">

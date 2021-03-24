@@ -83,7 +83,7 @@ function App() {
 			'#000000', //black
 		],
 	}
-	// console.log(toggleHomeFolderMenu)
+
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>
