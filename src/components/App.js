@@ -6,21 +6,14 @@ import settingsIcon from '../images/settings.svg'
 
 function App() {
 	// STATE & USEREF
-
 	let [directory, setDirectory] = useState([])
 	let [folders, setFolders] = useState({})
+	//HOME
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
 	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
 	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
 	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
-	let [home, setHome] = useState({
-		toggleHomeFolderMenu: null,
-		homeAddFolderInput: '',
-		homeRenameFolderInput: '',
-		homeFoldersSettings: null,
-		sortHomeFolders: 'DATE CREATED',
-	})
 
 	let state = {
 		directory,
@@ -30,7 +23,6 @@ function App() {
 		homeRenameFolderInput,
 		homeFoldersSettings,
 		sortHomeFolders,
-		home
 	}
 	let setState = {
 		setDirectory,
@@ -40,7 +32,6 @@ function App() {
 		setHomeRenameFolderInput,
 		setHomeFoldersSettings,
 		setSortHomeFolders,
-		setHome
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT

@@ -54,7 +54,7 @@
 	/* filter: drop-shadow(2px 2px 2px rgb(155, 154, 154)); */
 }
 
-.home_add_folder:focus{
+.home_add_folder:focus {
 	border: none;
 	outline: none;
 }
@@ -70,9 +70,6 @@
 .home_folder_menu_color_option {
 	background: red;
 	border: 2px solid red;
-}
-
-.home_folder_color_option {
 }
 
 .home_folder_color_options {
@@ -148,46 +145,47 @@
 	position: relative;
 }
 
-.home_folder_title_rename_input{
+.home_folder_title_rename_input {
 	text-align: center;
 	height: 25px;
 }
 
-.home_rename_folder_input_error{
+.home_rename_folder_input_error {
 	position: absolute;
 	top: -25px;
 	color: red;
 }
 
-.home_folder_delete_confirm{
+.home_folder_delete_confirm {
 	display: flex;
 }
 
-.home_folder_delete_confirm.yes,.no{
-font-size: 20px;
-margin: 0 5px;
+.home_folder_delete_confirm.yes,
+.no {
+	font-size: 20px;
+	margin: 0 5px;
 }
 
-.home_folder_delete_confirm.yes{
-color: red;
+.home_folder_delete_confirm.yes {
+	color: red;
 }
 
-.home_folders_container{
+.home_folders_container {
 	position: relative;
 	height: 100%;
 	width: 100%;
 	background: yellow;
 }
 
-.home_folder_settings_button{
-position: absolute;
-top: 180px;
-height: 50px;
-right: 0;
-/* background: yellow; */
+.home_folder_settings_button {
+	position: absolute;
+	top: 180px;
+	height: 50px;
+	right: 0;
+	/* background: yellow; */
 }
 
-.home_folder_settings{
+.home_folder_settings {
 	/* background: green; */
 	display: flex;
 	flex-direction: column;
@@ -195,12 +193,12 @@ right: 0;
 	align-items: center;
 }
 
-.home_folder_settings_title{
+.home_folder_settings_title {
 	font-size: 30px;
 	margin: 0 0 10px 0;
 }
 
-.home_folder_settings_option{
+.home_folder_settings_option {
 	font-size: 20px;
 	border: 1px white solid;
 	padding: 10px 20px;

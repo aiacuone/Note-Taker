@@ -74,23 +74,17 @@ export default function Home({ state, setState, vars, Folder }) {
 				newFoldersArray.push(state.folders[item])
 			})
 			//SORTS ARRAY
-			if (vars.homeFoldersSort == 'RECENT') {
-				console.log('recent sort')
+			if (state.sortHomeFolders == 'RECENT') {
 				return newFoldersArray
 					.sort((a, b) => {
 						return a['lastSelected'] - b['lastSelected']
 					})
 					.reverse()
-			} else if (
-				vars.homeFoldersSort == 'DATE CREATED' ||
-				!vars.homeFoldersSort
-			) {
-				console.log('date sort')
+			} else if (state.sortHomeFolders == 'DATE CREATED') {
 				return newFoldersArray.sort((a, b) => {
 					return a['dateCreated'] - b['dateCreated']
 				})
-			} else if (vars.homeFoldersSort == 'NAME') {
-				console.log('name sort')
+			} else if (state.sortHomeFolders == 'NAME') {
 				return newFoldersArray.sort((a, b) => {
 					if (a['name'] < b['name']) {
 						return -1

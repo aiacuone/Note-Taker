@@ -28,8 +28,8 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 					<p
 						onMouseDown={() => {
                             setState.setSortHomeFolders(item)
-                            vars.homeFoldersSort = item
-                            console.log(vars.homeFoldersSort,'vars.homeFoldersSort mousedown')
+                            // vars.homeFoldersSort = item
+                            console.log(state.sortHomeFolders,'state.sortHomeFolders')
 							setState.setHomeFoldersSettings(null)
 						}}
 						class="home_folder_settings_option">
