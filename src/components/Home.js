@@ -245,7 +245,7 @@ export default function Home({ state, setState, vars, Folder }) {
 			)
 		}
 	}
-	// console.log('hello')
+
 	let addFolderInput = (
 		<div class="home_add_folder_container">
 			{homeFolderErrorMessage()}

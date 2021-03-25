@@ -17,8 +17,9 @@ function App() {
 			timesSelected: 1,
 			background: '',
 			folders: {},
-			notes: {},
+			notes: null,
 			folderColor: 'grey',
+			sortFolders: 'RECENT',
 		},
 	})
 	//HOME
@@ -28,7 +29,10 @@ function App() {
 	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
 	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
 	//CURRENT FOLDER
-	let [currentFolderAddFolderInput,setCurrentFolderAddFolderInput]=useState('')
+	let [currentFolderAddFolderInput, setCurrentFolderAddFolderInput] = useState(
+		''
+	)
+	let [currentFolderMainSection,setCurrentFolderMainSection]=useState(['notes'])
 
 	let state = {
 		directory,
@@ -38,7 +42,8 @@ function App() {
 		homeRenameFolderInput,
 		homeFoldersSettings,
 		sortHomeFolders,
-		currentFolderAddFolderInput
+		currentFolderAddFolderInput,
+		currentFolderMainSection,
 	}
 	let setState = {
 		setDirectory,
@@ -48,7 +53,8 @@ function App() {
 		setHomeRenameFolderInput,
 		setHomeFoldersSettings,
 		setSortHomeFolders,
-		setCurrentFolderAddFolderInput
+		setCurrentFolderAddFolderInput,
+		setCurrentFolderMainSection,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -76,10 +82,25 @@ function App() {
 		this.timesSelected = 0
 		this.background = ''
 		this.folders = {}
-		this.notes = {}
+		this.notes = null
 		this.folderColor = 'grey'
+		this.sortFolders = 'NAME'
+		this.sortNotes = 'date'
 	}
 
+	// CONSTRUCTOR METHOD TO CREATE NEW FOLDER
+	function Note({ name, dateCreated }) {
+		this.name = name
+		this.dateCreated = dateCreated
+		this.lastSelected = ''
+		this.timesSelected = 0
+		this.noteOutline = 'grey'
+		this.text = ''
+		// this.sortFolders = 'NAME'
+		// this.background = ''
+		// this.folders = {}
+		// this.notes = null 
+	}
 	// GLOBAL VARIABLES
 
 	let vars = {
@@ -101,6 +122,14 @@ function App() {
 		],
 	}
 
+	window.oncontextmenu = function (event) {
+		//STOPS LONG PRESS MENU COMING UP
+		event.preventDefault()
+		event.stopPropagation()
+		// console.log('heroo')
+		return false
+	}
+	// console.log(directory,'directory')
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>
@@ -113,6 +142,7 @@ function App() {
 					setState={setState}
 					vars={vars}
 					Folder={Folder}
+					Note={Note}
 				/>
 			)}
 		</div>

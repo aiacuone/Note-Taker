@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from 'react'
+import SelectedFolderSettings from './SelectedFolderSettings'
+import CurrentFolderNotes from './CurrentFolderNotes'
 import '../styles/current_page.css'
 import _ from 'lodash'
+// import useLongPress from '../hooks/useLongPress'
 
 export default function CurrentFolder({ state, setState, vars, Folder }) {
 	//USEREF
@@ -8,7 +11,6 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 	//VARIABLES
 	let currentFolder = vars.currentFolder
 	let directoryChain = vars.directoryChain
-	console.log(directoryChain())
 
 	useEffect(() => {
 		function handleMouseDown(e) {
@@ -50,40 +52,88 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 		}
 	}, [state.currentFolderAddFolderInput])
 
-	let foldersSelect = Object.keys(vars.currentFolder.folders).map((folder) => {
-		return (
-			<div
-				onClick={() => {
-					let arr = [...state.directory]
-					arr.push(folder)
-					setState.setDirectory(arr)
-				}}
-				class="current_page_folder_menu_folder">
-				<h3 class="current_page_folder_menu_title">{folder.toUpperCase()}</h3>
-			</div>
-		)
-	})
 
-	let pageNotes
-	if (vars.currentFolder.notes) {
-		pageNotes = Object.keys(vars.currentFolder.notes).map((note) => {
-			return (
-				<div class="curret_page_note">
-					<h3 class="curret_page_note_title">
-						{state.currentFolder.notes[note].title}
-					</h3>
-					<p class="curret_page_note_text">
-						{state.currentFolder.notes[note].text}
-					</p>
+
+	let foldersSection = () => {
+		let foldersSelect = Object.keys(vars.currentFolder.folders).map(
+			(folder) => {
+				return (
+					<div
+						onClick={() => {
+							let arr = [...state.directory]
+							arr.push(folder)
+							setState.setDirectory(arr)
+						}}
+						class="current_page_folder_menu_folder">
+						<p class="current_page_folder_menu_title">{folder.toUpperCase()}</p>
+					</div>
+				)
+			}
+		)
+		return <div class="current_page_folders_container">{foldersSelect}</div>
+	}
+
+	let mainSection = () => {
+		let sortedFolders = () => {
+			let arr = []
+			Object.keys(vars.currentFolder.folders).map((folder) => {
+				arr.push(vars.currentFolder.folders[folder])
+			})
+			if (vars.currentFolder.sortFolders == 'DATE') {
+				// console.log('DATE')
+				return arr.sort((a, b) => {
+					return a['dateCreated'] - b['dateCreated']
+				})
+			} else if (vars.currentFolder.sortFolders == 'RECENT') {
+				// console.log('RECENT')
+				return arr
+					.sort((a, b) => {
+						return a['lastSelected'] - b['lastSelected']
+					})
+					.reverse()
+			} else if (vars.currentFolder.sortFolders == 'NAME') {
+				// console.log('NAME')
+				return arr.sort((a, b) => {
+					if (a['name'] < b['name']) {
+						return -1
+					}
+					if (a['name'] > b['name']) {
+						return 1
+					}
+					return 0
+				})
+			}
+		}
+
+		if (state.currentFolderMainSection[0] === 'notes') {
+			let notes = currentFolder.notes ? (
+				<CurrentFolderNotes
+					state={state}
+					setState={setState}
+					vars={vars}
+					sortedFolders={sortedFolders}
+				/>
+			) : (
+				<div class="curret_page_notes">
+					<h3 class="curret_page_note_text">NO NOTES</h3>
 				</div>
 			)
-		})
-	} else {
-		pageNotes = (
-			<div class="curret_page_note">
-				<h3 class="curret_page_note_text">NO NOTES</h3>
-			</div>
-		)
+			return (
+				<>
+					<div class="notes_header">
+						<h1 class="current_page_title">
+							{vars.currentFolder.name.toUpperCase()}
+						</h1>
+						<p class="current_page_directory">
+							{state.directory.join('-').toUpperCase()}
+						</p>
+					</div>
+					{notes}
+				</>
+			)
+		} else if (state.currentFolderMainSection[0] === 'folderSettings') {
+			return <SelectedFolderSettings />
+		}
 	}
 
 	let navigationBar = (
@@ -92,7 +142,6 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 				onClick={() => {
 					let arr = [...state.directory]
 					arr.splice(arr.length - 1, 1)
-					// console.log(arr)
 					setState.setDirectory(arr)
 				}}
 				class="current_page_nav_button back">
@@ -101,7 +150,6 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 			<h3
 				onClick={() => {
 					setState.setDirectory([])
-					// console.log('home')
 				}}
 				class="current_page_nav_button home_nav">
 				HOME
@@ -123,16 +171,60 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 		</div>
 	)
 
+	//USE LONG PRESS/////////////
+	// const onLongPress = () => {
+	//     console.log('longpress is triggered');
+	// };
+
+	// const onClick = () => {
+	//     console.log('click is triggered')
+	// }
+
+	// const defaultOptions = {
+	//     shouldPreventDefault: true,
+	//     delay: 500,
+	// };
+	// const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
+	//////////////////////////////////
+
+	{
+		/* THIS BUTTON USES LONG PRESS */
+	}
+	{
+		/* <button
+				{...useLongPress(
+					() => {
+						console.log('longpress is triggered')
+					},
+					() => {
+						console.log('click is triggered')
+					},
+					{ shouldPreventDefault: true, delay: 500 }
+				)}>
+				TEST
+			</button> */
+	}
+
+		// {...useLongPress(
+	// 	() => {
+	// 		console.log('longpress is triggered')
+	// 	},
+	// 	() => {
+	// 		console.log('click is triggered')
+	// 	},
+	// 	{ shouldPreventDefault: true, delay: 500 }
+	// )
+	// }
+
 	return (
 		<div class="current_page">
-			<div class="current_folder_header">{addFolderInput}<div class="current_page_folders_container">{foldersSelect}</div></div>
-			{navigationBar}
+			<div class="current_folder_header">
+				{navigationBar}
+				{addFolderInput}
+				{foldersSection()}
+			</div>
 
-			<h3 class="current_page_title">
-				{vars.currentFolder.name.toUpperCase()}
-			</h3>
-			
-			{pageNotes}
+			<div class="main_section_container">{mainSection()}</div>
 		</div>
 	)
 }
