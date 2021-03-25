@@ -18,6 +18,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	flex-direction: column;
+	/* background: green; */
 }
 
 .current_page_nav {
@@ -41,6 +42,7 @@
 	left: 20px;
 	position: absolute;
 	top: 0;
+	color: white;
 }
 
 .current_page_nav_button.back,
@@ -78,10 +80,19 @@ font-size: 17px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0px 20px;
+	/* margin: 0px 20px; */
 	padding: 10px;
 	border-radius: 15px;
 	/* filter: drop-shadow(5px 5px 5px rgb(20, 20, 20)); */
+}
+
+.current_page_folder_menu_title{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 }
 
 .current_page_add_folder_input_field,
@@ -126,3 +137,64 @@ font-size: 17px;
 	position: absolute;
 	top: 0;
 }
+
+.selected_folder_settings{
+	/* background: green; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.selected_folder_settings_title{
+	padding: 0 5px;
+	border-bottom: 1px solid white;
+	margin: 0 0 10px 0;
+	font-size: 20px;
+}
+
+.current_folder_folder_option{
+	border: 1px solid white;
+	border-radius: 10px;
+	margin: 30px;
+	padding: 5px 20px;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+.current_folder_folder_settings_delete_options{
+	display: flex;
+	/* background: green; */
+}
+
+.current_folder_folder_settings_delete_option{
+font-size: 20px;
+margin: 5px 7px;
+cursor: pointer;
+}
+
+.current_folder_folder_settings_delete_option.yes{
+	color: red;
+}
+
+.current_folder_folder_settings_delete_delete{
+	color: red;
+	font-size: 20px;
+	border: 1px red solid;
+	border-radius: 15px;
+	padding: 5px 20px;
+	cursor: pointer;
+}
+
+.current_folder_folder_settings_rename_input{
+	color: black;
+}
+
+.current_folder_folder_settings_color_option{
+	height: 25px;
+	width: 100px;
+	margin: 2.5vh 0;
+	border-radius: 5px;
+	cursor: pointer;
+}
+

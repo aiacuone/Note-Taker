@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import SelectedFolderSettings from './SelectedFolderSettings'
 import CurrentFolderNotes from './CurrentFolderNotes'
+import FolderSelectCurrent from './FolderSelectCurrent'
 import '../styles/current_page.css'
 import _ from 'lodash'
 // import useLongPress from '../hooks/useLongPress'
@@ -52,21 +53,16 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 		}
 	}, [state.currentFolderAddFolderInput])
 
-
-
 	let foldersSection = () => {
 		let foldersSelect = Object.keys(vars.currentFolder.folders).map(
 			(folder) => {
 				return (
-					<div
-						onClick={() => {
-							let arr = [...state.directory]
-							arr.push(folder)
-							setState.setDirectory(arr)
-						}}
-						class="current_page_folder_menu_folder">
-						<p class="current_page_folder_menu_title">{folder.toUpperCase()}</p>
-					</div>
+					<FolderSelectCurrent
+						state={state}
+						setState={setState}
+						vars={vars}
+						folder={folder}
+					/>
 				)
 			}
 		)
@@ -105,7 +101,7 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 			}
 		}
 
-		if (state.currentFolderMainSection[0] === 'notes') {
+		if (state.currentFolderMainSection[0] == undefined) {
 			let notes = currentFolder.notes ? (
 				<CurrentFolderNotes
 					state={state}
@@ -128,17 +124,7 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 							{state.directory.join('-').toUpperCase()}
 						</p>
 					</div>
-					{notes}
-				</>
-			)
-		} else if (state.currentFolderMainSection[0] === 'folderSettings') {
-			return <SelectedFolderSettings />
-		}
-	}
-
-	let navigationBar = (
-		<div class="current_page_nav">
-			<h3
+					<h3
 				onClick={() => {
 					let arr = [...state.directory]
 					arr.splice(arr.length - 1, 1)
@@ -147,6 +133,27 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 				class="current_page_nav_button back">
 				BACK
 			</h3>
+					{notes}
+				</>
+			)
+		} else if (state.currentFolderMainSection[0] === 'folderSettings') {
+			return (
+				<SelectedFolderSettings state={state} setState={setState} vars={vars} />
+			)
+		}
+	}
+
+	let navigationBar = (
+		<div class="current_page_nav">
+			{/* <h3
+				onClick={() => {
+					let arr = [...state.directory]
+					arr.splice(arr.length - 1, 1)
+					setState.setDirectory(arr)
+				}}
+				class="current_page_nav_button back">
+				BACK
+			</h3> */}
 			<h3
 				onClick={() => {
 					setState.setDirectory([])
@@ -205,7 +212,7 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 			</button> */
 	}
 
-		// {...useLongPress(
+	// {...useLongPress(
 	// 	() => {
 	// 		console.log('longpress is triggered')
 	// 	},

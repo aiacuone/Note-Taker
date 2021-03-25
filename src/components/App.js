@@ -32,7 +32,11 @@ function App() {
 	let [currentFolderAddFolderInput, setCurrentFolderAddFolderInput] = useState(
 		''
 	)
-	let [currentFolderMainSection,setCurrentFolderMainSection]=useState(['notes'])
+	let [currentFolderMainSection, setCurrentFolderMainSection] = useState([])
+	let [
+		currentFolderSelectedFolderRenameInput,
+		setCurrentFolderSelectedFolderRenameInput,
+	] = useState('')
 
 	let state = {
 		directory,
@@ -44,6 +48,7 @@ function App() {
 		sortHomeFolders,
 		currentFolderAddFolderInput,
 		currentFolderMainSection,
+		currentFolderSelectedFolderRenameInput,
 	}
 	let setState = {
 		setDirectory,
@@ -55,6 +60,7 @@ function App() {
 		setSortHomeFolders,
 		setCurrentFolderAddFolderInput,
 		setCurrentFolderMainSection,
+		setCurrentFolderSelectedFolderRenameInput,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -99,7 +105,7 @@ function App() {
 		// this.sortFolders = 'NAME'
 		// this.background = ''
 		// this.folders = {}
-		// this.notes = null 
+		// this.notes = null
 	}
 	// GLOBAL VARIABLES
 
