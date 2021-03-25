@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-// import useLongPress from '../hooks/useLongPress'
+import _ from 'lodash'
 
 export default function SelectedFolderSettings({ state, setState, vars }) {
 	let current_folder_rename_input = useRef()
@@ -38,10 +38,21 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 			document.removeEventListener('mousedown', handleMouseDown)
 		}
 	}, [])
-	// console.log()
+
 	useEffect(() => {
 		function handleKeyDown(e) {
 			if (e.key == 'Enter' && state.currentFolderMainSection[2] == 'rename') {
+				let directoryChain = [...vars.directoryChain()]
+				let directory = [...vars.directoryChain(), 'folders']
+				let newCurrentFolders = { ...vars.currentFolder.folders }
+				newCurrentFolders[state.currentFolderSelectedFolderRenameInput] =
+					newCurrentFolders[state.currentFolderMainSection[1]]
+				newCurrentFolders[state.currentFolderSelectedFolderRenameInput].name =
+					state.currentFolderSelectedFolderRenameInput
+				delete newCurrentFolders[state.currentFolderMainSection[1]]
+				let newFolders = { ...state.folders }
+				_.set(newFolders, directory.join('.'), newCurrentFolders)
+				setState.setFolders(newFolders)
 				setState.setCurrentFolderMainSection([])
 			}
 		}
@@ -61,6 +72,15 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 				class="current_folder_folder_settings_color_option"
 				style={{ background: color }}
 				onMouseDown={() => {
+					let arr = [
+						...vars.directoryChain(),
+						'folders',
+						state.currentFolderMainSection[1],
+						'folderColor',
+					]
+					let newFolders = { ...state.folders }
+					_.set(newFolders, arr.join('.'), color)
+					setState.setFolders(newFolders)
 					setState.setCurrentFolderMainSection([])
 				}}></div>
 		)
@@ -70,7 +90,6 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 		<div class="selected_folder_settings">
 			{!state.currentFolderMainSection[2] && (
 				<>
-					{/* <h3 class="selected_folder_settings_title">EDIT FOLDER</h3> */}
 					<div class="current_folder_folder_settings">
 						{selectedFolderOptions}
 					</div>
@@ -103,6 +122,14 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 				<p
 					class="current_folder_folder_settings_delete_delete"
 					onMouseDown={() => {
+						let newFolders = { ...state.folders }
+						let arr = [
+							...vars.directoryChain(),
+							'folders',
+							state.currentFolderMainSection[1],
+						]
+						_.unset(newFolders, arr.join('.'))
+						setState.setFolders(newFolders)
 						setState.setCurrentFolderMainSection([])
 					}}>
 					DELETE

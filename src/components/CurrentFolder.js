@@ -178,51 +178,6 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 		</div>
 	)
 
-	//USE LONG PRESS/////////////
-	// const onLongPress = () => {
-	//     console.log('longpress is triggered');
-	// };
-
-	// const onClick = () => {
-	//     console.log('click is triggered')
-	// }
-
-	// const defaultOptions = {
-	//     shouldPreventDefault: true,
-	//     delay: 500,
-	// };
-	// const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
-	//////////////////////////////////
-
-	{
-		/* THIS BUTTON USES LONG PRESS */
-	}
-	{
-		/* <button
-				{...useLongPress(
-					() => {
-						console.log('longpress is triggered')
-					},
-					() => {
-						console.log('click is triggered')
-					},
-					{ shouldPreventDefault: true, delay: 500 }
-				)}>
-				TEST
-			</button> */
-	}
-
-	// {...useLongPress(
-	// 	() => {
-	// 		console.log('longpress is triggered')
-	// 	},
-	// 	() => {
-	// 		console.log('click is triggered')
-	// 	},
-	// 	{ shouldPreventDefault: true, delay: 500 }
-	// )
-	// }
-
 	return (
 		<div class="current_page">
 			<div class="current_folder_header">

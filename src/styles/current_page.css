@@ -76,7 +76,7 @@ font-size: 17px;
 }
 
 .current_page_folder_menu_folder {
-	border: 2px solid orange;
+	/* border: 2px solid orange; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
