@@ -65,14 +65,15 @@ font-size: 17px;
 	background: rgb(66, 66, 66);
 	overflow: scroll;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
+	/* flex-direction: column; */
 	padding: 10px;
 	cursor: pointer;
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
-	/* position: absolute; */
-	/* top: 20%; */
+	/* background: green; */
+	filter: drop-shadow(5px 5px 5px rgb(27, 27, 27));
 }
 
 .current_page_folder_menu_folder {
@@ -84,6 +85,7 @@ font-size: 17px;
 	padding: 10px;
 	border-radius: 15px;
 	/* filter: drop-shadow(5px 5px 5px rgb(20, 20, 20)); */
+	/* background: green; */
 }
 
 .current_page_folder_menu_title{
@@ -136,6 +138,7 @@ font-size: 17px;
 	flex-direction: column;
 	position: absolute;
 	top: 0;
+	left: 0;
 }
 
 .selected_folder_settings{
@@ -198,3 +201,34 @@ cursor: pointer;
 	cursor: pointer;
 }
 
+.current_folder_folders{
+	/* background: green; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.current_folder_add_note{
+	/* height: 20px; */
+	/* opacity: .8; */
+	/* background: green; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor:pointer;
+}
+
+.current_folder_add_note_img{
+	height: 25px;
+}
+
+.add_button_submit{
+	border: 1px white solid;
+	padding: 5px 10px;
+	border-radius: 10px;
+	cursor: pointer;
+}

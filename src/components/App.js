@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 // import folders from '../variables/folders'
-import CurrentFolder from './CurrentFolder'
+import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home'
 import settingsIcon from '../images/settings.svg'
 
@@ -32,7 +32,7 @@ function App() {
 	let [currentFolderAddFolderInput, setCurrentFolderAddFolderInput] = useState(
 		''
 	)
-	let [currentFolderMainSection, setCurrentFolderMainSection] = useState([])
+	let [currentFolderMainSection, setCurrentFolderMainSection] = useState(['notes'])
 	let [
 		currentFolderSelectedFolderRenameInput,
 		setCurrentFolderSelectedFolderRenameInput,
@@ -135,7 +135,7 @@ function App() {
 		// console.log('heroo')
 		return false
 	}
-	// console.log(directory,'directory')
+	console.log(currentFolderMainSection)
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>
