@@ -21,7 +21,7 @@ export default function Notes({
 		</div>
 	)
 	return (
-		<div>
+		<div class='notes_container'>
 			<div class="notes_header">
 				<h1 class="current_page_title">
 					{vars.currentFolder.name.toUpperCase()}

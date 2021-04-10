@@ -9,7 +9,7 @@ import './current_page.css'
 import Header from './Header'
 // import useLongPress from '../hooks/useLongPress'
 
-export default function CurrentFolder({ state, setState, vars, Folder }) {
+export default function CurrentFolder({ state, setState, vars, Folder,Note }) {
 	//USEREF
 	// let add_folder_input = useRef()
 	//VARIABLES
@@ -192,7 +192,7 @@ export default function CurrentFolder({ state, setState, vars, Folder }) {
 				{/* {foldersSection()} 
 				<FoldersSection state={state} setState={setState} vars={vars} />
 			</div> */}
-			<MainSection state={state} setState={setState} vars={vars} />
+			<MainSection state={state} setState={setState} vars={vars} Note={Note} />
 			{/* <div class="main_section_container">{mainSection()}</div> */}
 		</div>
 	)

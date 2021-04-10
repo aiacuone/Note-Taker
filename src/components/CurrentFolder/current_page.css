@@ -227,8 +227,43 @@ cursor: pointer;
 }
 
 .add_button_submit{
+	margin: 10px 0 0 0;
+	color: white;
 	border: 1px white solid;
 	padding: 5px 10px;
 	border-radius: 10px;
 	cursor: pointer;
+	display: inline-block;
+}
+
+.sun_editor{
+	color: black;
+	/* background: green; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* height: 100%; */
+	/* width: 100%; */
+	/* padding: 10px; */
+	/* height: 700px; */
+	/* width: 200px; */
+}
+
+.add_note_container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	/* background: green; */
+	height: 100%;
+	width: 100%;
+}
+
+.notes_container{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background: green; */
 }

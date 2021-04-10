@@ -17,7 +17,24 @@ function App() {
 			timesSelected: 1,
 			background: '',
 			folders: {},
-			notes: null,
+			notes: {
+				'title 1': {
+					title: 'title 1',
+					dateCreated: Date.now(),
+					lastSelected: '',
+					timesSelected: 0,
+					noteOutline: 'grey',
+					content: <p>This is a paragraph</p>,
+				},
+				'title 2': {
+					title: 'title 2',
+					dateCreated: Date.now(),
+					lastSelected: '',
+					timesSelected: 0,
+					noteOutline: 'grey',
+					content: <p>This is a paragraph</p>,
+				},
+			},
 			folderColor: 'grey',
 			sortFolders: 'RECENT',
 		},
@@ -32,11 +49,15 @@ function App() {
 	let [currentFolderAddFolderInput, setCurrentFolderAddFolderInput] = useState(
 		''
 	)
-	let [currentFolderMainSection, setCurrentFolderMainSection] = useState(['notes'])
+	let [currentFolderMainSection, setCurrentFolderMainSection] = useState([
+		'notes',
+	])
 	let [
 		currentFolderSelectedFolderRenameInput,
 		setCurrentFolderSelectedFolderRenameInput,
 	] = useState('')
+	let [addNoteInput, setAddNoteInput] = useState('')
+	let [addNoteContent, setAddNoteContent] = useState()
 
 	let state = {
 		directory,
@@ -49,6 +70,8 @@ function App() {
 		currentFolderAddFolderInput,
 		currentFolderMainSection,
 		currentFolderSelectedFolderRenameInput,
+		addNoteInput,
+		addNoteContent,
 	}
 	let setState = {
 		setDirectory,
@@ -61,6 +84,8 @@ function App() {
 		setCurrentFolderAddFolderInput,
 		setCurrentFolderMainSection,
 		setCurrentFolderSelectedFolderRenameInput,
+		setAddNoteInput,
+		setAddNoteContent,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -88,20 +113,20 @@ function App() {
 		this.timesSelected = 0
 		this.background = ''
 		this.folders = {}
-		this.notes = null
+		this.notes = {}
 		this.folderColor = 'grey'
 		this.sortFolders = 'NAME'
 		this.sortNotes = 'date'
 	}
 
 	// CONSTRUCTOR METHOD TO CREATE NEW FOLDER
-	function Note({ name, dateCreated }) {
-		this.name = name
+	function Note({ title, dateCreated, content }) {
+		this.title = title
 		this.dateCreated = dateCreated
 		this.lastSelected = ''
 		this.timesSelected = 0
 		this.noteOutline = 'grey'
-		this.text = ''
+		this.content = content
 		// this.sortFolders = 'NAME'
 		// this.background = ''
 		// this.folders = {}
@@ -126,16 +151,17 @@ function App() {
 			'#A0A0A0', //grey
 			'#000000', //black
 		],
+		Note,
+		Folder,
 	}
 
 	window.oncontextmenu = function (event) {
 		//STOPS LONG PRESS MENU COMING UP
 		event.preventDefault()
 		event.stopPropagation()
-		// console.log('heroo')
 		return false
 	}
-	console.log(currentFolderMainSection)
+	// console.log(folders)
 	return (
 		<div className="app">
 			<img class="settings_icon" src={settingsIcon}></img>

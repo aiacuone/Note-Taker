@@ -4,9 +4,10 @@ import Notes from './Notes'
 import AddNote from './AddNote'
 
 export default function MainSection({
-	state = { state },
-	setState = { setState },
-	vars = { vars },
+	state,
+	setState ,
+	vars ,
+	Note
 }) {
 	// let sortedFolders = () => {
 	// 	let arr = []
@@ -93,7 +94,7 @@ export default function MainSection({
 				<SelectedFolderSettings state={state} setState={setState} vars={vars} />
 			)}
 						{state.currentFolderMainSection[0] === 'addNote' && (
-				<AddNote state={state} setState={setState} vars={vars} />
+				<AddNote state={state} setState={setState} vars={vars} Note={ Note}/>
 			)}
 
 			{/* {notes} */}
