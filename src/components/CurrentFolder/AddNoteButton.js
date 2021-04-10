@@ -14,7 +14,7 @@ export default function AddNoteButton({
 				setState.setCurrentFolderMainSection(['addNote'])
 			}}>
 			<img src={add_note} class="current_folder_add_note_img" />
-			<p>ADD NOTE</p>
+			<p class='add_note_button_text'>ADD NOTE</p>
 		</div>
 	)
 }

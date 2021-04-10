@@ -29,7 +29,7 @@ export default function Folder({ state, setState, vars, folder }) {
 					let arr = [...state.directory]
 					arr.push(folder)
 					setState.setDirectory(arr)
-					setState.setCurrentFolderMainSection([])
+					setState.setCurrentFolderMainSection(['notes'])
 				},
 				{ shouldPreventDefault: true, delay: 500 }
 			)}

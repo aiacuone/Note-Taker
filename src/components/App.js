@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 // import folders from '../variables/folders'
 import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home'
-import settingsIcon from '../images/settings.svg'
+
 
 function App() {
 	// STATE & USEREF
@@ -162,10 +162,11 @@ function App() {
 		event.stopPropagation()
 		return false
 	}
-	// console.log(folders)
+	console.log(directory)
+	console.log(currentFolderMainSection)
 	return (
 		<div className="app">
-			<img class="settings_icon" src={settingsIcon}></img>
+			
 			{/* {directory.length == 0 && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
 			)} */}

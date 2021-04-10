@@ -1,6 +1,7 @@
 import React, { useRef,useEffect } from 'react'
 import FoldersSection from './FoldersSection'
 import _ from 'lodash'
+import settingsIcon from './images/settings.svg'
 
 export default function Header({
 	state = { state },
@@ -91,6 +92,7 @@ export default function Header({
 	)
 	return (
 		<div class="current_folder_header">
+			<img class="settings_icon" src={settingsIcon}></img>
 			{navigationBar}
 			{addFolderInput}
 			{/* {foldersSection()} */}

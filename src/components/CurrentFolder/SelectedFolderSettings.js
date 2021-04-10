@@ -29,7 +29,7 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 				e.target.className !== 'current_folder_folder_settings_rename_input' &&
 				e.target.className !== 'current_folder_folder_settings_color_option'
 			) {
-				setState.setCurrentFolderMainSection([])
+				setState.setCurrentFolderMainSection(['notes'])
 			}
 		}
 
@@ -98,7 +98,7 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 			{state.currentFolderMainSection[2] == 'delete' &&
 				!state.currentFolderMainSection[3] && (
 					<>
-						<p>Are you sure you want to delete this folder?</p>
+						<p class='confirm_delete'>Are you sure you want to delete this folder?</p>
 						<div class="current_folder_folder_settings_delete_options">
 							<p
 								class="current_folder_folder_settings_delete_option yes"

@@ -9,7 +9,7 @@
 }
 
 .current_folder_header{
-	height: 20%;
+	height: 15%;
 	width: 100%;
 	background: rgb(194, 194, 194);
 	/* position: absolute; */
@@ -18,7 +18,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	flex-direction: column;
-	/* background: green; */
+	/* background: orange; */
 }
 
 .current_page_nav {
@@ -51,12 +51,37 @@
 	/* background: yellow; */
 }
 
+/* .current_page_nav_button.home_nav{
+	position: absolute;
+	right: 20px;
+	top: 5px;
+} */
+
+.current_page_directory{
+	width: 200px;
+	/* background: orange; */
+	overflow: scroll;
+	white-space: nowrap;
+	display: flex;
+	justify-content: flex-start;
+}
+
 .current_page_title,.current_page_directory {
+	color: white;
 	margin: 2px 0;
+	/* pointer-events: none; */
+	/* display: flex;
+	justify-content: flex-start; */
 }
 
 .current_page_title{
 font-size: 17px;
+width: 200px;
+overflow: scroll;
+display: flex;
+justify-content: center;
+
+
 }
 
 .current_page_folders_container {
@@ -89,6 +114,7 @@ font-size: 17px;
 }
 
 .current_page_folder_menu_title{
+	color: white;
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -108,7 +134,12 @@ font-size: 17px;
 	border: none;
 	color: 	 rgb(39, 39, 39);
 	text-align: center;
-	margin: 0 0 15px 0;
+	/* margin: 0 0 15px 0; */
+	position: absolute;
+	right: 0px;
+	top: 5px;
+	/* background: green; */
+	width: 100px;
 }
 
 .current_page_add_folder_input:active {
@@ -119,7 +150,7 @@ font-size: 17px;
 }
 
 .main_section_container{
-	height: 80%;
+	height: 85%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -163,10 +194,12 @@ font-size: 17px;
 	padding: 5px 20px;
 	cursor: pointer;
 	font-size: 17px;
+	color: white;
 }
 
 .current_folder_folder_settings_delete_options{
 	display: flex;
+	color: white;
 	/* background: green; */
 }
 
@@ -220,6 +253,7 @@ cursor: pointer;
 	top: 5px;
 	right: 5px;
 	cursor:pointer;
+	color: white;
 }
 
 .current_folder_add_note_img{
@@ -266,4 +300,12 @@ cursor: pointer;
 	justify-content: center;
 	align-items: center;
 	/* background: green; */
+}
+
+.add_note_button_text{
+	font-size: 11px;
+}
+
+.confirm_delete{
+	color: white;
 }

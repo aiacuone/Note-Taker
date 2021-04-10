@@ -22,7 +22,7 @@
 .settings_icon {
 	height: 30px;
 	position: absolute;
-	right: 5px;
+	left: 5px;
 	top: 2px;
 	z-index: 1;
 }
