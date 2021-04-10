@@ -4,27 +4,27 @@ export default function Note({
 	state,
 	setState,
 	vars,
-	// sortedFolders,
 }) {
 
-	let sortedFolders = () => {
+	let sortedNotes = () => {
 		let arr = []
-		Object.keys(vars.currentFolder.folders).map((folder) => {
-			arr.push(vars.currentFolder.folders[folder])
+		Object.keys(vars.currentFolder.notes).map((note) => {
+			arr.push(vars.currentFolder.notes[note])
+			// console.log(vars.currentFolder.notes[note])
 		})
-		if (vars.currentFolder.sortFolders == 'DATE') {
+		if (vars.currentFolder.sortNotes == 'date') {
 			// console.log('DATE')
 			return arr.sort((a, b) => {
 				return a['dateCreated'] - b['dateCreated']
 			})
-		} else if (vars.currentFolder.sortFolders == 'RECENT') {
+		} else if (vars.currentFolder.sortNotes == 'recent') {
 			// console.log('RECENT')
 			return arr
 				.sort((a, b) => {
 					return a['lastSelected'] - b['lastSelected']
 				})
 				.reverse()
-		} else if (vars.currentFolder.sortFolders == 'NAME') {
+		} else if (vars.currentFolder.sortNotes == 'name') {
 			// console.log('NAME')
 			return arr.sort((a, b) => {
 				if (a['name'] < b['name']) {
@@ -38,14 +38,14 @@ export default function Note({
 		}
 	}
 
-	let notes = sortedFolders().map((note) => {
+	let notes = sortedNotes().map((note) => {
 		return (
 			<div class="curret_page_note">
 				<h3 class="curret_page_note_title">
-					{state.currentFolder.notes[note].title}
+					{note.title}
 				</h3>
 				<p class="curret_page_note_text">
-					{state.currentFolder.notes[note].text}
+					{note.content}
 				</p>
 			</div>
 		)

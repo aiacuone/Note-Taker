@@ -37,6 +37,7 @@ function App() {
 			},
 			folderColor: 'grey',
 			sortFolders: 'RECENT',
+			sortNotes : 'date'
 		},
 	})
 	//HOME
