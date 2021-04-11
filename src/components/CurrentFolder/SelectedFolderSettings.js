@@ -53,7 +53,7 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 				let newFolders = { ...state.folders }
 				_.set(newFolders, directory.join('.'), newCurrentFolders)
 				setState.setFolders(newFolders)
-				setState.setCurrentFolderMainSection([])
+				setState.setCurrentFolderMainSection(['notes'])
 			}
 		}
 
@@ -81,7 +81,7 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 					let newFolders = { ...state.folders }
 					_.set(newFolders, arr.join('.'), color)
 					setState.setFolders(newFolders)
-					setState.setCurrentFolderMainSection([])
+					setState.setCurrentFolderMainSection(['notes'])
 				}}></div>
 		)
 	})
@@ -98,7 +98,9 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 			{state.currentFolderMainSection[2] == 'delete' &&
 				!state.currentFolderMainSection[3] && (
 					<>
-						<p class='confirm_delete'>Are you sure you want to delete this folder?</p>
+						<p class="confirm_delete">
+							Are you sure you want to delete this folder?
+						</p>
 						<div class="current_folder_folder_settings_delete_options">
 							<p
 								class="current_folder_folder_settings_delete_option yes"
@@ -130,7 +132,7 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 						]
 						_.unset(newFolders, arr.join('.'))
 						setState.setFolders(newFolders)
-						setState.setCurrentFolderMainSection([])
+						setState.setCurrentFolderMainSection(['notes'])
 					}}>
 					DELETE
 				</p>

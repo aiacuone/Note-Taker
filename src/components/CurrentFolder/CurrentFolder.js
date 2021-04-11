@@ -9,7 +9,7 @@ import './current_page.css'
 import Header from './Header'
 // import useLongPress from '../hooks/useLongPress'
 
-export default function CurrentFolder({ state, setState, vars, Folder,Note }) {
+export default function CurrentFolder({ state, setState, vars, Folder, Note }) {
 	//USEREF
 	// let add_folder_input = useRef()
 	//VARIABLES
@@ -185,7 +185,10 @@ export default function CurrentFolder({ state, setState, vars, Folder,Note }) {
 
 	return (
 		<div class="current_page">
-			<Header state={state} setState={setState} vars={vars} Folder={Folder} />
+			{state.renderCurrentFolder.indexOf('header') > -1 && (
+				<Header state={state} setState={setState} vars={vars} Folder={Folder} />
+			)}
+
 			{/* <div class="current_folder_header">
 				{navigationBar}
 				{addFolderInput}

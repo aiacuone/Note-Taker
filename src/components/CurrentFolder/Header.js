@@ -2,6 +2,7 @@ import React, { useRef,useEffect } from 'react'
 import FoldersSection from './FoldersSection'
 import _ from 'lodash'
 import settingsIcon from './images/settings.svg'
+import NotesNav from './NotesNav'
 
 export default function Header({
 	state = { state },
@@ -13,48 +14,48 @@ export default function Header({
     // let currentFolder = vars.currentFolder
     // let directoryChain = vars.directoryChain
     
-    useEffect(() => {
-		//resets the add folder input value if not clicked within the input field
-		function handleMouseDown(e) {
-			if (
-				e.target.className !== 'current_page_add_folder_input' &&
-				state.currentFolderAddFolderInput
-			) {
-				add_folder_input.current.placeholder = 'Add Folder'
-				setState.setCurrentFolderAddFolderInput('')
-			}
-		}
+    // useEffect(() => {
+	// 	//resets the add folder input value if not clicked within the input field
+	// 	function handleMouseDown(e) {
+	// 		if (
+	// 			e.target.className !== 'current_page_add_folder_input' &&
+	// 			state.currentFolderAddFolderInput
+	// 		) {
+	// 			add_folder_input.current.placeholder = 'Add Folder'
+	// 			setState.setCurrentFolderAddFolderInput('')
+	// 		}
+	// 	}
 
-		document.addEventListener('mousedown', handleMouseDown)
-		return () => {
-			document.removeEventListener('mousedown', handleMouseDown)
-		}
-	}, [state.currentFolderAddFolderInput])
+	// 	document.addEventListener('mousedown', handleMouseDown)
+	// 	return () => {
+	// 		document.removeEventListener('mousedown', handleMouseDown)
+	// 	}
+	// }, [state.currentFolderAddFolderInput])
 
-	useEffect(() => {
-		//handles enter button
-		function handleEnter(e) {
-			if (e.key == 'Enter' && state.currentFolderAddFolderInput) {
-				add_folder_input.current.value = null
-				let newFolders = { ...state.folders }
-				let newObj = { ...vars.currentFolder.folders }
-				newObj[state.currentFolderAddFolderInput] = new Folder({
-					name: state.currentFolderAddFolderInput,
-					dateCreated: Date.now(),
-				})
-				let newDirectoryChain = [...vars.directoryChain(), 'folders']
-				_.set(newFolders, newDirectoryChain.join('.'), newObj)
-				setState.setFolders(newFolders)
-				setState.setCurrentFolderAddFolderInput('')
-			}
-		}
+	// useEffect(() => {
+	// 	//handles enter button
+	// 	function handleEnter(e) {
+	// 		if (e.key == 'Enter' && state.currentFolderAddFolderInput) {
+	// 			add_folder_input.current.value = null
+	// 			let newFolders = { ...state.folders }
+	// 			let newObj = { ...vars.currentFolder.folders }
+	// 			newObj[state.currentFolderAddFolderInput] = new Folder({
+	// 				name: state.currentFolderAddFolderInput,
+	// 				dateCreated: Date.now(),
+	// 			})
+	// 			let newDirectoryChain = [...vars.directoryChain(), 'folders']
+	// 			_.set(newFolders, newDirectoryChain.join('.'), newObj)
+	// 			setState.setFolders(newFolders)
+	// 			setState.setCurrentFolderAddFolderInput('')
+	// 		}
+	// 	}
 
-		document.addEventListener('keydown', handleEnter)
-		return () => {
-			document.removeEventListener('keydown', handleEnter)
-		}
-	}, [state.currentFolderAddFolderInput])
-	let add_folder_input = useRef()
+	// 	document.addEventListener('keydown', handleEnter)
+	// 	return () => {
+	// 		document.removeEventListener('keydown', handleEnter)
+	// 	}
+	// }, [state.currentFolderAddFolderInput])
+	// let add_folder_input = useRef()
 
 	let navigationBar = (
 		<div class="current_page_nav">
@@ -74,29 +75,32 @@ export default function Header({
 				class="current_page_nav_button home_nav">
 				HOME
 			</h3>
+			<img class="settings_icon" src={settingsIcon}></img>
 		</div>
 	)
 
-	let addFolderInput = (
-		<div class="current_page_add_folder_input_container">
-			<input
-				class="current_page_add_folder_input"
-				onChange={(e) =>
-					setState.setCurrentFolderAddFolderInput(e.target.value)
-				}
-				ref={add_folder_input}
-				placeholder="Add Folder"
-				type="text"
-				value={state.currentFolderAddFolderInput}></input>
-		</div>
-	)
+	// let addFolderInput = (
+	// 	<div class="current_page_add_folder_input_container">
+	// 		<input
+	// 			class="current_page_add_folder_input"
+	// 			onChange={(e) =>
+	// 				setState.setCurrentFolderAddFolderInput(e.target.value)
+	// 			}
+	// 			ref={add_folder_input}
+	// 			placeholder="Add Folder"
+	// 			type="text"
+	// 			value={state.currentFolderAddFolderInput}></input>
+	// 	</div>
+	// )
 	return (
 		<div class="current_folder_header">
-			<img class="settings_icon" src={settingsIcon}></img>
+			
 			{navigationBar}
-			{addFolderInput}
+			{/* {addFolderInput} */}
 			{/* {foldersSection()} */}
+			<NotesNav state={state} setState={setState} vars={vars}/>
 			<FoldersSection state={state} setState={setState} vars={vars} />
+			
 		</div>
 	)
 }

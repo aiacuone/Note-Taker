@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 // import folders from '../variables/folders'
 import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home'
-
+import AddNote from './CurrentFolder/AddNote'
 
 function App() {
 	// STATE & USEREF
@@ -24,7 +24,7 @@ function App() {
 					lastSelected: '',
 					timesSelected: 0,
 					noteOutline: 'grey',
-					content: <p>This is a paragraph</p>,
+					content: 'This is the content',
 				},
 				'title 2': {
 					title: 'title 2',
@@ -32,14 +32,16 @@ function App() {
 					lastSelected: '',
 					timesSelected: 0,
 					noteOutline: 'grey',
-					content: <p>This is a paragraph</p>,
+					content: 'This is the content',
 				},
 			},
 			folderColor: 'grey',
 			sortFolders: 'RECENT',
-			sortNotes : 'date'
+			sortNotes: 'date',
 		},
 	})
+	//APP
+	// let [renderApp,setRenderApp]=useState([])
 	//HOME
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
@@ -59,6 +61,8 @@ function App() {
 	] = useState('')
 	let [addNoteInput, setAddNoteInput] = useState('')
 	let [addNoteContent, setAddNoteContent] = useState()
+	let [renderCurrentFolder, setRenderCurrentFolder] = useState(['mainSection', 'header'])
+	let [notesScrolling,setNotesScrolling]=useState(false)
 
 	let state = {
 		directory,
@@ -73,6 +77,8 @@ function App() {
 		currentFolderSelectedFolderRenameInput,
 		addNoteInput,
 		addNoteContent,
+		renderCurrentFolder,
+		notesScrolling,
 	}
 	let setState = {
 		setDirectory,
@@ -87,6 +93,8 @@ function App() {
 		setCurrentFolderSelectedFolderRenameInput,
 		setAddNoteInput,
 		setAddNoteContent,
+		setRenderCurrentFolder,
+		setNotesScrolling,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -162,22 +170,25 @@ function App() {
 		event.stopPropagation()
 		return false
 	}
-	console.log(directory)
-	console.log(currentFolderMainSection)
+
+
 	return (
 		<div className="app">
-			
 			{/* {directory.length == 0 && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
 			)} */}
-			{directory.length > 0 && (
-				<CurrentFolder
-					state={state}
-					setState={setState}
-					vars={vars}
-					Folder={Folder}
-					Note={Note}
-				/>
+			{directory.length > 0 &&
+				currentFolderMainSection.indexOf('addNote') < 0 && (
+					<CurrentFolder
+						state={state}
+						setState={setState}
+						vars={vars}
+						Folder={Folder}
+						Note={Note}
+					/>
+				)}
+			{currentFolderMainSection.indexOf('addNote') > -1 && (
+				<AddNote state={state} setState={setState} vars={vars} Note={Note} />
 			)}
 		</div>
 	)

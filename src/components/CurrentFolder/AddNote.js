@@ -7,25 +7,29 @@ import _ from 'lodash'
 
 export default function AddNote({ state, setState, vars }) {
 	// let add_note_input = useRef()
-	useEffect(() => {
-		function handleMouseDown(e) {
-			if (e.target.className !== 'main_section_container') {
-				// setState.setCurrentFolderMainSection(['notes'])// doesnt look useful
-			}
-		}
+	// useEffect(() => {
+	// 	function handleMouseDown(e) {
+	// 		if (e.target.className !== 'main_section_container') {
+	// 			setState.setCurrentFolderMainSection(['notes'])// 
+	// 		}
+	// 	}
 
-		document.addEventListener('mousedown', handleMouseDown)
-		return () => {
-			document.removeEventListener('mousedown', handleMouseDown)
-		}
-	}, [])
+	// 	document.addEventListener('mousedown', handleMouseDown)
+	// 	return () => {
+	// 		document.removeEventListener('mousedown', handleMouseDown)
+	// 	}
+	// }, [])
 
 	return (
 		<div class="add_note_container">
 			<input
 				class="add_note_input"
+				placeHolder="TITLE"
 				type="text"
-				onChange={(e) => setState.setAddNoteInput(e.target.value)}
+				onChange={(e) => setState.setAddNoteInput(e.target.value.toUpperCase())}
+				value={state.addNoteInput}
+				pattern="[a-zA-Z0-9-]+"
+				required
 			/>
 			<Sun_Editor state={state} setState={setState} vars={vars} />
 
@@ -36,27 +40,23 @@ export default function AddNote({ state, setState, vars }) {
 					let newNotes = { ...vars.currentFolder.notes }
 
 					newNotes[state.addNoteInput] = new vars.Note({
-						title: state.addNoteInput,
+						title: state.addNoteInput.toLowerCase(),
 						dateCreated: Date.now(),
 						content: state.addNoteContent,
 					})
-					// console.log(newNotes)
-					// console.log(newFolders)
-
 					let newDirectoryChain = [...vars.directoryChain(), 'notes']
-					// console.log(newDirectoryChain)
-					// console.log(vars.currentFolder)
-
 					_.set(newFolders, newDirectoryChain.join('.'), newNotes)
-					// console.log(state.addNoteContent)
-					// console.log(newFolders)
-
 					setState.setFolders(newFolders)
 					setState.setAddNoteInput('')
 					setState.setAddNoteContent('')
 					setState.setCurrentFolderMainSection(['notes'])
 				}}>
 				ADD NOTE
+			</p>
+			<p
+				onClick={() => setState.setCurrentFolderMainSection(['notes'])}
+				class="add_note_exit_button">
+				EXIT
 			</p>
 		</div>
 	)
