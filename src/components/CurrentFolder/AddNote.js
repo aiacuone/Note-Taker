@@ -1,24 +1,8 @@
 import React, { useEffect } from 'react'
-// import SunEditor, { buttonList } from 'suneditor-react'
-// import 'suneditor/dist/css/suneditor.min.css' // Import Sun Editor's CSS File
-// import ReactHtmlParser from 'react-html-parser'
 import Sun_Editor from './Sun_Editor'
 import _ from 'lodash'
 
 export default function AddNote({ state, setState, vars }) {
-	// let add_note_input = useRef()
-	// useEffect(() => {
-	// 	function handleMouseDown(e) {
-	// 		if (e.target.className !== 'main_section_container') {
-	// 			setState.setCurrentFolderMainSection(['notes'])// 
-	// 		}
-	// 	}
-
-	// 	document.addEventListener('mousedown', handleMouseDown)
-	// 	return () => {
-	// 		document.removeEventListener('mousedown', handleMouseDown)
-	// 	}
-	// }, [])
 
 	return (
 		<div class="add_note_container">

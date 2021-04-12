@@ -4,7 +4,7 @@ import 'suneditor/dist/css/suneditor.min.css' // Import Sun Editor's CSS File
 
 export default function Sun_Editor({ state, setState, vars }) {
 	let editorRef=useRef()
-	// let [content,setContent]=useState()
+
 	return (
 		<div class="sun_editor">
 			<SunEditor
@@ -38,8 +38,6 @@ export default function Sun_Editor({ state, setState, vars }) {
 					],
 				}}
 			/>
-
-			{/* <div class="alignSun">{ReactHtmlParser(content)}</div> */}
 		</div>
 	)
 }

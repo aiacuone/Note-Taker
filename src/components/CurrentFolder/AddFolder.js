@@ -25,7 +25,6 @@ export default function AddFolder({ state, setState, vars }) {
 
 	function handleAddFolder() {
 		if (
-			// e.key == 'Enter' &&
 			state.currentFolderAddFolderInput &&
 			add_folder_input &&
 			add_folder_input.current

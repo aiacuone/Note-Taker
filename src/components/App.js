@@ -7,38 +7,38 @@ import AddNote from './CurrentFolder/AddNote'
 function App() {
 	// STATE & USEREF
 	// let [directory, setDirectory] = useState([]) //ORIGINAL
-	let [directory, setDirectory] = useState(['steve'])
+	let [directory, setDirectory] = useState([])
 	// let [folders, setFolders] = useState({}) //ORIGINAL
 	let [folders, setFolders] = useState({
-		steve: {
-			name: 'steve',
-			dateCreated: Date.now(),
-			lastSelected: Date.now(),
-			timesSelected: 1,
-			background: '',
-			folders: {},
-			notes: {
-				'title 1': {
-					title: 'title 1',
-					dateCreated: Date.now(),
-					lastSelected: '',
-					timesSelected: 0,
-					noteOutline: 'grey',
-					content: 'This is the content',
-				},
-				'title 2': {
-					title: 'title 2',
-					dateCreated: Date.now(),
-					lastSelected: '',
-					timesSelected: 0,
-					noteOutline: 'grey',
-					content: 'This is the content',
-				},
-			},
-			folderColor: 'grey',
-			sortFolders: 'RECENT',
-			sortNotes: 'date',
-		},
+		// steve: {
+		// 	name: 'steve',
+		// 	dateCreated: Date.now(),
+		// 	lastSelected: Date.now(),
+		// 	timesSelected: 1,
+		// 	background: '',
+		// 	folders: {},
+		// 	notes: {
+		// 		'title 1': {
+		// 			title: 'title 1',
+		// 			dateCreated: Date.now(),
+		// 			lastSelected: '',
+		// 			timesSelected: 0,
+		// 			noteOutline: 'grey',
+		// 			content: 'This is the content',
+		// 		},
+		// 		'title 2': {
+		// 			title: 'title 2',
+		// 			dateCreated: Date.now(),
+		// 			lastSelected: '',
+		// 			timesSelected: 0,
+		// 			noteOutline: 'grey',
+		// 			content: 'This is the content',
+		// 		},
+		// 	},
+		// 	folderColor: 'grey',
+		// 	sortFolders: 'RECENT',
+		// 	sortNotes: 'date',
+		// },
 	})
 	//APP
 	// let [renderApp,setRenderApp]=useState([])
@@ -174,9 +174,9 @@ function App() {
 
 	return (
 		<div className="app">
-			{/* {directory.length == 0 && (
+			{directory.length == 0 && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
-			)} */}
+			)}
 			{directory.length > 0 &&
 				currentFolderMainSection.indexOf('addNote') < 0 && (
 					<CurrentFolder

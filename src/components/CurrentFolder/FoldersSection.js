@@ -1,11 +1,8 @@
 import React, { useRef, useEffect } from 'react'
-// import Folder from './Folder'
 import Folders from './Folders'
 
 export default function FoldersSection({ state, setState, vars }) {
-	// let timer
 	let scroller = useRef()
-
 	let isDown = false
 	let startX
 	let scrollLeft
@@ -19,9 +16,6 @@ export default function FoldersSection({ state, setState, vars }) {
 				startX = e.pageX - scroller.current.offsetLeft
 				scrollLeft = scroller.current.scrollLeft
 			}
-
-			// console.log(scroller.current.offsetTop)
-			// console.log('test')
 		}
 		function handleMouseleave() {
 			isDown = false
@@ -34,16 +28,9 @@ export default function FoldersSection({ state, setState, vars }) {
 			if (scroller && scroller.current) {
 				scroller.current.classList.remove('active')
 			}
-
-			// timer = setTimeout(() => {
-			// 	setState.setRenderCurrentFolder(['mainSection', 'header'])
-			// }, 1500)
 		}
 		function handleMousemove(e) {
 			if (!isDown) return
-			// e.preventDefault()
-			// setState.setRenderCurrentFolder(['mainSection'])
-			// clearTimeout(timer)
 			if (scroller && scroller.current) {
 				const x = e.pageX - scroller.current.offsetLeft
 				const walk = (x - startX) * 3
@@ -65,12 +52,11 @@ export default function FoldersSection({ state, setState, vars }) {
 				scroller.current.removeEventListener('mousemove', handleMousemove)
 			}
 		}
-	},[])
+	}, [])
 
 	return (
 		<div class="current_page_folders_container" ref={scroller}>
 			<Folders state={state} setState={setState} vars={vars} />
-			{/* {folders} */}
 		</div>
 	)
 }

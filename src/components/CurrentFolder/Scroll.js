@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react'
 export default function Scroll({ state, setState, vars }) {
 	let timer
 	let scroller = useRef()
-
 	let isDown = false
 	let startX
 	let scrollLeft
@@ -15,8 +14,6 @@ export default function Scroll({ state, setState, vars }) {
 			scroller.current.classList.add('active')
 			startX = e.pageX - scroller.current.offsetLeft
 			scrollLeft = scroller.current.scrollLeft
-			// console.log(scroller.current.offsetTop)
-			// console.log('test')
 		}
 		function handleMouseleave() {
 			isDown = false
@@ -31,7 +28,6 @@ export default function Scroll({ state, setState, vars }) {
 		}
 		function handleMousemove(e) {
 			if (!isDown) return
-			// e.preventDefault()
 			setState.setRenderCurrentFolder(['mainSection'])
 			clearTimeout(timer)
 			const x = e.pageX - scroller.current.offsetLeft
@@ -50,34 +46,13 @@ export default function Scroll({ state, setState, vars }) {
 			scroller.current.removeEventListener('mouseup', handleMouseup)
 			scroller.current.removeEventListener('mousemove', handleMousemove)
 		}
-	},[])
+	}, [])
 
 	return (
 		<div>
 			<div ref={scroller} class="scroll">
 				asfjasdflka;jsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalk;sdjflajsdf;lkjasfdjklasfj;
 			</div>
-			{/* <div ref={scroller }></div> */}
-			{/* <div class="scroll">
-				asfjasdflka;jsfdlksajfklasflkasjfdaksjffalk;sdjflajsdf;lkjasfdjklasfj;
-			</div> */}
-
-			{/* <div 
-				class='scroll'
-				//TIMER WORKS
-				// 
-				onMouseUp={() => {
-
-					timer = setTimeout(() => {
-						setState.setRenderCurrentFolder(['mainSection', 'header'])
-					}, 2000)
-				}}
-				onScroll={() => {
-					setState.setRenderCurrentFolder(['mainSection'])
-					clearTimeout(timer)
-				}}>
-				asfjasdflka;jsfdlksajfklasflkasjfdaksjffalk;sdjflajsdf;lkjasfdjklasfj;
-			</div> */}
 		</div>
 	)
 }
