@@ -2,6 +2,7 @@ import React from 'react'
 import MainSection from './MainSection'
 import './styles/current_folder.css'
 import Header from './Header'
+import Footer from './Footer'
 
 export default function CurrentFolder({ state, setState, vars, Folder, Note }) {
 	return (
@@ -10,6 +11,9 @@ export default function CurrentFolder({ state, setState, vars, Folder, Note }) {
 				<Header state={state} setState={setState} vars={vars} Folder={Folder} />
 			)}
 			<MainSection state={state} setState={setState} vars={vars} Note={Note} />
+			{state.renderCurrentFolder.indexOf('header') > -1 && (
+				<Footer state={state} setState={setState} vars={vars} Folder={Folder} />
+			)}
 		</div>
 	)
 }

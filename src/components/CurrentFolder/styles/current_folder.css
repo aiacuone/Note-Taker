@@ -8,8 +8,8 @@
 	position: relative;
 }
 
-.current_folder_header{
-	height: 20%;
+.current_folder_header {
+	/* height: 20%; */
 	width: 100%;
 	background: rgb(194, 194, 194);
 	position: absolute;
@@ -46,8 +46,7 @@
 	color: white;
 }
 
-.current_page_nav_button.back,
-.home_nav {
+.current_page_nav_button.back {
 	margin: 10px 0 0 0;
 	/* background: yellow; */
 }
@@ -58,7 +57,7 @@
 	top: 5px;
 } */
 
-.current_page_directory{
+.current_page_directory {
 	width: 100%;
 	/* background: orange; */
 	/* overflow: scroll; */
@@ -68,7 +67,8 @@
 	/* height: 100px; */
 }
 
-.current_page_title,.current_page_directory {
+.current_page_title,
+.current_page_directory {
 	color: white;
 	margin: 2px 0;
 	/* pointer-events: none; */
@@ -78,21 +78,19 @@
 	/* overflow: -moz-scrollbars-none;  */
 }
 
+.current_page_title {
+	font-size: 17px;
+	width: 200px;
+	/* overflow: scroll; */
+	display: flex;
+	justify-content: center;
 
-
-.current_page_title{
-font-size: 17px;
-width: 200px;
-/* overflow: scroll; */
-display: flex;
-justify-content: center;
-
-/* background: yellow; */
+	/* background: yellow; */
 }
 
 .current_page_folders_container {
 	width: 100%;
-	height: 50px;
+	height: 35px;
 	background: rgb(39, 39, 39);
 	overflow: scroll;
 	display: flex;
@@ -113,21 +111,21 @@ justify-content: center;
 	justify-content: center;
 	align-items: center;
 	/* margin: 0px 20px; */
-	padding: 10px;
+	padding: 5px 10px;
 	border-radius: 15px;
 	/* filter: drop-shadow(5px 5px 5px rgb(20, 20, 20)); */
 	/* background: green; */
 	cursor: pointer;
 }
 
-.current_page_folder_menu_title{
+.current_page_folder_menu_title {
 	color: white;
 	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
 }
 
 .current_page_add_folder_input_field,
@@ -155,23 +153,23 @@ justify-content: center;
 	border: 1px solid rgb(87, 87, 87);
 	border-radius: 5px;
 
-	border-radius: 5px;;
+	border-radius: 5px;
 }
 
-.main_section_container{
+.main_section_container {
 	height: 100%;
 	width: 100%;
 	display: flex;
-	justify-content: safe center; 
-	align-items: center; 
+	justify-content: safe center;
+	align-items: center;
 	/* margin: auto; */
 	/* background: green; */
 	position: relative;
 	/* padding: 10px; */
 }
 
-.notes_header{
-	height:50px;
+.notes_header {
+	height: 50px;
 	width: 100%;
 	/* background: purple; */
 	display: flex;
@@ -183,7 +181,7 @@ justify-content: center;
 	left: 0;
 }
 
-.selected_folder_settings{
+.selected_folder_settings {
 	/* background: green; */
 	display: flex;
 	flex-direction: column;
@@ -191,14 +189,14 @@ justify-content: center;
 	align-items: center;
 }
 
-.selected_folder_settings_title{
+.selected_folder_settings_title {
 	padding: 0 5px;
 	border-bottom: 1px solid white;
 	margin: 0 0 10px 0;
 	font-size: 20px;
 }
 
-.current_folder_folder_option{
+.current_folder_folder_option {
 	border: 1px solid white;
 	border-radius: 10px;
 	margin: 30px;
@@ -208,23 +206,23 @@ justify-content: center;
 	color: white;
 }
 
-.current_folder_folder_settings_delete_options{
+.current_folder_folder_settings_delete_options {
 	display: flex;
 	color: white;
 	/* background: green; */
 }
 
-.current_folder_folder_settings_delete_option{
-font-size: 20px;
-margin: 5px 7px;
-cursor: pointer;
+.current_folder_folder_settings_delete_option {
+	font-size: 20px;
+	margin: 5px 7px;
+	cursor: pointer;
 }
 
-.current_folder_folder_settings_delete_option.yes{
+.current_folder_folder_settings_delete_option.yes {
 	color: red;
 }
 
-.current_folder_folder_settings_delete_delete{
+.current_folder_folder_settings_delete_delete {
 	color: red;
 	font-size: 20px;
 	border: 1px red solid;
@@ -233,11 +231,11 @@ cursor: pointer;
 	cursor: pointer;
 }
 
-.current_folder_folder_settings_rename_input{
+.current_folder_folder_settings_rename_input {
 	color: black;
 }
 
-.current_folder_folder_settings_color_option{
+.current_folder_folder_settings_color_option {
 	height: 25px;
 	width: 100px;
 	margin: 2.5vh 0;
@@ -245,14 +243,14 @@ cursor: pointer;
 	cursor: pointer;
 }
 
-.current_folder_folders{
+.current_folder_folders {
 	/* background: green; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.current_folder_add_note{
+.current_folder_add_note {
 	/* height: 20px; */
 	/* opacity: .8; */
 	/* background: green; */
@@ -261,18 +259,18 @@ cursor: pointer;
 	align-items: center;
 	flex-direction: column;
 	position: absolute;
-	bottom: 10px;
+	bottom: 5px;
 	right: 5px;
-	cursor:pointer;
+	cursor: pointer;
 	color: white;
 }
 
-.current_folder_add_note_img{
-	height: 15px;
+.current_folder_add_note_img {
+	height: 18px;
 	margin: 0 5px 0 0;
 }
 
-.add_button_submit{
+.add_button_submit {
 	margin: 10px 0 0 0;
 	color: white;
 	border: 1px white solid;
@@ -282,7 +280,7 @@ cursor: pointer;
 	display: inline-block;
 }
 
-.sun_editor{
+.sun_editor {
 	color: black;
 	/* background: green; */
 	display: flex;
@@ -295,7 +293,7 @@ cursor: pointer;
 	/* width: 200px; */
 }
 
-.add_note_container{
+.add_note_container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -305,26 +303,29 @@ cursor: pointer;
 	width: 100%;
 }
 
-.notes_container{
+.notes_container {
 	height: 100%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: auto;
-	/* background: green; */
+	cursor: context-menu;
 	overflow-y: scroll;
+	color: white;
+	padding: 0 20px;
+	/* background: green; */
 }
 
-.add_note_button_text{
+.add_note_button_text {
 	font-size: 11px;
 }
 
-.confirm_delete{
+.confirm_delete {
 	color: white;
 }
 
-.add_note_input{
+.add_note_input {
 	background: none;
 	border: 1px white solid;
 	border-radius: 5px;
@@ -337,7 +338,7 @@ cursor: pointer;
 	padding: 2px;
 }
 
-.add_note_exit_button{
+.add_note_exit_button {
 	color: white;
 	position: absolute;
 	right: 10px;
@@ -345,18 +346,18 @@ cursor: pointer;
 	cursor: pointer;
 }
 
-.curret_page_notes{
-/* background: yellow; */
-overflow-y: scroll;
-/* height: 100%; */
-/* width: 100%; */
-/* display: flex; */
-justify-content: center;
-align-items: center;
-flex-direction: column;
+.curret_page_notes {
+	/* background: yellow; */
+	overflow-y: scroll;
+	/* height: 100%; */
+	/* width: 100%; */
+	/* display: flex; */
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
-.notes_nav_container{
+.notes_nav_container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -367,7 +368,7 @@ flex-direction: column;
 	background: rgb(39, 39, 39);
 }
 
-.current_folder_add_folder_button{
+.current_folder_add_folder_button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -379,17 +380,17 @@ flex-direction: column;
 	cursor: pointer;
 }
 
-.current_folder_add_folder_img{
+.current_folder_add_folder_img {
 	height: 15px;
 	margin: 0 5px 0 0;
 }
 
-.current_folder_add_folder_text{
+.current_folder_add_folder_text {
 	color: white;
 	white-space: nowrap;
 }
 
-.current_page_add_folder_input_container{
+.current_page_add_folder_input_container {
 	/* height: 100%;
 	width: 100%; */
 	display: flex;
@@ -399,12 +400,12 @@ flex-direction: column;
 	/* background: green; */
 	margin: 0 0 150px 0;
 }
-.current_page_add_folder_input_title{
+.current_page_add_folder_input_title {
 	color: white;
 	margin: 0 0 10px 0;
 }
 
-.current_page_add_folder_input_add{
+.current_page_add_folder_input_add {
 	color: white;
 	margin: 10px 0 0 0;
 	border: white 1px solid;
@@ -413,11 +414,36 @@ flex-direction: column;
 	cursor: pointer;
 }
 
-.scroll{
+.scroll {
 	height: 50px;
 	width: 550px;
 	overflow: scroll;
 	cursor: pointer;
 	/* white-space: normal; */
 	/* word-wrap: break-word; */
+}
+
+.current_folder_settings_header {
+	/* background: green; */
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.current_folder_footer {
+	position: absolute;
+	bottom: 0;
+	height: 40px;
+	width: 100%;
+	background: rgb(39, 39, 39);
+}
+
+.current_folder_footer_menu_button{
+	/* background: green; */
+	position: absolute;
+	left: 0;
+	bottom: 5px;
+	height: 30px;
 }
