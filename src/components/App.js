@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 // import folders from '../variables/folders'
 import CurrentFolder from './CurrentFolder/CurrentFolder'
-import Home from './Home'
+import Home from './Home/Home'
 import AddNote from './CurrentFolder/AddNote'
 
 function App() {

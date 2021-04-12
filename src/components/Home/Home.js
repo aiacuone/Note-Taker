@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import '../styles/home.css'
-import menuButton from '../images/menu.svg'
+import './styles/home.css'
+import menuButton from 'images/menu.svg'
 import HomeFolderMenu from './HomeFolderMenu'
 import HomeFolderSubMenu from './HomeFolderSubMenu'
 import HomeFoldersSettings from './HomeFoldersSettings'

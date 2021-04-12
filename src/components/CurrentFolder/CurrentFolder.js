@@ -1,6 +1,6 @@
 import React from 'react'
 import MainSection from './MainSection'
-import './current_page.css'
+import './styles/current_folder.css'
 import Header from './Header'
 
 export default function CurrentFolder({ state, setState, vars, Folder, Note }) {
