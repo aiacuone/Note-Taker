@@ -11,7 +11,7 @@ export default function Header({
 }) {
 	return (
 		<div class="current_folder_header">
-			<SettingsHeader state={state} setState={setState} vars={vars} />
+			{/* <SettingsHeader state={state} setState={setState} vars={vars} /> */}
 			<NotesNav state={state} setState={setState} vars={vars} />
 			{Object.keys(vars.currentFolder.folders).length > 0 && (
 				<FoldersSection state={state} setState={setState} vars={vars} />

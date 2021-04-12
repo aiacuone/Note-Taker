@@ -9,7 +9,8 @@ export default function AddFolderButton({
 	return (
 		<div
 			class="current_folder_add_folder_button"
-			onClick={() => {
+			onClick={(e) => {
+				e.preventDefault()
 				setState.setCurrentFolderMainSection(['addFolder'])
 			}}>
 			<img src={add_note} class="current_folder_add_folder_img" />

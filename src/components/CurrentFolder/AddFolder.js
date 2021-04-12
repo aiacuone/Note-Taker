@@ -9,11 +9,12 @@ export default function AddFolder({ state, setState, vars }) {
 		function handleMouseDown(e) {
 			if (
                 e.target.className !== 'current_page_add_folder_input' &&
-                e.target.className !== 'current_page_add_folder_input_add' &&
-				state.currentFolderAddFolderInput
+                e.target.className !== 'current_page_add_folder_input_add' 
+				// &&state.currentFolderAddFolderInput
 			) {
 				add_folder_input.current.placeholder = 'Add Folder'
 				setState.setCurrentFolderAddFolderInput('')
+				setState.setCurrentFolderMainSection(['notes'])
 			}
 		}
 

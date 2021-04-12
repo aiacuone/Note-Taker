@@ -17,6 +17,8 @@
 	flex-direction: column;
 	position: relative;
 	background: rgb(39, 39, 39);
+	min-height: 650px;
+	min-width: 350px;
 }
 
 .settings_icon {

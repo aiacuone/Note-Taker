@@ -15,25 +15,32 @@ export default function Folder({ state, setState, vars, folder }) {
 			{...useLongPress(
 				() => {
 					//LONG PRESS
-					setState.setCurrentFolderMainSection(() => {
-						let newCurrentFolderMainSection = [
-							...state.currentFolderMainSection,
-						]
-						newCurrentFolderMainSection[0] = 'folderSettings'
-						newCurrentFolderMainSection[1] = folder
-						return newCurrentFolderMainSection
-					})
+					if (!state.foldersScrolling) {
+						// if (!vars.foldersScrolling) {
+						setState.setCurrentFolderMainSection(() => {
+							let newCurrentFolderMainSection = [
+								...state.currentFolderMainSection,
+							]
+							newCurrentFolderMainSection[0] = 'folderSettings'
+							newCurrentFolderMainSection[1] = folder
+							return newCurrentFolderMainSection
+						})
+					}
 				},
 				() => {
 					//CLICK
-					let arr = [...state.directory]
-					arr.push(folder)
-					setState.setDirectory(arr)
-					setState.setCurrentFolderMainSection(['notes'])
+					// if (!vars.foldersScrolling) {
+					if (!state.foldersScrolling) {
+						let arr = [...state.directory]
+						arr.push(folder)
+						setState.setDirectory(arr)
+						setState.setCurrentFolderMainSection(['notes'])
+					}
 				},
 				{ shouldPreventDefault: true, delay: 500 }
 			)}
 			style={{
+				background: color(),
 				border:
 					state.currentFolderMainSection[1] == folder
 						? '4px ' + color() + ' solid'
@@ -41,7 +48,11 @@ export default function Folder({ state, setState, vars, folder }) {
 				margin:
 					state.currentFolderMainSection[1] == folder ? '0px 8px' : '0px 10px',
 			}}>
-			<p class="current_page_folder_menu_title">{folder.toUpperCase()}</p>
+			<p
+				class="current_page_folder_menu_title"
+				style={{ color: color() == '#FFED0D' ? 'black' : 'white' }}>
+				{folder.toUpperCase()}
+			</p>
 		</div>
 	)
 }

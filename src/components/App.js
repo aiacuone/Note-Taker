@@ -62,7 +62,9 @@ function App() {
 	let [addNoteInput, setAddNoteInput] = useState('')
 	let [addNoteContent, setAddNoteContent] = useState()
 	let [renderCurrentFolder, setRenderCurrentFolder] = useState(['mainSection', 'header'])
-	let [notesScrolling,setNotesScrolling]=useState(false)
+	let [notesScrolling, setNotesScrolling] = useState(false)
+	let [foldersScrolling,setFoldersScrolling]=useState(false)
+	
 
 	let state = {
 		directory,
@@ -79,6 +81,7 @@ function App() {
 		addNoteContent,
 		renderCurrentFolder,
 		notesScrolling,
+		foldersScrolling,
 	}
 	let setState = {
 		setDirectory,
@@ -95,6 +98,7 @@ function App() {
 		setAddNoteContent,
 		setRenderCurrentFolder,
 		setNotesScrolling,
+		setFoldersScrolling,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -162,6 +166,7 @@ function App() {
 		],
 		Note,
 		Folder,
+		foldersScrolling:false,
 	}
 
 	window.oncontextmenu = function (event) {
@@ -171,7 +176,8 @@ function App() {
 		return false
 	}
 
-
+	// console.log( vars.foldersScrolling )
+	// console.log( foldersScrolling )
 	return (
 		<div className="app">
 			{directory.length == 0 && (
