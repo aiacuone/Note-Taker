@@ -41,10 +41,10 @@ export default function Folder({ state, setState, vars, folder }) {
 			)}
 			style={{
 				background: color(),
-				border:
-					state.currentFolderMainSection[1] == folder
-						? '4px ' + color() + ' solid'
-						: '2px ' + color() + ' solid',
+				// border:
+				// 	state.currentFolderMainSection[1] == folder
+				// 		? '4px ' + color() + ' solid'
+				// 		: '2px ' + color() + ' solid',
 				margin:
 					state.currentFolderMainSection[1] == folder ? '0px 8px' : '0px 10px',
 			}}>

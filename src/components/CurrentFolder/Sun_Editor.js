@@ -9,8 +9,8 @@ export default function Sun_Editor({ state, setState, vars }) {
 		<div class="sun_editor">
 			<SunEditor
 				// showInline={showInline}
-				height='500px'
-				width='100%'
+				height='570px'
+				width='340px'
 				setContents={state.addNoteContent}
 				autoFocus={true}
 				ref={editorRef}
@@ -20,7 +20,7 @@ export default function Sun_Editor({ state, setState, vars }) {
 					minHeight: '250px',
 					videoHeight: '200px',
 					videoWidth: '300px',
-					imageWidth: '400px',
+					imageWidth: '300px',
 					// imageHeight:'200px',
 					// youtubeQuery : 'autoplay=1&mute=1&enablejsapi=1',
 					height: '100%',

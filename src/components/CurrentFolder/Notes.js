@@ -33,7 +33,7 @@ export default function Note_s({ state, setState, vars }) {
 	let notes = sortedNotes().map((note) => {
 		return (
 			<div class="curret_page_note">
-				<h3 class="curret_page_note_title">{note.title}</h3>
+				<h1 class="curret_page_note_title">{note.title}</h1>
 				<div class="curret_page_note_text">{ReactHtmlParser(note.content)}</div>
 			</div>
 		)
