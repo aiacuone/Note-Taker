@@ -1,6 +1,7 @@
 import React from 'react'
 import useLongPress from '../../hooks/useLongPress'
 
+
 export default function Folder({ state, setState, vars, folder }) {
 	let color = () => {
 		let arr = [...vars.directoryChain(), 'folders', folder, 'folderColor']
@@ -50,9 +51,10 @@ export default function Folder({ state, setState, vars, folder }) {
 			}}>
 			<p
 				class="current_page_folder_menu_title"
-				style={{ color: color() == '#FFED0D' ? 'black' : 'white' }}>
+				style={{ color: color() == '#FFED0D' ||color() == '#FFA300'? 'black' : 'white' }}>
 				{folder.toUpperCase()}
 			</p>
+			
 		</div>
 	)
 }

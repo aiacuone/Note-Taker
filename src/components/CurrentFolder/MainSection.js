@@ -2,8 +2,9 @@ import React from 'react'
 import SelectedFolderSettings from './SelectedFolderSettings'
 import NotesSection from './NotesSection'
 import AddFolder from './AddFolder'
+import SelectedNoteSettings from './SelectedNoteSettings'
 
-export default function MainSection({ state, setState, vars, Note }) {
+export default function MainSection({ state, setState, vars }) {
 	return (
 		<div class="main_section_container">
 			{state.currentFolderMainSection[0] == 'notes' && (
@@ -14,6 +15,9 @@ export default function MainSection({ state, setState, vars, Note }) {
 			)}
 			{state.currentFolderMainSection[0] === 'addFolder' && (
 				<AddFolder state={state} setState={setState} vars={vars} />
+			)}
+			{state.currentFolderMainSection[0] === 'noteSettings' && (
+				<SelectedNoteSettings state={state} setState={setState} vars={vars} />
 			)}
 		</div>
 	)

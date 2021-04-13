@@ -20,7 +20,7 @@ export default function FoldersSection({ state, setState, vars }) {
 			}
 		}
 		function handleMouseleave() {
-			console.log('mouse leave')
+			// console.log('mouse leave')
 			clearTimeout(timeout)
 			timeout = setTimeout(() => {
 				// vars.foldersScrolling = false
@@ -32,7 +32,7 @@ export default function FoldersSection({ state, setState, vars }) {
 			}
 		}
 		function handleMouseup() {
-			console.log('mouse up')
+			// console.log('mouse up')
 			clearTimeout(timeout)
 			timeout = setTimeout(() => {
 				// vars.foldersScrolling = false
@@ -58,7 +58,6 @@ export default function FoldersSection({ state, setState, vars }) {
 			clearTimeout(timeout)
 			// vars.foldersScrolling = true
 			// console.log(vars.notesScrolling, 'handlescroll')
-			
 		}
 
 		if (scroller && scroller.current) {
@@ -78,11 +77,17 @@ export default function FoldersSection({ state, setState, vars }) {
 				scroller.current.removeEventListener('mousemove', handleMousemove)
 			}
 		}
-	},[])
+	}, [])
 
 	let folders = Object.keys(vars.currentFolder.folders).map((folder) => {
 		return (
-			<Folder state={state} setState={setState} vars={vars} folder={folder} />
+			<Folder
+				key={folder}
+				state={state}
+				setState={setState}
+				vars={vars}
+				folder={folder}
+			/>
 		)
 	})
 

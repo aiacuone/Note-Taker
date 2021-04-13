@@ -8,17 +8,30 @@
 	/* color: white; */
 }
 
+body{
+	background: rgb(32, 32, 32);
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	place-items: center; 
+}
+
 .app {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 100vw;
 	height: 100vh;
+	/* display: grid;
+	place-items: center; */
+	
 	flex-direction: column;
 	position: relative;
-	background: rgb(39, 39, 39);
 	min-height: 650px;
 	min-width: 350px;
+	max-width: 600px;
+	max-height: 900px;
+	background: rgb(39, 39, 39);
 }
 
 .settings_icon {

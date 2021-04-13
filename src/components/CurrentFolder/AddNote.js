@@ -3,7 +3,6 @@ import Sun_Editor from './Sun_Editor'
 import _ from 'lodash'
 
 export default function AddNote({ state, setState, vars }) {
-
 	return (
 		<div class="add_note_container">
 			<input
@@ -23,7 +22,7 @@ export default function AddNote({ state, setState, vars }) {
 					let newFolders = { ...state.folders }
 					let newNotes = { ...vars.currentFolder.notes }
 
-					newNotes[state.addNoteInput] = new vars.Note({
+					newNotes[state.addNoteInput.toLowerCase()] = new vars.Note({
 						title: state.addNoteInput.toLowerCase(),
 						dateCreated: Date.now(),
 						content: state.addNoteContent,

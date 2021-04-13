@@ -27,7 +27,8 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 					'current_folder_folder_settings_delete_option yes' &&
 				e.target.className !== 'current_folder_folder_settings_delete_delete' &&
 				e.target.className !== 'current_folder_folder_settings_rename_input' &&
-				e.target.className !== 'current_folder_folder_settings_color_option'
+				e.target.className !== 'current_folder_folder_settings_color_option' &&
+				e.target.className !== 'current_folder_delete_note_confirm yes'
 			) {
 				setState.setCurrentFolderMainSection(['notes'])
 			}
@@ -57,9 +58,15 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 			}
 		}
 
-		document.addEventListener('keydown', handleKeyDown)
+		current_folder_rename_input.current.addEventListener(
+			'keydown',
+			handleKeyDown
+		)
 		return () => {
-			document.removeEventListener('keydown', handleKeyDown)
+			current_folder_rename_input.current.removeEventListener(
+				'keydown',
+				handleKeyDown
+			)
 		}
 	}, [
 		state.currentFolderSelectedFolderRenameInput,
