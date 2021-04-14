@@ -70,8 +70,6 @@ export default function NotesSection({
 
 	return (
 		<div class="notes_container" ref={notesRef}>
-			{/* <AddNoteButton state={state} setState={setState} vars={vars} /> */}
-
 			{vars.currentFolder.notes ? (
 				<Notes state={state} setState={setState} vars={vars} />
 			) : (

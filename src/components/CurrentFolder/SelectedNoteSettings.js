@@ -39,6 +39,13 @@ export default function SelectedNoteSettings({ state, setState, vars }) {
 		}
 	})
 
+	if (state.currentFolderMainSection.indexOf('edit') > -1) {
+		setState.setRenderCurrentFolder(['editNote'])
+		let selectedNote = state.currentFolderMainSection[1]
+		let currentNote = vars.currentFolder.notes[selectedNote]
+		setState.setInput(currentNote.title)
+	}
+
 	return (
 		<div class="current_folder_note_settings">
 			{state.currentFolderMainSection.length == 2 && buttons}

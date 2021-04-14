@@ -32,12 +32,14 @@ export default function AddNote({ state, setState, vars }) {
 					setState.setFolders(newFolders)
 					setState.setAddNoteInput('')
 					setState.setAddNoteContent('')
-					setState.setCurrentFolderMainSection(['notes'])
+					setState.setRenderCurrentFolder(['mainSection', 'header'])
 				}}>
 				ADD NOTE
 			</p>
 			<p
-				onClick={() => setState.setCurrentFolderMainSection(['notes'])}
+				onClick={() =>
+					setState.setRenderCurrentFolder(['mainSection', 'header'])
+				}
 				class="add_note_exit_button">
 				EXIT
 			</p>

@@ -57,16 +57,20 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 				setState.setCurrentFolderMainSection(['notes'])
 			}
 		}
-
-		current_folder_rename_input.current.addEventListener(
-			'keydown',
-			handleKeyDown
-		)
-		return () => {
-			current_folder_rename_input.current.removeEventListener(
+		if (current_folder_rename_input && current_folder_rename_input.current) {
+			current_folder_rename_input.current.addEventListener(
 				'keydown',
 				handleKeyDown
 			)
+		}
+
+		return () => {
+			if (current_folder_rename_input && current_folder_rename_input.current) {
+				current_folder_rename_input.current.removeEventListener(
+					'keydown',
+					handleKeyDown
+				)
+			}
 		}
 	}, [
 		state.currentFolderSelectedFolderRenameInput,

@@ -17,7 +17,6 @@ export default function Folder({ state, setState, vars, folder }) {
 				() => {
 					//LONG PRESS
 					if (!state.foldersScrolling) {
-						// if (!vars.foldersScrolling) {
 						setState.setCurrentFolderMainSection(() => {
 							let newCurrentFolderMainSection = [
 								...state.currentFolderMainSection,
@@ -30,7 +29,6 @@ export default function Folder({ state, setState, vars, folder }) {
 				},
 				() => {
 					//CLICK
-					// if (!vars.foldersScrolling) {
 					if (!state.foldersScrolling) {
 						let arr = [...state.directory]
 						arr.push(folder)
@@ -42,10 +40,6 @@ export default function Folder({ state, setState, vars, folder }) {
 			)}
 			style={{
 				background: color(),
-				// border:
-				// 	state.currentFolderMainSection[1] == folder
-				// 		? '4px ' + color() + ' solid'
-				// 		: '2px ' + color() + ' solid',
 				margin:
 					state.currentFolderMainSection[1] == folder ? '0px 8px' : '0px 10px',
 			}}>

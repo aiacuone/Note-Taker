@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import tempFolders from '../variables/folders'
 import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home/Home'
-import AddNote from './CurrentFolder/AddNote'
+
 
 function App() {
 	// STATE & USEREF
@@ -10,7 +10,8 @@ function App() {
 	let [directory, setDirectory] = useState(['Introduction'])
 	// let [folders, setFolders] = useState({}) //ORIGINAL
 	let [folders, setFolders] = useState(tempFolders)
-	let [input,setInput]=useState()
+	let [input, setInput] = useState()
+	let [content,setContent]=useState()
 	//APP
 	// let [renderApp,setRenderApp]=useState([])
 	//HOME
@@ -53,7 +54,8 @@ function App() {
 		renderCurrentFolder,
 		notesScrolling,
 		foldersScrolling,
-		input
+		input,
+		content
 	}
 	let setState = {
 		setDirectory,
@@ -72,6 +74,7 @@ function App() {
 		setNotesScrolling,
 		setFoldersScrolling,
 		setInput,
+		setContent
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -149,11 +152,23 @@ function App() {
 		return false
 	}
 
+	/*
+	BUGS
+	long click on folders margin not working
+	folders section scrolling
+	notes scrolling
+	need to limit title for notes and folders
+	restrict folder and note titles to letters and numbers only
+
+	*/
+
 	// console.log( vars.foldersScrolling )
 	// console.log( foldersScrolling )
-	console.log(currentFolder.notes)
+	// console.log(currentFolder.notes)
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
+	// console.log(renderCurrentFolder)
+
 	return (
 		<div className="app">
 			{directory.length == 0 && (
@@ -169,9 +184,7 @@ function App() {
 						Note={Note}
 					/>
 				)}
-			{currentFolderMainSection.indexOf('addNote') > -1 && (
-				<AddNote state={state} setState={setState} vars={vars} Note={Note} />
-			)}
+
 		</div>
 	)
 }

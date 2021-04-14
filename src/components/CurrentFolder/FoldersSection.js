@@ -20,10 +20,8 @@ export default function FoldersSection({ state, setState, vars }) {
 			}
 		}
 		function handleMouseleave() {
-			// console.log('mouse leave')
 			clearTimeout(timeout)
 			timeout = setTimeout(() => {
-				// vars.foldersScrolling = false
 				setState.setFoldersScrolling(false)
 			}, 10)
 			isDown = false
@@ -32,10 +30,8 @@ export default function FoldersSection({ state, setState, vars }) {
 			}
 		}
 		function handleMouseup() {
-			// console.log('mouse up')
 			clearTimeout(timeout)
 			timeout = setTimeout(() => {
-				// vars.foldersScrolling = false
 				setState.setFoldersScrolling(false)
 			}, 10)
 			isDown = false
@@ -44,9 +40,7 @@ export default function FoldersSection({ state, setState, vars }) {
 			}
 		}
 		function handleMousemove(e) {
-			// console.log('mouseMove')
 			if (!isDown) return
-			// setState.setFoldersScrolling(true)
 			if (scroller && scroller.current) {
 				const x = e.pageX - scroller.current.offsetLeft
 				const walk = (x - startX) * 3
@@ -56,8 +50,6 @@ export default function FoldersSection({ state, setState, vars }) {
 		function handleScroll() {
 			setState.setFoldersScrolling(true)
 			clearTimeout(timeout)
-			// vars.foldersScrolling = true
-			// console.log(vars.notesScrolling, 'handlescroll')
 		}
 
 		if (scroller && scroller.current) {
