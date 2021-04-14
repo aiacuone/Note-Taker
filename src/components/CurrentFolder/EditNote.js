@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import SunEditor, { buttonList } from 'suneditor-react'
 import _ from 'lodash'
+import delete_note from 'images/delete_white.svg'
+import EditNoteExit from './EditNoteExit'
 
 export default function EditNote({ state, setState, vars }) {
-	let selectedNote = state.currentFolderMainSection[1]
+	let selectedNote = state.renderCurrentFolder[1]
 	let currentNote = vars.currentFolder.notes[selectedNote]
 	let input = state.input
 	let inputRef = useRef()
@@ -27,15 +29,44 @@ export default function EditNote({ state, setState, vars }) {
 
 	useEffect(() => {
 		setState.setContent(currentNote.content)
+
+		function handleMouseDown(e) {
+			if (e.target.className == 'current_folder_edit_note') {
+				let arr = [...state.renderCurrentFolder]
+				arr[2] = 'exit'
+				setState.setRenderCurrentFolder(arr)
+			}
+		}
+
+		if (inputRef && inputRef.current) {
+			document.addEventListener('mousedown', handleMouseDown)
+		}
+
+		return () => {
+			if (inputRef && inputRef.current) {
+				document.removeEventListener('mousedown', handleMouseDown)
+			}
+		}
 	}, [])
 
-    function handleExit() {
-        setState.setRenderCurrentFolder(['mainSection', 'header'])
-        setState.setCurrentFolderMainSection(['notes'])
+	function handleExit() {
+		setState.setRenderCurrentFolder(['mainSection', 'header'])
+		setState.setCurrentFolderMainSection(['notes'])
+	}
+
+	function handleDelete() {
+		let arr = [...state.renderCurrentFolder]
+		arr[0] = 'deleteNote'
+		setState.setRenderCurrentFolder(arr)
 	}
 
 	return (
 		<div class="current_folder_edit_note">
+			<img
+				class="current_folder_edit_note_delete_button"
+				src={delete_note}
+				onClick={handleDelete}
+			/>
 			<p class="current_folder_edit_note_exit" onClick={handleExit}>
 				EXIT
 			</p>
@@ -75,6 +106,9 @@ export default function EditNote({ state, setState, vars }) {
 			<p class="current_folder_edit_note_edit_button" onClick={handleEdit}>
 				EDIT
 			</p>
+			{state.renderCurrentFolder[2] == 'exit' && (
+				<EditNoteExit state={state} setState={setState} vars={vars} />
+			)}
 		</div>
 	)
 }

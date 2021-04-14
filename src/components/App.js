@@ -159,6 +159,7 @@ function App() {
 	notes scrolling
 	need to limit title for notes and folders
 	restrict folder and note titles to letters and numbers only
+	when opening note, randomly goes back to notes?
 
 	*/
 
@@ -167,7 +168,7 @@ function App() {
 	// console.log(currentFolder.notes)
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
-	// console.log(renderCurrentFolder)
+	// console.log( renderCurrentFolder,'renderCurrentFolder')
 
 	return (
 		<div className="app">
