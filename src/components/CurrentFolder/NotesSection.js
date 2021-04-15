@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import Notes from './Notes'
 import AddNoteButton from './AddNoteButton'
 
+
 export default function NotesSection({
 	state = { state },
 	setState = { setState },
@@ -15,10 +16,12 @@ export default function NotesSection({
 
 	useEffect(() => {
 		function handleScroll() {
-			setState.setRenderCurrentFolder(['mainSection'])
+			setState.setRender2(false)
+			// setState.setRenderCurrentFolder(['mainSection'])
 			clearTimeout(timeout)
 			timeout = setTimeout(() => {
-				setState.setRenderCurrentFolder(['mainSection', 'header'])
+				setState.setRender2(true)
+				// setState.setRenderCurrentFolder(['mainSection', 'header'])
 			}, 3000)
 		}
 
@@ -37,12 +40,14 @@ export default function NotesSection({
 			isDown = false
 			notesRef.current.classList.remove('active')
 			timeout = setTimeout(() => {
-				setState.setRenderCurrentFolder(['mainSection', 'header'])
+				setState.setRender2(true)
+				// setState.setRenderCurrentFolder(['mainSection', 'header'])
 			}, 1500)
 		}
 		function handleMousemove(e) {
 			if (!isDown) return
-			setState.setRenderCurrentFolder(['mainSection'])
+			setState.setRender2(false)
+			// setState.setRenderCurrentFolder(['mainSection'])
 			clearTimeout(timeout)
 			const y = e.pageY - notesRef.current.offsetTop
 			const walk = (y - startY) * 3
@@ -70,6 +75,7 @@ export default function NotesSection({
 
 	return (
 		<div class="notes_container" ref={notesRef}>
+
 			{vars.currentFolder.notes ? (
 				<Notes state={state} setState={setState} vars={vars} />
 			) : (
@@ -77,6 +83,7 @@ export default function NotesSection({
 					<h3 class="curret_page_note_text">NO NOTES</h3>
 				</div>
 			)}
+
 		</div>
 	)
 }

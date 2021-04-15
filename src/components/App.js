@@ -1,8 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react'
 import tempFolders from '../variables/folders'
-import CurrentFolder from './CurrentFolder/CurrentFolder'
+// import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home/Home'
+import MainSection from 'components/CurrentFolder/MainSection'
+// import './styles/current_folder.css'
+import AddNote from 'components/CurrentFolder/MainSection'
+import EditNote from 'components/CurrentFolder/MainSection'
+import DeleteNote from 'components/CurrentFolder/MainSection'
+import ViewNote from 'components/CurrentFolder/MainSection'
+import CurrentFolder from './CurrentFolder/CurrentFolder'
 
+// import {AddNote,MainSection,EditNote, DeleteNote,ViewNote} from './components/CurrentFolder'
 
 function App() {
 	// STATE & USEREF
@@ -11,7 +19,7 @@ function App() {
 	// let [folders, setFolders] = useState({}) //ORIGINAL
 	let [folders, setFolders] = useState(tempFolders)
 	let [input, setInput] = useState()
-	let [content,setContent]=useState()
+	let [content, setContent] = useState()
 	//APP
 	// let [renderApp,setRenderApp]=useState([])
 	//HOME
@@ -32,10 +40,13 @@ function App() {
 		setCurrentFolderSelectedFolderRenameInput,
 	] = useState('')
 	let [addNoteContent, setAddNoteContent] = useState()
-	let [renderCurrentFolder, setRenderCurrentFolder] = useState(['mainSection', 'header'])
+	let [renderCurrentFolder, setRenderCurrentFolder] = useState([
+		'mainSection',
+		'header',
+	])
 	let [notesScrolling, setNotesScrolling] = useState(false)
-	let [foldersScrolling,setFoldersScrolling]=useState(false)
-	
+	let [foldersScrolling, setFoldersScrolling] = useState(false)
+	let [render2, setRender2] = useState(true)
 
 	let state = {
 		directory,
@@ -53,7 +64,8 @@ function App() {
 		notesScrolling,
 		foldersScrolling,
 		input,
-		content
+		content,
+		render2,
 	}
 	let setState = {
 		setDirectory,
@@ -71,7 +83,8 @@ function App() {
 		setNotesScrolling,
 		setFoldersScrolling,
 		setInput,
-		setContent
+		setContent,
+		setRender2,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -139,7 +152,7 @@ function App() {
 		],
 		Note,
 		Folder,
-		foldersScrolling:false,
+		foldersScrolling: false,
 	}
 
 	window.oncontextmenu = function (event) {
@@ -155,8 +168,6 @@ function App() {
 	- notes scrolling, as well as mouse down scrolling
 	- need to limit title for notes and folders
 	- restrict folder and note titles to letters and numbers only
-	- when opening note, randomly goes back to notes?
-
 	*/
 
 	// console.log( vars.foldersScrolling )
@@ -164,8 +175,9 @@ function App() {
 	// console.log(currentFolder.notes)
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
-	// console.log( renderCurrentFolder,'renderCurrentFolder')
+	console.log( renderCurrentFolder,'renderCurrentFolder')
 
+	
 	return (
 		<div className="app">
 			{directory.length == 0 && (
@@ -181,12 +193,28 @@ function App() {
 						Note={Note}
 					/>
 				)}
-
+			{/* {directory.length > 0 &&state.renderCurrentFolder.indexOf('mainSection') > -1 && (
+				<MainSection
+					state={state}
+					setState={setState}
+					vars={vars}
+					Note={Note}
+				/>
+			)}
+			{directory.length > 0 &&state.renderCurrentFolder.indexOf('addNote') > -1 && (
+				<AddNote state={state} setState={setState} vars={vars} Note={Note} />
+			)}
+			{directory.length > 0 &&state.renderCurrentFolder.indexOf('editNote') > -1 && (
+				<EditNote state={state} setState={setState} vars={vars} Note={Note} />
+			)}{' '}
+			{directory.length > 0 &&state.renderCurrentFolder.indexOf('deleteNote') > -1 && (
+				<DeleteNote state={state} setState={setState} vars={vars} />
+			)}
+			{directory.length > 0 &&state.renderCurrentFolder.indexOf('viewNote') > -1 && (
+				<ViewNote state={state} setState={setState} vars={vars} />
+			)} */}
 		</div>
 	)
 }
 
 export default App
-
-
-
