@@ -4,6 +4,7 @@ import menuButton from 'images/menu.svg'
 import HomeFolderMenu from './HomeFolderMenu'
 import HomeFolderSubMenu from './HomeFolderSubMenu'
 import HomeFoldersSettings from './HomeFoldersSettings'
+import logo from 'images/logo.svg'
 
 export default function Home({ state, setState, vars, Folder }) {
 	let folder_rename_input = useRef()
@@ -279,6 +280,8 @@ export default function Home({ state, setState, vars, Folder }) {
 			{state.homeFoldersSettings && (
 				<HomeFoldersSettings state={state} setState={setState} vars={vars} />
 			)}
+
+			<img class='home_logo' src={ logo}/>
 		</div>
 	)
 }

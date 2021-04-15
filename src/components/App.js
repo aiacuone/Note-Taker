@@ -31,7 +31,6 @@ function App() {
 		currentFolderSelectedFolderRenameInput,
 		setCurrentFolderSelectedFolderRenameInput,
 	] = useState('')
-	let [addNoteInput, setAddNoteInput] = useState('')
 	let [addNoteContent, setAddNoteContent] = useState()
 	let [renderCurrentFolder, setRenderCurrentFolder] = useState(['mainSection', 'header'])
 	let [notesScrolling, setNotesScrolling] = useState(false)
@@ -49,7 +48,6 @@ function App() {
 		currentFolderAddFolderInput,
 		currentFolderMainSection,
 		currentFolderSelectedFolderRenameInput,
-		addNoteInput,
 		addNoteContent,
 		renderCurrentFolder,
 		notesScrolling,
@@ -68,7 +66,6 @@ function App() {
 		setCurrentFolderAddFolderInput,
 		setCurrentFolderMainSection,
 		setCurrentFolderSelectedFolderRenameInput,
-		setAddNoteInput,
 		setAddNoteContent,
 		setRenderCurrentFolder,
 		setNotesScrolling,
@@ -154,12 +151,11 @@ function App() {
 
 	/*
 	BUGS
-	long click on folders margin not working
-	folders section scrolling
-	notes scrolling
-	need to limit title for notes and folders
-	restrict folder and note titles to letters and numbers only
-	when opening note, randomly goes back to notes?
+	- folders section scrolling
+	- notes scrolling, as well as mouse down scrolling
+	- need to limit title for notes and folders
+	- restrict folder and note titles to letters and numbers only
+	- when opening note, randomly goes back to notes?
 
 	*/
 

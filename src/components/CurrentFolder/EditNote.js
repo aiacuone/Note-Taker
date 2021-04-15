@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import SunEditor, { buttonList } from 'suneditor-react'
 import _ from 'lodash'
 import delete_note from 'images/delete_white.svg'
-import EditNoteExit from './EditNoteExit'
+import NoteExit from './NoteExit'
+import NoteNameWarning from './NoteNameWarning'
 
 export default function EditNote({ state, setState, vars }) {
 	let selectedNote = state.renderCurrentFolder[1]
@@ -10,21 +11,35 @@ export default function EditNote({ state, setState, vars }) {
 	let input = state.input
 	let inputRef = useRef()
 
-	function handleEdit() {
-		let newFolders = { ...state.folders }
-		let newNotes = { ...vars.currentFolder.notes }
-		let directory = [...vars.directoryChain(), 'notes']
-		if (input.toLowerCase() !== selectedNote) {
-			newNotes[input.toLowerCase()] = newNotes[selectedNote]
-			newNotes[input.toLowerCase()].title = input.toLowerCase()
-			delete newNotes[selectedNote]
+	let error = () => {
+		if (
+			(state.input !== state.renderCurrentFolder[1].toLowerCase() &&
+				vars.currentFolder.notes[state.input.toLowerCase()]) ||
+			state.input.length > 20
+		) {
+			return true
+		} else {
+			return false
 		}
-		newNotes[input.toLowerCase()].content = state.content
-		_.set(newFolders, directory.join('.'), newNotes)
-		setState.setFolders(newFolders)
-		setState.setRenderCurrentFolder(['mainSection', 'header'])
-		setState.setCurrentFolderMainSection(['notes'])
-		setState.setInput()
+	}
+
+	function handleEdit() {
+		if (!error()) {
+			let newFolders = { ...state.folders }
+			let newNotes = { ...vars.currentFolder.notes }
+			let directory = [...vars.directoryChain(), 'notes']
+			if (input.toLowerCase() !== selectedNote) {
+				newNotes[input.toLowerCase()] = newNotes[selectedNote]
+				newNotes[input.toLowerCase()].title = input.toLowerCase()
+				delete newNotes[selectedNote]
+			}
+			newNotes[input.toLowerCase()].content = state.content
+			_.set(newFolders, directory.join('.'), newNotes)
+			setState.setFolders(newFolders)
+			setState.setRenderCurrentFolder(['mainSection', 'header'])
+			setState.setCurrentFolderMainSection(['notes'])
+			setState.setInput()
+		}
 	}
 
 	useEffect(() => {
@@ -60,6 +75,12 @@ export default function EditNote({ state, setState, vars }) {
 		setState.setRenderCurrentFolder(arr)
 	}
 
+	let renderError = () => {
+		if (state.input&&error()) {
+				return <NoteNameWarning state={state} setState={setState} vars={vars} />
+		}
+	}
+
 	return (
 		<div class="current_folder_edit_note">
 			<img
@@ -70,14 +91,19 @@ export default function EditNote({ state, setState, vars }) {
 			<p class="current_folder_edit_note_exit" onClick={handleExit}>
 				EXIT
 			</p>
-			<input
-				ref={inputRef}
-				class="current_folder_edit_note_input"
-				onChange={(e) => setState.setInput(e.target.value.toLowerCase())}
-				value={state.input.toUpperCase()}
-				placeholder="Title"
-				type="text"
-			/>
+			<div class="current_folder_edit_note_wrapper">
+				<input
+					ref={inputRef}
+					class="current_folder_edit_note_input"
+					onChange={(e) => setState.setInput(e.target.value.toLowerCase())}
+					value={state.input.toUpperCase()}
+					placeholder="Title"
+					type="text"
+				/>
+				{renderError()}
+	
+			</div>
+
 			<SunEditor
 				height="570px"
 				width="340px"
@@ -107,7 +133,7 @@ export default function EditNote({ state, setState, vars }) {
 				EDIT
 			</p>
 			{state.renderCurrentFolder[2] == 'exit' && (
-				<EditNoteExit state={state} setState={setState} vars={vars} />
+				<NoteExit state={state} setState={setState} vars={vars} />
 			)}
 		</div>
 	)

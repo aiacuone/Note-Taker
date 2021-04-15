@@ -1,11 +1,12 @@
 import React from 'react'
 
-export default function EditNoteExit({ state, setState, vars }) {
+export default function NoteExit({ state, setState, vars }) {
 	function handleExit() {
 		setState.setInput()
 		setState.setContent()
 		setState.setCurrentFolderMainSection(['notes'])
 		setState.setRenderCurrentFolder(['mainSection', 'header'])
+		
 	}
 
 	function handleNoExit() {

@@ -1,7 +1,6 @@
 import React from 'react'
 import useLongPress from '../../hooks/useLongPress'
 
-
 export default function Folder({ state, setState, vars, folder }) {
 	let color = () => {
 		let arr = [...vars.directoryChain(), 'folders', folder, 'folderColor']
@@ -9,7 +8,6 @@ export default function Folder({ state, setState, vars, folder }) {
 			return a[b]
 		}, state.folders)
 	}
-
 	return (
 		<div
 			class="current_page_folder_menu_folder"
@@ -39,16 +37,21 @@ export default function Folder({ state, setState, vars, folder }) {
 				{ shouldPreventDefault: true, delay: 500 }
 			)}
 			style={{
-				background: color(),
-				margin:
-					state.currentFolderMainSection[1] == folder ? '0px 8px' : '0px 10px',
+				background:
+					state.currentFolderMainSection[1] == folder ? 'white' : color(),
 			}}>
 			<p
 				class="current_page_folder_menu_title"
-				style={{ color: color() == '#FFED0D' ||color() == '#FFA300'? 'black' : 'white' }}>
+				style={{
+					color:
+						state.currentFolderMainSection[1] == folder
+							? 'black'
+							: color() == '#FFED0D' || color() == '#FFA300'
+							? 'black'
+							: 'white',
+				}}>
 				{folder.toUpperCase()}
 			</p>
-			
 		</div>
 	)
 }

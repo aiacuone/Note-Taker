@@ -84,20 +84,15 @@
 
 .current_page_folders_container {
 	width: 100%;
-	/* height: 35px; */
 	background: rgb(51, 51, 51);
 	overflow: scroll;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* flex-direction: column; */
-	/* padding: 22px 0; */
-	/* cursor: pointer; */
 	padding: 0 0 10px 0;
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 	/* background: green; */
-	/* filter: drop-shadow(5px 5px 5px rgb(27, 27, 27)); */
 }
 
 .current_page_folder_menu_folder {
@@ -105,7 +100,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* margin: 0px 20px; */
+	margin: 0px 10px;
 	padding: 5px 10px;
 	border-radius: 10px;
 	/* filter: drop-shadow(5px 5px 5px rgb(20, 20, 20)); */
@@ -325,19 +320,6 @@
 	color: white;
 }
 
-.add_note_input {
-	background: none;
-	border: 1px white solid;
-	border-radius: 5px;
-	margin: 0 0 10px 0;
-	color: white;
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
-	text-align: center;
-	padding: 2px;
-}
-
 .add_note_exit_button {
 	color: white;
 	position: absolute;
@@ -347,16 +329,13 @@
 }
 
 .curret_page_notes {
-	/* overflow-y: scroll; */
-	/* height: 100%; */
-	/* width: 100%; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-
-	/* margin: 10px 0 0 0; */
-	/* background: yellow; */
+	word-wrap: break-word;
+	/* background: green; */
+	/* margin: 5000px 0 0 0; */
 }
 
 .curret_page_note {
@@ -576,13 +555,14 @@ flex-direction: column;
 	cursor: pointer;
 }
 
-.current_folder_edit_note_input{
+.current_folder_edit_note_input,.add_note_input{
 	margin: 0 0 20px 0;
 	text-align: center;
 	padding: 5px;
 	border: none;
 	border-radius: 5px;
 	font-size: 15px;
+	width: 400px;
 }
 
 .current_folder_edit_note_edit_button{
@@ -624,7 +604,29 @@ flex-direction: column;
 }
 
 .current_folder_edit_note_exit_confirm p{
-	/* padding: 10px; */
-	/* background: green; */
 	color: rgb(71, 71, 71);
 }
+
+.add_note_input_wrapper,.current_folder_edit_note_wrapper{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.current_folder_add_note_warning{
+	display: grid;
+	place-items: center;
+	position: absolute;
+	top: -40px;
+	background: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.current_folder_add_note_warning_point{
+	position: absolute;
+	width: 15px;
+	bottom: -10px;
+}
+
