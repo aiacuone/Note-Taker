@@ -4,15 +4,20 @@ import _ from 'lodash'
 export default function SelectedFolderSettings({ state, setState, vars }) {
 	let current_folder_rename_input = useRef()
 
-	let arr = ['delete', 'rename', 'color']
-	let selectedFolderOptions = arr.map((item) => {
+	let optionArr = ['delete', 'rename', 'color']
+	let selectedFolderOptions = optionArr.map((item) => {
+		let obj = {
+			delete: 'deleteFolder',
+			rename: 'renameFolder',
+			color: 'folderColor',
+		}
 		return (
 			<p
 				class="current_folder_folder_option"
 				onMouseDown={() => {
-					let newCurrentFolderMainSection = [...state.currentFolderMainSection]
-					newCurrentFolderMainSection[2] = item
-					setState.setCurrentFolderMainSection(newCurrentFolderMainSection)
+					let arr = [...state.render]
+					arr[1] = obj[item]
+					setState.setRender(arr)
 				}}>
 				{item.toUpperCase()}
 			</p>
@@ -30,7 +35,7 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 				e.target.className !== 'current_folder_folder_settings_color_option' &&
 				e.target.className !== 'current_folder_delete_note_confirm yes'
 			) {
-				setState.setCurrentFolderMainSection(['notes'])
+				setState.setRender(['mainSection'])
 			}
 		}
 
@@ -40,74 +45,74 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 		}
 	}, [])
 
-	useEffect(() => {
-		function handleKeyDown(e) {
-			if (e.key == 'Enter' && state.currentFolderMainSection[2] == 'rename') {
-				let directoryChain = [...vars.directoryChain()]
-				let directory = [...vars.directoryChain(), 'folders']
-				let newCurrentFolders = { ...vars.currentFolder.folders }
-				newCurrentFolders[state.currentFolderSelectedFolderRenameInput] =
-					newCurrentFolders[state.currentFolderMainSection[1]]
-				newCurrentFolders[state.currentFolderSelectedFolderRenameInput].name =
-					state.currentFolderSelectedFolderRenameInput
-				delete newCurrentFolders[state.currentFolderMainSection[1]]
-				let newFolders = { ...state.folders }
-				_.set(newFolders, directory.join('.'), newCurrentFolders)
-				setState.setFolders(newFolders)
-				setState.setCurrentFolderMainSection(['notes'])
-			}
-		}
-		if (current_folder_rename_input && current_folder_rename_input.current) {
-			current_folder_rename_input.current.addEventListener(
-				'keydown',
-				handleKeyDown
-			)
-		}
+	// useEffect(() => {
+	// 	function handleKeyDown(e) {
+	// 		if (e.key == 'Enter' && state.currentFolderMainSection[2] == 'rename') {
+	// 			let directoryChain = [...vars.directoryChain()]
+	// 			let directory = [...vars.directoryChain(), 'folders']
+	// 			let newCurrentFolders = { ...vars.currentFolder.folders }
+	// 			newCurrentFolders[state.currentFolderSelectedFolderRenameInput] =
+	// 				newCurrentFolders[state.currentFolderMainSection[1]]
+	// 			newCurrentFolders[state.currentFolderSelectedFolderRenameInput].name =
+	// 				state.currentFolderSelectedFolderRenameInput
+	// 			delete newCurrentFolders[state.currentFolderMainSection[1]]
+	// 			let newFolders = { ...state.folders }
+	// 			_.set(newFolders, directory.join('.'), newCurrentFolders)
+	// 			setState.setFolders(newFolders)
+	// 			setState.setRender(['mainSection'])
+	// 		}
+	// 	}
+	// 	if (current_folder_rename_input && current_folder_rename_input.current) {
+	// 		current_folder_rename_input.current.addEventListener(
+	// 			'keydown',
+	// 			handleKeyDown
+	// 		)
+	// 	}
 
-		return () => {
-			if (current_folder_rename_input && current_folder_rename_input.current) {
-				current_folder_rename_input.current.removeEventListener(
-					'keydown',
-					handleKeyDown
-				)
-			}
-		}
-	}, [
-		state.currentFolderSelectedFolderRenameInput,
-		state.currentFolderMainSection,
-	])
+	// 	return () => {
+	// 		if (current_folder_rename_input && current_folder_rename_input.current) {
+	// 			current_folder_rename_input.current.removeEventListener(
+	// 				'keydown',
+	// 				handleKeyDown
+	// 			)
+	// 		}
+	// 	}
+	// }, [
+	// 	state.currentFolderSelectedFolderRenameInput,
+	// 	state.currentFolderMainSection,
+	// ])
 
-	let colorOptions = vars.colors.map((color) => {
-		return (
-			<div
-				class="current_folder_folder_settings_color_option"
-				style={{ background: color }}
-				onMouseDown={() => {
-					let arr = [
-						...vars.directoryChain(),
-						'folders',
-						state.currentFolderMainSection[1],
-						'folderColor',
-					]
-					let newFolders = { ...state.folders }
-					_.set(newFolders, arr.join('.'), color)
-					setState.setFolders(newFolders)
-					setState.setCurrentFolderMainSection(['notes'])
-				}}></div>
-		)
-	})
+	// let colorOptions = vars.colors.map((color) => {
+	// 	return (
+	// 		<div
+	// 			class="current_folder_folder_settings_color_option"
+	// 			style={{ background: color }}
+	// 			onMouseDown={() => {
+	// 				let arr = [
+	// 					...vars.directoryChain(),
+	// 					'folders',
+	// 					state.currentFolderMainSection[1],
+	// 					'folderColor',
+	// 				]
+	// 				let newFolders = { ...state.folders }
+	// 				_.set(newFolders, arr.join('.'), color)
+	// 				setState.setFolders(newFolders)
+	// 				setState.setRender(['mainSection'])
+	// 			}}></div>
+	// 	)
+	// })
 
 	return (
 		<div class="selected_folder_settings">
-			{!state.currentFolderMainSection[2] && (
+			{!state.render[3] && (
 				<>
 					<div class="current_folder_folder_settings">
 						{selectedFolderOptions}
 					</div>
 				</>
 			)}
-			{state.currentFolderMainSection[2] == 'delete' &&
-				!state.currentFolderMainSection[3] && (
+			{/* {state.currentFolderMainSection[3] == 'delete' &&
+				!state.currentFolderMainSection[4] && (
 					<>
 						<p class="confirm_delete">
 							Are you sure you want to delete this folder?
@@ -159,13 +164,13 @@ export default function SelectedFolderSettings({ state, setState, vars }) {
 							setState.setCurrentFolderSelectedFolderRenameInput(e.target.value)
 						}></input>
 				</>
-			)}
+			)} */}
 
-			{state.currentFolderMainSection[2] == 'color' && (
+			{/* {state.currentFolderMainSection[2] == 'color' && (
 				<div class="current_folder_folder_settings_colors_container">
 					{colorOptions}
 				</div>
-			)}
+			)} */}
 		</div>
 	)
 }

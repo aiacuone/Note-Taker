@@ -15,14 +15,16 @@ export default function Folder({ state, setState, vars, folder }) {
 				() => {
 					//LONG PRESS
 					if (!state.foldersScrolling) {
-						setState.setCurrentFolderMainSection(() => {
-							let newCurrentFolderMainSection = [
-								...state.currentFolderMainSection,
-							]
-							newCurrentFolderMainSection[0] = 'folderSettings'
-							newCurrentFolderMainSection[1] = folder
-							return newCurrentFolderMainSection
-						})
+						setState.setRender(['mainSection', 'folderSettings', folder.toLowerCase()])
+						// setState.setCurrentFolderMainSection(() => {
+						// 	// let newCurrentFolderMainSection = [
+						// 	// 	...state.currentFolderMainSection,
+						// 	// ]
+						// 	// newCurrentFolderMainSection[0] = 'folderSettings'
+						// 	// newCurrentFolderMainSection[1] = folder
+						// 	// return newCurrentFolderMainSection
+
+						// })
 					}
 				},
 				() => {

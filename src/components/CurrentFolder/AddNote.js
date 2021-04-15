@@ -31,6 +31,25 @@ export default function AddNote({ state, setState, vars }) {
 		}
 	}
 
+	function handleAdd() {
+		if (!error()) {
+			let newFolders = { ...state.folders }
+			let newNotes = { ...vars.currentFolder.notes }
+
+			newNotes[state.input.toLowerCase()] = new vars.Note({
+				title: state.input.toLowerCase(),
+				dateCreated: Date.now(),
+				content: state.addNoteContent,
+			})
+			let newDirectoryChain = [...vars.directoryChain(), 'notes']
+			_.set(newFolders, newDirectoryChain.join('.'), newNotes)
+			setState.setFolders(newFolders)
+			setState.setInput('')
+			setState.setAddNoteContent('')
+			setState.setRender(['mainSection'])
+		}
+	}
+
 	return (
 		<div class="add_note_container">
 			<div class="add_note_input_wrapper">
@@ -49,32 +68,11 @@ export default function AddNote({ state, setState, vars }) {
 			</div>
 			<Sun_Editor state={state} setState={setState} vars={vars} />
 
-			<p
-				class="add_button_submit"
-				onClick={() => {
-					if (!error()) {
-						let newFolders = { ...state.folders }
-						let newNotes = { ...vars.currentFolder.notes }
-
-						newNotes[state.input.toLowerCase()] = new vars.Note({
-							title: state.input.toLowerCase(),
-							dateCreated: Date.now(),
-							content: state.addNoteContent,
-						})
-						let newDirectoryChain = [...vars.directoryChain(), 'notes']
-						_.set(newFolders, newDirectoryChain.join('.'), newNotes)
-						setState.setFolders(newFolders)
-						setState.setInput('')
-						setState.setAddNoteContent('')
-						setState.setRenderCurrentFolder(['mainSection', 'header'])
-					}
-				}}>
+			<p class="add_button_submit" onClick={handleAdd}>
 				ADD NOTE
 			</p>
 			<p
-				onClick={() =>
-					setState.setRenderCurrentFolder(['mainSection', 'header'])
-				}
+				onClick={() => setState.setRender(['mainSection'])}
 				class="add_note_exit_button">
 				EXIT
 			</p>

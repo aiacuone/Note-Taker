@@ -8,13 +8,13 @@ export default function AddFolder({ state, setState, vars }) {
 		//resets the add folder input value if not clicked within the input field
 		function handleMouseDown(e) {
 			if (
-                e.target.className !== 'current_page_add_folder_input' &&
-                e.target.className !== 'current_page_add_folder_input_add' 
+				e.target.className !== 'current_page_add_folder_input' &&
+				e.target.className !== 'current_page_add_folder_input_add'
 				// &&state.currentFolderAddFolderInput
 			) {
 				add_folder_input.current.placeholder = 'Add Folder'
-				setState.setCurrentFolderAddFolderInput('')
-				setState.setCurrentFolderMainSection(['notes'])
+				setState.setInput('')
+				setState.setRender(['notes'])
 			}
 		}
 
@@ -22,42 +22,41 @@ export default function AddFolder({ state, setState, vars }) {
 		return () => {
 			document.removeEventListener('mousedown', handleMouseDown)
 		}
-	}, [state.currentFolderAddFolderInput])
+	}, [state.input])
 
 	function handleAddFolder() {
 		if (
-			state.currentFolderAddFolderInput &&
-			add_folder_input &&
-			add_folder_input.current
+			state.input
+			// &&add_folder_input &&
+			// add_folder_input.current
 		) {
-			
 			let newFolders = { ...state.folders }
 			let newObj = { ...vars.currentFolder.folders }
-			newObj[state.currentFolderAddFolderInput] = new vars.Folder({
-				name: state.currentFolderAddFolderInput,
+			newObj[state.input] = new vars.Folder({
+				name: state.input,
 				dateCreated: Date.now(),
 			})
 			let newDirectoryChain = [...vars.directoryChain(), 'folders']
-            _.set(newFolders, newDirectoryChain.join('.'), newObj)
-            add_folder_input.current.value = null
+			_.set(newFolders, newDirectoryChain.join('.'), newObj)
+			// add_folder_input.current.value = null
 			setState.setFolders(newFolders)
-			setState.setCurrentFolderAddFolderInput('')
-			setState.setCurrentFolderMainSection(['notes'])
+			setState.setInput('')
+			setState.setRender(['mainSection'])
 		}
 	}
 	useEffect(() => {
 		//handles enter button
-        function handleEnter(e) {
-            if (e.key == 'Enter') {
-                handleAddFolder()
-            }
-        }
+		function handleEnter(e) {
+			if (e.key == 'Enter') {
+				handleAddFolder()
+			}
+		}
 
 		document.addEventListener('keydown', handleEnter)
 		return () => {
 			document.removeEventListener('keydown', handleEnter)
 		}
-	}, [state.currentFolderAddFolderInput])
+	}, [state.input])
 
 	return (
 		<div class="current_page_add_folder_input_container">
@@ -65,17 +64,14 @@ export default function AddFolder({ state, setState, vars }) {
 			<input
 				autoFocus
 				class="current_page_add_folder_input"
-				onChange={(e) =>
-					setState.setCurrentFolderAddFolderInput(e.target.value)
-				}
+				onChange={(e) => setState.setInput(e.target.value)}
 				ref={add_folder_input}
 				placeholder="Add Folder"
 				type="text"
-				value={state.currentFolderAddFolderInput}></input>
+				value={state.input}></input>
 			<p
 				class="current_page_add_folder_input_add"
-				onClick={() => handleAddFolder()}
-			>
+				onClick={() => handleAddFolder()}>
 				ADD
 			</p>
 		</div>

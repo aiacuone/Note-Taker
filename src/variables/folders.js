@@ -1,13 +1,13 @@
 let folders = {
 	Introduction: {
-		name: 'Introduction',
+		name: 'introduction',
 		dateCreated: Date.now(),
 		lastSelected: Date.now(),
 		timesSelected: 1,
 		background: '',
 		folders: {
-			Images: {
-				name: 'Images',
+			images: {
+				name: 'images',
 				dateCreated: Date.now(),
 				lastSelected: Date.now(),
 				timesSelected: 1,
@@ -15,7 +15,7 @@ let folders = {
 				folders: {},
 				notes: {
 					welcome: {
-						title: 'Welcome',
+						title: 'welcome',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -35,8 +35,8 @@ let folders = {
 				sortFolders: 'RECENT',
 				sortNotes: 'date',
 			},
-			Videos: {
-				name: 'Videos',
+			videos: {
+				name: 'videos',
 				dateCreated: Date.now(),
 				lastSelected: Date.now(),
 				timesSelected: 1,
@@ -64,8 +64,8 @@ let folders = {
 				sortFolders: 'RECENT',
 				sortNotes: 'date',
 			},
-			Lists: {
-				name: 'Lists',
+			lists: {
+				name: 'lists',
 				dateCreated: Date.now(),
 				lastSelected: Date.now(),
 				timesSelected: 1,
@@ -96,15 +96,16 @@ let folders = {
 		},
 
 		notes: {
-			'hello': {
+			hello: {
 				title: 'hello',
 				dateCreated: Date.now(),
 				lastSelected: '',
 				timesSelected: 0,
 				noteOutline: 'grey',
-				content: '<p>Welcome to Note Taker!</p><br/><p>An easy yet efficient way to take all types of notes!</p>',
+				content:
+					'<p>Welcome to Note Taker!</p><br/><p>An easy yet efficient way to take all types of notes!</p>',
 			},
-			'evernote': {
+			evernote: {
 				title: 'evernote',
 				dateCreated: Date.now(),
 				lastSelected: '',

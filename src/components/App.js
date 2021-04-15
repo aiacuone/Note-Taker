@@ -3,12 +3,12 @@ import tempFolders from '../variables/folders'
 // import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home/Home'
 import MainSection from 'components/CurrentFolder/MainSection'
-// import './styles/current_folder.css'
-import AddNote from 'components/CurrentFolder/MainSection'
-import EditNote from 'components/CurrentFolder/MainSection'
-import DeleteNote from 'components/CurrentFolder/MainSection'
-import ViewNote from 'components/CurrentFolder/MainSection'
-import CurrentFolder from './CurrentFolder/CurrentFolder'
+import 'components/CurrentFolder/styles/current_folder.css'
+import AddNote from 'components/CurrentFolder/AddNote'
+import EditNote from 'components/CurrentFolder/EditNote'
+import DeleteNote from 'components/CurrentFolder/DeleteNote'
+import ViewNote from 'components/CurrentFolder/ViewNote'
+// import CurrentFolder from './CurrentFolder/CurrentFolder'
 
 // import {AddNote,MainSection,EditNote, DeleteNote,ViewNote} from './components/CurrentFolder'
 
@@ -46,6 +46,7 @@ function App() {
 	])
 	let [notesScrolling, setNotesScrolling] = useState(false)
 	let [foldersScrolling, setFoldersScrolling] = useState(false)
+	let [render, setRender] = useState(['mainSection'])
 	let [render2, setRender2] = useState(true)
 
 	let state = {
@@ -65,6 +66,7 @@ function App() {
 		foldersScrolling,
 		input,
 		content,
+		render,
 		render2,
 	}
 	let setState = {
@@ -84,6 +86,7 @@ function App() {
 		setFoldersScrolling,
 		setInput,
 		setContent,
+		setRender,
 		setRender2,
 	}
 
@@ -175,15 +178,18 @@ function App() {
 	// console.log(currentFolder.notes)
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
-	console.log( renderCurrentFolder,'renderCurrentFolder')
+	// console.log( renderCurrentFolder,'renderCurrentFolder')
+	console.log(render, 'render')
+	console.log(directory, 'directory')
 
-	
+	let renderHome = directory.length == 0 ? true : false
+
 	return (
 		<div className="app">
-			{directory.length == 0 && (
+			{renderHome && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
 			)}
-			{directory.length > 0 &&
+			{/* {directory.length > 0 &&
 				currentFolderMainSection.indexOf('addNote') < 0 && (
 					<CurrentFolder
 						state={state}
@@ -192,8 +198,8 @@ function App() {
 						Folder={Folder}
 						Note={Note}
 					/>
-				)}
-			{/* {directory.length > 0 &&state.renderCurrentFolder.indexOf('mainSection') > -1 && (
+				)} */}
+			{!renderHome && render[0] == 'mainSection' && (
 				<MainSection
 					state={state}
 					setState={setState}
@@ -201,18 +207,18 @@ function App() {
 					Note={Note}
 				/>
 			)}
-			{directory.length > 0 &&state.renderCurrentFolder.indexOf('addNote') > -1 && (
+			{!renderHome && render[0] == 'addNote' && (
 				<AddNote state={state} setState={setState} vars={vars} Note={Note} />
 			)}
-			{directory.length > 0 &&state.renderCurrentFolder.indexOf('editNote') > -1 && (
+			{!renderHome && render[0] == 'editNote' && (
 				<EditNote state={state} setState={setState} vars={vars} Note={Note} />
 			)}{' '}
-			{directory.length > 0 &&state.renderCurrentFolder.indexOf('deleteNote') > -1 && (
+			{!renderHome && render[0] == 'deleteNote' && (
 				<DeleteNote state={state} setState={setState} vars={vars} />
 			)}
-			{directory.length > 0 &&state.renderCurrentFolder.indexOf('viewNote') > -1 && (
+			{!renderHome && render[0] == 'viewNote' && (
 				<ViewNote state={state} setState={setState} vars={vars} />
-			)} */}
+			)}
 		</div>
 	)
 }

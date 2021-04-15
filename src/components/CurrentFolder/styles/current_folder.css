@@ -156,6 +156,7 @@
 	/* background: green; */
 	position: relative;
 	/* padding: 10px; */
+	/* flex-direction: column; */
 }
 
 .notes_header {
@@ -628,5 +629,10 @@ flex-direction: column;
 	position: absolute;
 	width: 15px;
 	bottom: -10px;
+}
+
+.confirm_delete_container{
+	display: grid;
+	place-items: center;
 }
 

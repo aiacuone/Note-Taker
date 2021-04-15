@@ -4,15 +4,15 @@ export default function NoteExit({ state, setState, vars }) {
 	function handleExit() {
 		setState.setInput()
 		setState.setContent()
-		setState.setCurrentFolderMainSection(['notes'])
-		setState.setRenderCurrentFolder(['mainSection', 'header'])
+		// setState.setCurrentFolderMainSection(['notes'])
+		setState.setRender(['mainSection'])
 		
 	}
 
 	function handleNoExit() {
-		let arr = [...state.renderCurrentFolder]
+		let arr = [...state.render]
 		arr.pop()
-		setState.setRenderCurrentFolder(arr)
+		setState.setRender(arr)
 	}
 
 	return (

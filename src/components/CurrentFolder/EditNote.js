@@ -6,14 +6,14 @@ import NoteExit from './NoteExit'
 import NoteNameWarning from './NoteNameWarning'
 
 export default function EditNote({ state, setState, vars }) {
-	let selectedNote = state.renderCurrentFolder[1]
+	let selectedNote = state.render[1]
 	let currentNote = vars.currentFolder.notes[selectedNote]
 	let input = state.input
 	let inputRef = useRef()
 
 	let error = () => {
 		if (
-			(state.input !== state.renderCurrentFolder[1].toLowerCase() &&
+			(state.input.toLowerCase() !== selectedNote.toLowerCase() &&
 				vars.currentFolder.notes[state.input.toLowerCase()]) ||
 			state.input.length > 20
 		) {
@@ -36,7 +36,7 @@ export default function EditNote({ state, setState, vars }) {
 			newNotes[input.toLowerCase()].content = state.content
 			_.set(newFolders, directory.join('.'), newNotes)
 			setState.setFolders(newFolders)
-			setState.setRenderCurrentFolder(['mainSection', 'header'])
+			setState.setRender(['mainSection'])
 			setState.setCurrentFolderMainSection(['notes'])
 			setState.setInput()
 		}
@@ -47,9 +47,9 @@ export default function EditNote({ state, setState, vars }) {
 
 		function handleMouseDown(e) {
 			if (e.target.className == 'current_folder_edit_note') {
-				let arr = [...state.renderCurrentFolder]
+				let arr = [...state.render]
 				arr[2] = 'exit'
-				setState.setRenderCurrentFolder(arr)
+				setState.setRender(arr)
 			}
 		}
 
@@ -65,14 +65,14 @@ export default function EditNote({ state, setState, vars }) {
 	}, [])
 
 	function handleExit() {
-		setState.setRenderCurrentFolder(['mainSection', 'header'])
+		setState.setRender(['mainSection', 'header'])
 		setState.setCurrentFolderMainSection(['notes'])
 	}
 
 	function handleDelete() {
-		let arr = [...state.renderCurrentFolder]
+		let arr = [...state.render]
 		arr[0] = 'deleteNote'
-		setState.setRenderCurrentFolder(arr)
+		setState.setRender(arr)
 	}
 
 	let renderError = () => {
@@ -132,7 +132,7 @@ export default function EditNote({ state, setState, vars }) {
 			<p class="current_folder_edit_note_edit_button" onClick={handleEdit}>
 				EDIT
 			</p>
-			{state.renderCurrentFolder[2] == 'exit' && (
+			{state.render[2] == 'exit' && (
 				<NoteExit state={state} setState={setState} vars={vars} />
 			)}
 		</div>

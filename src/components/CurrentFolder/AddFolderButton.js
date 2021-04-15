@@ -11,7 +11,7 @@ export default function AddFolderButton({
 			class="current_folder_add_folder_button"
 			onClick={(e) => {
 				e.preventDefault()
-				setState.setCurrentFolderMainSection(['addFolder'])
+				setState.setRender(['mainSection','addFolder'])
 			}}>
 			<img src={add_note} class="current_folder_add_folder_img" />
 			<p class="current_folder_add_folder_text">FOLDER</p>
