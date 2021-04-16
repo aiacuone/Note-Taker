@@ -7,14 +7,13 @@ export default function AddNoteButton({
 	setState = { setState },
 	vars = { vars },
 }) {
+	function handlePageChange() {
+		setState.setRender(['addNote'])
+	}
 	return (
-		<div
-			class="current_folder_add_note"
-			onMouseDown={() => {
-				setState.setRender(['addNote'])
-			}}>
+		<div class="current_folder_add_note" onMouseDown={handlePageChange}>
 			<img src={add_note} class="current_folder_add_note_img" />
-			<p class='add_note_button_text'>NOTE</p>
+			<p class="add_note_button_text">NOTE</p>
 		</div>
 	)
 }

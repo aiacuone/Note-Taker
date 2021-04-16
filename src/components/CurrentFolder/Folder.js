@@ -8,45 +8,44 @@ export default function Folder({ state, setState, vars, folder }) {
 			return a[b]
 		}, state.folders)
 	}
+
+	let selectedFolder = state.render[2]
+
+	function handleLongPress() {
+		if (!state.foldersScrolling) {
+			setState.setRender([
+				'mainSection',
+				'folderSettings',
+				folder.toLowerCase(),
+			])
+		}
+	}
+
+	function handleClick() {
+		if (!state.foldersScrolling) {
+			let arr = [...state.directory]
+			arr.push(folder)
+			setState.setDirectory(arr)
+			setState.setRender(['mainSection'])
+		}
+	}
+
 	return (
 		<div
 			class="current_page_folder_menu_folder"
 			{...useLongPress(
-				() => {
-					//LONG PRESS
-					if (!state.foldersScrolling) {
-						setState.setRender(['mainSection', 'folderSettings', folder.toLowerCase()])
-						// setState.setCurrentFolderMainSection(() => {
-						// 	// let newCurrentFolderMainSection = [
-						// 	// 	...state.currentFolderMainSection,
-						// 	// ]
-						// 	// newCurrentFolderMainSection[0] = 'folderSettings'
-						// 	// newCurrentFolderMainSection[1] = folder
-						// 	// return newCurrentFolderMainSection
-
-						// })
-					}
-				},
-				() => {
-					//CLICK
-					if (!state.foldersScrolling) {
-						let arr = [...state.directory]
-						arr.push(folder)
-						setState.setDirectory(arr)
-						setState.setCurrentFolderMainSection(['notes'])
-					}
-				},
+				() => handleLongPress(),
+				() => handleClick(),
 				{ shouldPreventDefault: true, delay: 500 }
 			)}
 			style={{
-				background:
-					state.currentFolderMainSection[1] == folder ? 'white' : color(),
+				background: selectedFolder == folder ? 'white' : color(),
 			}}>
 			<p
 				class="current_page_folder_menu_title"
 				style={{
 					color:
-						state.currentFolderMainSection[1] == folder
+						selectedFolder == folder
 							? 'black'
 							: color() == '#FFED0D' || color() == '#FFA300'
 							? 'black'

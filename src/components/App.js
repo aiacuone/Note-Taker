@@ -20,8 +20,6 @@ function App() {
 	let [folders, setFolders] = useState(tempFolders)
 	let [input, setInput] = useState()
 	let [content, setContent] = useState()
-	//APP
-	// let [renderApp,setRenderApp]=useState([])
 	//HOME
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
@@ -29,21 +27,6 @@ function App() {
 	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
 	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
 	//CURRENT FOLDER
-	let [currentFolderAddFolderInput, setCurrentFolderAddFolderInput] = useState(
-		''
-	)
-	let [currentFolderMainSection, setCurrentFolderMainSection] = useState([
-		'notes',
-	])
-	let [
-		currentFolderSelectedFolderRenameInput,
-		setCurrentFolderSelectedFolderRenameInput,
-	] = useState('')
-	let [addNoteContent, setAddNoteContent] = useState()
-	let [renderCurrentFolder, setRenderCurrentFolder] = useState([
-		'mainSection',
-		'header',
-	])
 	let [notesScrolling, setNotesScrolling] = useState(false)
 	let [foldersScrolling, setFoldersScrolling] = useState(false)
 	let [render, setRender] = useState(['mainSection'])
@@ -57,11 +40,6 @@ function App() {
 		homeRenameFolderInput,
 		homeFoldersSettings,
 		sortHomeFolders,
-		currentFolderAddFolderInput,
-		currentFolderMainSection,
-		currentFolderSelectedFolderRenameInput,
-		addNoteContent,
-		renderCurrentFolder,
 		notesScrolling,
 		foldersScrolling,
 		input,
@@ -77,11 +55,6 @@ function App() {
 		setHomeRenameFolderInput,
 		setHomeFoldersSettings,
 		setSortHomeFolders,
-		setCurrentFolderAddFolderInput,
-		setCurrentFolderMainSection,
-		setCurrentFolderSelectedFolderRenameInput,
-		setAddNoteContent,
-		setRenderCurrentFolder,
 		setNotesScrolling,
 		setFoldersScrolling,
 		setInput,
@@ -180,7 +153,8 @@ function App() {
 	// console.log(currentFolderMainSection)
 	// console.log( renderCurrentFolder,'renderCurrentFolder')
 	console.log(render, 'render')
-	console.log(directory, 'directory')
+	// console.log(directory, 'directory')
+	// console.log(content,'content')
 
 	let renderHome = directory.length == 0 ? true : false
 
@@ -189,16 +163,6 @@ function App() {
 			{renderHome && (
 				<Home state={state} setState={setState} vars={vars} Folder={Folder} />
 			)}
-			{/* {directory.length > 0 &&
-				currentFolderMainSection.indexOf('addNote') < 0 && (
-					<CurrentFolder
-						state={state}
-						setState={setState}
-						vars={vars}
-						Folder={Folder}
-						Note={Note}
-					/>
-				)} */}
 			{!renderHome && render[0] == 'mainSection' && (
 				<MainSection
 					state={state}

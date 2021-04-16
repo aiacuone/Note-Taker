@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react'
 import Notes from './Notes'
 import AddNoteButton from './AddNoteButton'
 
-
 export default function NotesSection({
 	state = { state },
 	setState = { setState },
@@ -14,46 +13,46 @@ export default function NotesSection({
 	let startY
 	let scrollUp
 
+	function handleScroll() {
+		setState.setRender2(false)
+		// setState.setRenderCurrentFolder(['mainSection'])
+		clearTimeout(timeout)
+		timeout = setTimeout(() => {
+			setState.setRender2(true)
+			// setState.setRenderCurrentFolder(['mainSection', 'header'])
+		}, 3000)
+	}
+
+	function handleMouseDown(e) {
+		e.preventDefault()
+		isDown = true
+		notesRef.current.classList.add('active')
+		startY = e.pageY - notesRef.current.offsetTop
+		scrollUp = notesRef.current.scrollUp
+	}
+	function handleMouseleave() {
+		isDown = false
+		notesRef.current.classList.remove('active')
+	}
+	function handleMouseup() {
+		isDown = false
+		notesRef.current.classList.remove('active')
+		timeout = setTimeout(() => {
+			setState.setRender2(true)
+			// setState.setRenderCurrentFolder(['mainSection', 'header'])
+		}, 1500)
+	}
+	function handleMousemove(e) {
+		if (!isDown) return
+		setState.setRender2(false)
+		// setState.setRenderCurrentFolder(['mainSection'])
+		clearTimeout(timeout)
+		const y = e.pageY - notesRef.current.offsetTop
+		const walk = (y - startY) * 3
+		notesRef.current.scrollUp = scrollUp - walk
+	}
+
 	useEffect(() => {
-		function handleScroll() {
-			setState.setRender2(false)
-			// setState.setRenderCurrentFolder(['mainSection'])
-			clearTimeout(timeout)
-			timeout = setTimeout(() => {
-				setState.setRender2(true)
-				// setState.setRenderCurrentFolder(['mainSection', 'header'])
-			}, 3000)
-		}
-
-		function handleMouseDown(e) {
-			e.preventDefault()
-			isDown = true
-			notesRef.current.classList.add('active')
-			startY = e.pageY - notesRef.current.offsetTop
-			scrollUp = notesRef.current.scrollUp
-		}
-		function handleMouseleave() {
-			isDown = false
-			notesRef.current.classList.remove('active')
-		}
-		function handleMouseup() {
-			isDown = false
-			notesRef.current.classList.remove('active')
-			timeout = setTimeout(() => {
-				setState.setRender2(true)
-				// setState.setRenderCurrentFolder(['mainSection', 'header'])
-			}, 1500)
-		}
-		function handleMousemove(e) {
-			if (!isDown) return
-			setState.setRender2(false)
-			// setState.setRenderCurrentFolder(['mainSection'])
-			clearTimeout(timeout)
-			const y = e.pageY - notesRef.current.offsetTop
-			const walk = (y - startY) * 3
-			notesRef.current.scrollUp = scrollUp - walk
-		}
-
 		if (notesRef && notesRef.current) {
 			notesRef.current.addEventListener('scroll', handleScroll)
 			notesRef.current.addEventListener('mousedown', handleMouseDown)
@@ -75,7 +74,6 @@ export default function NotesSection({
 
 	return (
 		<div class="notes_container" ref={notesRef}>
-
 			{vars.currentFolder.notes ? (
 				<Notes state={state} setState={setState} vars={vars} />
 			) : (
@@ -83,7 +81,6 @@ export default function NotesSection({
 					<h3 class="curret_page_note_text">NO NOTES</h3>
 				</div>
 			)}
-
 		</div>
 	)
 }

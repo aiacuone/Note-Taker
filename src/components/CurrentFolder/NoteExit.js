@@ -9,7 +9,7 @@ export default function NoteExit({ state, setState, vars }) {
 		
 	}
 
-	function handleNoExit() {
+	function handleStay() {
 		let arr = [...state.render]
 		arr.pop()
 		setState.setRender(arr)
@@ -31,7 +31,7 @@ export default function NoteExit({ state, setState, vars }) {
 					<p class="current_folder_delete_note_confirm">/ </p>
 					<p
 						class="current_folder_delete_note_confirm confirm_no"
-						onClick={handleNoExit}>
+						onClick={handleStay}>
 						NO
 					</p>
 				</div>

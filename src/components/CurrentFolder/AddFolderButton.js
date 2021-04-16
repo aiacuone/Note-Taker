@@ -6,13 +6,15 @@ export default function AddFolderButton({
 	setState = { setState },
 	vars = { vars },
 }) {
+
+	function handlePageChange(e) {
+		e.preventDefault()
+		setState.setRender(['mainSection','addFolder'])
+	}
 	return (
 		<div
 			class="current_folder_add_folder_button"
-			onClick={(e) => {
-				e.preventDefault()
-				setState.setRender(['mainSection','addFolder'])
-			}}>
+			onClick={handlePageChange}>
 			<img src={add_note} class="current_folder_add_folder_img" />
 			<p class="current_folder_add_folder_text">FOLDER</p>
 		</div>

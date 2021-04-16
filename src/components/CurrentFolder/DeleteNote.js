@@ -2,25 +2,30 @@ import React, { useEffect } from 'react'
 import _ from 'lodash'
 
 export default function DeleteNote({ state, setState, vars }) {
-	let selectedNote = state.renderCurrentFolder[1]
-
-	function handleClick() {
+	let selectedNote = state.render[1].toLowerCase()
+	console.log(selectedNote)
+	function handleDelete() {
 		let directory = [...vars.directoryChain(), 'notes']
 		let newCurrentNotes = { ...vars.currentFolder.notes }
 		let newFolders = { ...state.folders }
-		delete newCurrentNotes[selectedNote.toLowerCase()]
+		// console.log({selectedNote,newCurrentNotes,newFolders},'before')
+		delete newCurrentNotes[selectedNote]
 		_.set(newFolders, directory.join('.'), newCurrentNotes)
+		// console.log({selectedNote,newCurrentNotes,newFolders},'after')
 		setState.setFolders(newFolders)
-		setState.setRenderCurrentFolder(['mainSection', 'header'])
-		setState.setCurrentFolderMainSection(['notes'])
+		setState.setRender(['mainSection'])
+		// setState.setCurrentFolderMainSection(['notes'])
+	}
+
+	function handleExit() {
+		setState.setRender(['mainSection'])
 	}
 
 	useEffect(() => {
 		function handleMouseDown(e) {
 			if (e.target.className == 'current_page') {
-				setState.setRenderCurrentFolder(['mainSection','header'])
+				handleExit()
 			}
-			
 		}
 
 		document.addEventListener('mousedown', handleMouseDown)
@@ -37,15 +42,15 @@ export default function DeleteNote({ state, setState, vars }) {
 			</p>
 			<div class="current_folder_delete_note_confirm_container">
 				{' '}
-				<p class="current_folder_delete_note_confirm yes" onClick={handleClick}>
+				<p
+					class="current_folder_delete_note_confirm yes"
+					onClick={handleDelete}>
 					YES{' '}
 				</p>
 				<p class="current_folder_delete_note_confirm">/ </p>
 				<p
 					class="current_folder_delete_note_confirm confirm_no"
-					onClick={() => {
-						setState.setCurrentFolderMainSection(['notes'])
-					}}>
+					onClick={handleExit}>
 					NO
 				</p>
 			</div>

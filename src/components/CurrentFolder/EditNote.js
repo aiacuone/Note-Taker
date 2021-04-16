@@ -37,8 +37,8 @@ export default function EditNote({ state, setState, vars }) {
 			_.set(newFolders, directory.join('.'), newNotes)
 			setState.setFolders(newFolders)
 			setState.setRender(['mainSection'])
-			setState.setCurrentFolderMainSection(['notes'])
 			setState.setInput()
+			setState.setContent()
 		}
 	}
 
@@ -65,8 +65,7 @@ export default function EditNote({ state, setState, vars }) {
 	}, [])
 
 	function handleExit() {
-		setState.setRender(['mainSection', 'header'])
-		setState.setCurrentFolderMainSection(['notes'])
+		setState.setRender(['mainSection'])
 	}
 
 	function handleDelete() {

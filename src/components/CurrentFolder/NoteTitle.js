@@ -10,33 +10,34 @@ export default function NoteTitle({
 	let startX
 	let scrollLeft
 
+	function handleMouseDown(e) {
+		e.preventDefault()
+		isDown = true
+		page_title_ref.current.classList.add('active')
+		startX = e.pageX - page_title_ref.current.offsetLeft
+		scrollLeft = page_title_ref.current.scrollLeft
+	}
+	function handleMouseleave() {
+		isDown = false
+		page_title_ref.current.classList.remove('active')
+	}
+	function handleMouseup() {
+		isDown = false
+		page_title_ref.current.classList.remove('active')
+		// timer = setTimeout(() => {
+		// 	setState.setRenderCurrentFolder(['mainSection', 'header'])
+		// }, 1500)
+	}
+	function handleMousemove(e) {
+		if (!isDown) return
+		setState.setRenderCurrentFolder(['mainSection'])
+		// clearTimeout(timer)
+		const x = e.pageX - page_title_ref.current.offsetLeft
+		const walk = (x - startX) * 5
+		page_title_ref.current.scrollLeft = scrollLeft - walk
+	}
+
 	useEffect(() => {
-		function handleMouseDown(e) {
-			e.preventDefault()
-			isDown = true
-			page_title_ref.current.classList.add('active')
-			startX = e.pageX - page_title_ref.current.offsetLeft
-			scrollLeft = page_title_ref.current.scrollLeft
-		}
-		function handleMouseleave() {
-			isDown = false
-			page_title_ref.current.classList.remove('active')
-		}
-		function handleMouseup() {
-			isDown = false
-			page_title_ref.current.classList.remove('active')
-			// timer = setTimeout(() => {
-			// 	setState.setRenderCurrentFolder(['mainSection', 'header'])
-			// }, 1500)
-		}
-		function handleMousemove(e) {
-			if (!isDown) return
-			setState.setRenderCurrentFolder(['mainSection'])
-			// clearTimeout(timer)
-			const x = e.pageX - page_title_ref.current.offsetLeft
-			const walk = (x - startX) * 5
-			page_title_ref.current.scrollLeft = scrollLeft - walk
-		}
 		if (page_title_ref && page_title_ref.current) {
 			page_title_ref.current.addEventListener('mousedown', handleMouseDown)
 			page_title_ref.current.addEventListener('mouseleave', handleMouseleave)

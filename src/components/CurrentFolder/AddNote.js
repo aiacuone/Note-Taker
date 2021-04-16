@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react'
-import Sun_Editor from './Sun_Editor'
+import React, { useEffect, useRef } from 'react'
 import _ from 'lodash'
 import NoteExit from './NoteExit'
 import NoteNameWarning from './NoteNameWarning'
+import SunEditor, { buttonList } from 'suneditor-react'
+import 'suneditor/dist/css/suneditor.min.css'
 
 export default function AddNote({ state, setState, vars }) {
+	let editorRef = useRef()
 	useEffect(() => {
-		function handleMouseDown(e) {
+		function handleConfirmExit(e) {
 			if (e.target.className == 'add_note_container') {
-				setState.setRenderCurrentFolder(['addNote', 'exit'])
+				setState.setRender(['addNote', 'exit'])
 			}
 		}
 
-		document.addEventListener('mousedown', handleMouseDown)
+		document.addEventListener('mousedown', handleConfirmExit)
 		return () => {
-			document.addEventListener('mousedown', handleMouseDown)
+			document.addEventListener('mousedown', handleConfirmExit)
 		}
 	})
 
@@ -39,15 +41,19 @@ export default function AddNote({ state, setState, vars }) {
 			newNotes[state.input.toLowerCase()] = new vars.Note({
 				title: state.input.toLowerCase(),
 				dateCreated: Date.now(),
-				content: state.addNoteContent,
+				content: state.content,
 			})
 			let newDirectoryChain = [...vars.directoryChain(), 'notes']
 			_.set(newFolders, newDirectoryChain.join('.'), newNotes)
 			setState.setFolders(newFolders)
 			setState.setInput('')
-			setState.setAddNoteContent('')
+			setState.setContent('')
 			setState.setRender(['mainSection'])
 		}
+	}
+
+	function handleExit() {
+		setState.setRender(['mainSection'])
 	}
 
 	return (
@@ -66,17 +72,45 @@ export default function AddNote({ state, setState, vars }) {
 					<NoteNameWarning state={state} setState={setState} vars={vars} />
 				)}
 			</div>
-			<Sun_Editor state={state} setState={setState} vars={vars} />
+			<SunEditor
+				// showInline={showInline}
+				height="570px"
+				width="340px"
+				setContents={state.content}
+				autoFocus={true}
+				ref={editorRef}
+				onChange={(content) => setState.setContent(content)}
+				setOptions={{
+					// position: 'right',
+					minHeight: '250px',
+					videoHeight: '200px',
+					videoWidth: '300px',
+					imageWidth: '300px',
+					// imageHeight:'200px',
+					// youtubeQuery : 'autoplay=1&mute=1&enablejsapi=1',
+					height: '100%',
+					buttonList: [
+						[
+							'fontSize',
+							'bold',
+							'fontColor',
+							'align',
+							'list',
+							'image',
+							'video',
+							// 'undo',
+						],
+					],
+				}}
+			/>
 
 			<p class="add_button_submit" onClick={handleAdd}>
 				ADD NOTE
 			</p>
-			<p
-				onClick={() => setState.setRender(['mainSection'])}
-				class="add_note_exit_button">
+			<p onClick={handleExit} class="add_note_exit_button">
 				EXIT
 			</p>
-			{state.renderCurrentFolder.indexOf('exit') > -1 && (
+			{state.render.indexOf('exit') > -1 && (
 				<NoteExit state={state} setState={setState} vars={vars} />
 			)}
 		</div>
