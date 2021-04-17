@@ -15,11 +15,9 @@ export default function NotesSection({
 
 	function handleScroll() {
 		setState.setRender2(false)
-		// setState.setRenderCurrentFolder(['mainSection'])
 		clearTimeout(timeout)
 		timeout = setTimeout(() => {
 			setState.setRender2(true)
-			// setState.setRenderCurrentFolder(['mainSection', 'header'])
 		}, 3000)
 	}
 
@@ -39,13 +37,11 @@ export default function NotesSection({
 		notesRef.current.classList.remove('active')
 		timeout = setTimeout(() => {
 			setState.setRender2(true)
-			// setState.setRenderCurrentFolder(['mainSection', 'header'])
 		}, 1500)
 	}
 	function handleMousemove(e) {
 		if (!isDown) return
 		setState.setRender2(false)
-		// setState.setRenderCurrentFolder(['mainSection'])
 		clearTimeout(timeout)
 		const y = e.pageY - notesRef.current.offsetTop
 		const walk = (y - startY) * 3

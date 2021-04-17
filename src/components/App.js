@@ -15,12 +15,14 @@ import ViewNote from 'components/CurrentFolder/ViewNote'
 function App() {
 	// STATE & USEREF
 	// let [directory, setDirectory] = useState([]) //ORIGINAL
-	let [directory, setDirectory] = useState(['Introduction'])
+	let [directory, setDirectory] = useState([])
 	// let [folders, setFolders] = useState({}) //ORIGINAL
 	let [folders, setFolders] = useState(tempFolders)
 	let [input, setInput] = useState()
 	let [content, setContent] = useState()
+	let [settings, setSettings] = useState({ sortHomeFolders: 'date' })
 	//HOME
+	let [homeRender, setHomeRender] = useState(['folders'])
 	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
 	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
 	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
@@ -35,6 +37,7 @@ function App() {
 	let state = {
 		directory,
 		folders,
+		homeRender,
 		toggleHomeFolderMenu,
 		homeAddFolderInput,
 		homeRenameFolderInput,
@@ -46,10 +49,12 @@ function App() {
 		content,
 		render,
 		render2,
+		settings,
 	}
 	let setState = {
 		setDirectory,
 		setFolders,
+		setHomeRender,
 		setToggleHomeFolderMenu,
 		setHomeAddFolderInput,
 		setHomeRenameFolderInput,
@@ -61,6 +66,7 @@ function App() {
 		setContent,
 		setRender,
 		setRender2,
+		setSettings,
 	}
 
 	// CREATES THE ACTUAL DIRECTORY THROUGH THE FOLDERS OBJECT
@@ -81,15 +87,15 @@ function App() {
 
 	// CONSTRUCTOR METHOD TO CREATE NEW FOLDER
 
-	function Folder({ name, dateCreated }) {
+	function Folder({ name, dateCreated, folderColor }) {
 		this.name = name
 		this.dateCreated = dateCreated
+		this.folderColor = folderColor
 		this.lastSelected = ''
 		this.timesSelected = 0
 		this.background = ''
 		this.folders = {}
 		this.notes = {}
-		this.folderColor = 'grey'
 		this.sortFolders = 'NAME'
 		this.sortNotes = 'date'
 	}
@@ -121,7 +127,7 @@ function App() {
 			'#2DA1E2', //baby blue
 			'#4A8269', //olive
 			'#4FC12F', //light green
-			'#FFED0D', //yelow
+			'rgb(236, 236, 80)', //yelow
 			'#FFA300', //orange
 			'#A0A0A0', //grey
 			'#000000', //black
@@ -144,17 +150,22 @@ function App() {
 	- notes scrolling, as well as mouse down scrolling
 	- need to limit title for notes and folders
 	- restrict folder and note titles to letters and numbers only
+	- add folder in notes warning for existing folder and folder name length doesnt exist
 	*/
 
+	// console.log(directoryChain,'directoryChain')
+	// console.log(currentFolder, 'currentFolder')
 	// console.log( vars.foldersScrolling )
 	// console.log( foldersScrolling )
 	// console.log(currentFolder.notes)
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
 	// console.log( renderCurrentFolder,'renderCurrentFolder')
-	console.log(render, 'render')
+	// console.log(render, 'render')
 	// console.log(directory, 'directory')
 	// console.log(content,'content')
+	console.log(input)
+	console.log(homeRender, 'homeRender')
 
 	let renderHome = directory.length == 0 ? true : false
 

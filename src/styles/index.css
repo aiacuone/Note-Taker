@@ -8,12 +8,12 @@
 	/* color: white; */
 }
 
-body{
+body {
 	background: rgb(32, 32, 32);
 	width: 100vw;
 	height: 100vh;
 	display: grid;
-	place-items: center; 
+	place-items: center;
 }
 
 .app {
@@ -24,7 +24,7 @@ body{
 	height: 100vh;
 	/* display: grid;
 	place-items: center; */
-	
+
 	flex-direction: column;
 	position: relative;
 	min-height: 650px;
@@ -40,4 +40,48 @@ body{
 	left: 5px;
 	top: 0px;
 	z-index: 1;
+}
+
+.settings {
+	display: grid;
+	place-items: center;
+	width: 100%;
+}
+
+.settings_header {
+	color: white;
+	font-size: 20px;
+	margin: 0 0 15px 0;
+}
+
+.settings_sortBy {
+	color: white;
+	width: 300px;
+	/* background: green; */
+	padding: 10px;
+	margin: 10px;
+	border: 1px grey solid;
+	border-radius: 10px;
+	position: relative;
+	background: rgb(27, 27, 27);
+}
+
+.settings_sortBy_header {
+	position: absolute;
+	top: -20px;
+}
+
+.settings_sortBy_options_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.settings_sortBy_option{
+	margin: 0 10px;
+	padding: 5px 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	background: rgb(128, 128, 128);
+	/* border: 1px solid white; */
 }

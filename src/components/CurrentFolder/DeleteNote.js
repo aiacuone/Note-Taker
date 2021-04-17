@@ -8,13 +8,10 @@ export default function DeleteNote({ state, setState, vars }) {
 		let directory = [...vars.directoryChain(), 'notes']
 		let newCurrentNotes = { ...vars.currentFolder.notes }
 		let newFolders = { ...state.folders }
-		// console.log({selectedNote,newCurrentNotes,newFolders},'before')
 		delete newCurrentNotes[selectedNote]
 		_.set(newFolders, directory.join('.'), newCurrentNotes)
-		// console.log({selectedNote,newCurrentNotes,newFolders},'after')
 		setState.setFolders(newFolders)
 		setState.setRender(['mainSection'])
-		// setState.setCurrentFolderMainSection(['notes'])
 	}
 
 	function handleExit() {

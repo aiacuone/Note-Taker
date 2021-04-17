@@ -1,5 +1,5 @@
 let folders = {
-	Introduction: {
+	introduction: {
 		name: 'introduction',
 		dateCreated: Date.now(),
 		lastSelected: Date.now(),
@@ -114,7 +114,7 @@ let folders = {
 				content: '<p>Who needs evernote right?<br></p>',
 			},
 		},
-		folderColor: 'grey',
+		folderColor: '#355BC9',
 		sortFolders: 'RECENT',
 		sortNotes: 'date',
 	},

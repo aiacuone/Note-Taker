@@ -157,6 +157,7 @@
 	position: relative;
 	/* padding: 10px; */
 	/* flex-direction: column; */
+	background: rgb(27, 27, 27);
 }
 
 .notes_header {
@@ -329,6 +330,16 @@
 	cursor: pointer;
 }
 
+.curret_page_note {
+	margin: 10px 0;
+	background: rgb(51, 51, 51);
+	width: 400px;
+	padding: 20px;
+	position: relative;
+	border-radius: 10px;
+	filter: drop-shadow(0 0 10px rgb(15, 15, 15));
+}
+
 .curret_page_notes {
 	display: flex;
 	justify-content: center;
@@ -339,15 +350,7 @@
 	/* margin: 5000px 0 0 0; */
 }
 
-.curret_page_note {
-	margin: 10px 0;
-	background: rgb(51, 51, 51);
-	width: 400px;
-	padding: 20px;
-	position: relative;
-	border-radius: 10px;
-	filter: drop-shadow(0 0 10px rgb(27, 27, 27));
-}
+
 
 .current_folder_note_menu_button {
 	position: absolute;
@@ -634,5 +637,15 @@ flex-direction: column;
 .confirm_delete_container{
 	display: grid;
 	place-items: center;
+}
+
+.current_folder_folder_settings_rename{
+	background: green;
+	display: grid;
+	place-items: center;
+}
+
+.current_folder_folder_settings_add{
+	color: white;
 }
 

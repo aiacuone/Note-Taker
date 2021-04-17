@@ -4,7 +4,6 @@ export default function NoteExit({ state, setState, vars }) {
 	function handleExit() {
 		setState.setInput()
 		setState.setContent()
-		// setState.setCurrentFolderMainSection(['notes'])
 		setState.setRender(['mainSection'])
 		
 	}

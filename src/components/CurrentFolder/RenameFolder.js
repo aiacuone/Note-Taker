@@ -27,14 +27,16 @@ export default function RenameFolder({ state, setState, vars }) {
 		}
 	}, [state.input, state.currentFolderMainSection])
 	return (
-		<div>
+		<div class='current_folder_folder_settings_rename'>
+			<h1>RENAME FOLDER</h1>
 			<input
 				autoFocus
 				type="text"
 				value={state.input}
 				class="current_folder_folder_settings_rename_input"
 				ref={inputRef}
-				onChange={(e) => setState.setInput(e.target.value)}></input>
+				onChange={(e) => setState.setInput(e.target.value)} />
+			<p class='current_folder_folder_settings_add'>ADD</p>
 		</div>
 	)
 }
