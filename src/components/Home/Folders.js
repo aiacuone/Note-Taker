@@ -3,23 +3,25 @@ import menu_button from 'images/menu.svg'
 import Folder from './Folder'
 
 export default function Folders({ state, setState, vars }) {
+	let sortHomeFolders=state.settings.sortHomeFolders
+
 	let sortedFolders = () => {
 		let arr = []
 		Object.keys(state.folders).map((item) => {
 			arr.push(state.folders[item])
 		})
 		//SORTS ARRAY
-		if (state.sortHomeFolders == 'RECENT') {
+		if (sortHomeFolders == 'recent') {
 			return arr
 				.sort((a, b) => {
 					return a['lastSelected'] - b['lastSelected']
 				})
 				.reverse()
-		} else if (state.sortHomeFolders == 'DATE CREATED') {
+		} else if (sortHomeFolders == 'date') {
 			return arr.sort((a, b) => {
 				return a['dateCreated'] - b['dateCreated']
 			})
-		} else if (state.sortHomeFolders == 'NAME') {
+		} else if (sortHomeFolders == 'name') {
 			return arr.sort((a, b) => {
 				if (a['name'] < b['name']) {
 					return -1

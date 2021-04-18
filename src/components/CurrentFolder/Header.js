@@ -1,6 +1,6 @@
 import React from 'react'
 import FoldersSection from './FoldersSection'
-import _ from 'lodash'
+// import _ from 'lodash'
 import NotesNav from './NotesNav'
 
 export default function Header({

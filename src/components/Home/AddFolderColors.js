@@ -9,23 +9,17 @@ export default function AddFolderColors({ state, setState, vars }) {
 		setState.setHomeRender(newHomeRender)
 	}
 
-	let optionStyle = (color) => {
-		return {
+	let colors = vars.colors.map((color, index) => {
+		let style = {
 			background: color,
 			border: selectedColor == color ? '2px white solid' : null,
 		}
-	}
-
-	let colors = vars.colors.map((color, index) => {
 		if (index < vars.colors.length / 2) {
 			return (
 				<div
 					class="home_folder_color_option"
 					onMouseDown={() => handleColorChange(color)}
-					style={{
-						background: color,
-						border: color == selectedColor && '3px solid white',
-					}}></div>
+					style={style}></div>
 			)
 		}
 	})

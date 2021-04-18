@@ -164,7 +164,7 @@ function App() {
 	// console.log(render, 'render')
 	// console.log(directory, 'directory')
 	// console.log(content,'content')
-	console.log(input)
+	// console.log(input)
 	console.log(homeRender, 'homeRender')
 
 	let renderHome = directory.length == 0 ? true : false

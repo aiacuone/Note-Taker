@@ -12,6 +12,7 @@ import AddFolder from './AddFolder'
 import Settings from './Settings'
 import FolderSettings from './FolderSettings'
 import EditFolder from './EditFolder'
+import DeleteFolder from './DeleteFolder'
 
 export default function Home({ state, setState, vars, Folder }) {
 	let folder_rename_input = useRef()
@@ -310,6 +311,9 @@ export default function Home({ state, setState, vars, Folder }) {
 				<EditFolder state={state} setState={setState} vars={vars} />
 			)}
 			<AddFolderButton state={state} setState={setState} vars={vars} />
+			{state.homeRender[0] == 'deleteFolder' && (
+				<DeleteFolder state={state} setState={setState} vars={vars} />
+			)}
 
 			<div class='test'></div>
 		</div>

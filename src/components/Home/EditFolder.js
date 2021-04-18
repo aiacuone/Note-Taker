@@ -3,21 +3,22 @@ import AddFolderColors from './AddFolderColors'
 import AddFolderColors2 from './AddFolderColors2'
 import NoteNameWarning from 'components/CurrentFolder/NoteNameWarning'
 import _ from 'lodash'
+import delete_button from 'images/delete_white.svg'
 
 export default function EditFolder({
 	state = { state },
 	setState = { setState },
 	vars = { vars },
 }) {
+	let selectedFolder = state.homeRender[2]
+	let selectedColor = state.homeRender[1]
+
 	function handleExit(e) {
 		if (e.target.className == 'home') {
 			setState.setHomeRender(['folders'])
 			setState.setInput()
 		}
 	}
-
-	let selectedFolder = state.homeRender[2]
-	let selectedColor = state.homeRender[1]
 
 	useEffect(() => {
 		setState.setInput(selectedFolder)
@@ -40,7 +41,7 @@ export default function EditFolder({
 		return () => {
 			document.removeEventListener('keydown', handleEnter)
 		}
-	}, [state.input,state.homeRender])
+	}, [state.input, state.homeRender])
 
 	let error = () => {
 		if (state.input) {
@@ -58,7 +59,6 @@ export default function EditFolder({
 
 	function handleEdit() {
 		if (state.input.length > 0) {
-			console.log(state.input.length)
 			let newFolders = { ...state.folders }
 			if (!error() && state.input !== selectedFolder) {
 				newFolders[state.input] = newFolders[selectedFolder]
@@ -72,13 +72,19 @@ export default function EditFolder({
 		}
 	}
 
+	function handleClickDelete() {
+		let newRender = [...state.homeRender]
+		newRender[0] = 'deleteFolder'
+		setState.setHomeRender(newRender)
+	}
+
 	return (
-		<div class="home_add_folder">
-			<h1 class="home_add_folder_title">EDIT FOLDER</h1>
+		<div class="home_edit_folder">
+			<h1 class="home_edit_folder_title">EDIT FOLDER</h1>
 			<AddFolderColors state={state} setState={setState} vars={vars} />
-			<div class="home_add_folder_input_wrapper">
+			<div class="home_edit_folder_input_wrapper">
 				<input
-					class="home_add_folder_input"
+					class="home_edit_folder_input"
 					autoFocus
 					type="text"
 					value={state.input && state.input.toUpperCase()}
@@ -94,6 +100,11 @@ export default function EditFolder({
 			<p class="home_edit_folder_edit" onClick={handleEdit}>
 				EDIT
 			</p>
+			<img
+				class="home_edit_folder_delete_button"
+				src={delete_button}
+				onClick={handleClickDelete}
+			/>
 		</div>
 	)
 }

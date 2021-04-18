@@ -9,7 +9,7 @@ export default function AddFolderButton({
 
 	function handlePageChange(e) {
 		e.preventDefault()
-		setState.setRender(['mainSection','addFolder'])
+		setState.setRender(['mainSection','addFolder','#A0A0A0'])
 	}
 	return (
 		<div

@@ -2,32 +2,39 @@ import React from 'react'
 import menu_button from 'images/menu.svg'
 
 export default function Folder({ state, setState, vars, folder }) {
-	// function handleRenderFolderSettings() {
-	// 	setState.setHomeRender(['folderSettings',folder.name])
-	// }
+	function handleClick(e) {
+		let clickedFolderOrSettings =
+			e.target.className == 'home_folder'
+				? 'folder'
+				: e.target.className == 'home_folder_menu_button' && 'settings'
 
-	function handleClickFolder(e) {
+		if (clickedFolderOrSettings == 'folder') {
+			handleClickFolder()
+		}
+		if (clickedFolderOrSettings == 'settings') {
+			handleClickSettings()
+		}
+	}
+
+	function handleClickFolder() {
 		
-		console.log(e.target.className)
-		if (e.target.className == 'home_folder') {
-			setState.setDirectory([folder.name])
-		}
-		if (e.target.className == 'home_folder_menu_button') {
-			setState.setHomeRender(['folderSettings',folder.folderColor,folder.name])
-		}
+		let newFolders = { ...state.folders }
+		newFolders[folder.name].lastSelected = Date.now()
+		setState.setFolders(newFolders)
+		setState.setDirectory([folder.name])
+	}
+
+	function handleClickSettings() {
+		setState.setHomeRender(['folderSettings', folder.folderColor, folder.name])
 	}
 
 	return (
 		<p
 			class="home_folder"
 			style={{ background: folder.folderColor }}
-			onClick={handleClickFolder}>
+			onClick={handleClick}>
 			{folder.name.toUpperCase()}
-			<img
-				class="home_folder_menu_button"
-				src={menu_button}
-				// onClick={handleRenderFolderSettings}
-			/>
+			<img class="home_folder_menu_button" src={menu_button} />
 		</p>
 	)
 }

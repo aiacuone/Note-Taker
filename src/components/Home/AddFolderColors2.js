@@ -10,20 +10,21 @@ export default function AddFolderColors2({ state, setState, vars }) {
 	}
 
 	let colors = vars.colors.map((color, index) => {
+		let style = {
+			background: color,
+			border:
+				color == selectedColor && color !== '#FFED0D'
+					? '3px solid white'
+					: color == selectedColor &&
+					  color == '#FFED0D' &&
+					  '3px solid rgb(161, 161, 161)',
+		}
 		if (index >= vars.colors.length / 2) {
 			return (
 				<div
 					class="home_folder_color_option"
 					onMouseDown={() => handleColorChange(color)}
-					style={{
-						background: color,
-						border:
-							color == selectedColor && color !== '#FFED0D'
-								? '3px solid white'
-								: color == selectedColor &&
-								  color == '#FFED0D' &&
-								  '3px solid rgb(161, 161, 161)',
-					}}></div>
+					style={style}></div>
 			)
 		}
 	})
