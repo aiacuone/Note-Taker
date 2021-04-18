@@ -3,7 +3,6 @@ import _ from 'lodash'
 
 export default function DeleteNote({ state, setState, vars }) {
 	let selectedNote = state.render[1].toLowerCase()
-	console.log(selectedNote)
 	function handleDelete() {
 		let directory = [...vars.directoryChain(), 'notes']
 		let newCurrentNotes = { ...vars.currentFolder.notes }
@@ -20,7 +19,7 @@ export default function DeleteNote({ state, setState, vars }) {
 
 	useEffect(() => {
 		function handleMouseDown(e) {
-			if (e.target.className == 'current_page') {
+			if (e.target.className == 'app') {
 				handleExit()
 			}
 		}

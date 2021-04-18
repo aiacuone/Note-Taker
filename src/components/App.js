@@ -23,11 +23,6 @@ function App() {
 	let [settings, setSettings] = useState({ sortHomeFolders: 'date' })
 	//HOME
 	let [homeRender, setHomeRender] = useState(['folders'])
-	let [toggleHomeFolderMenu, setToggleHomeFolderMenu] = useState(null)
-	let [homeAddFolderInput, setHomeAddFolderInput] = useState('')
-	let [homeRenameFolderInput, setHomeRenameFolderInput] = useState('')
-	let [homeFoldersSettings, setHomeFoldersSettings] = useState(null)
-	let [sortHomeFolders, setSortHomeFolders] = useState('DATE CREATED')
 	//CURRENT FOLDER
 	let [notesScrolling, setNotesScrolling] = useState(false)
 	let [foldersScrolling, setFoldersScrolling] = useState(false)
@@ -38,11 +33,6 @@ function App() {
 		directory,
 		folders,
 		homeRender,
-		toggleHomeFolderMenu,
-		homeAddFolderInput,
-		homeRenameFolderInput,
-		homeFoldersSettings,
-		sortHomeFolders,
 		notesScrolling,
 		foldersScrolling,
 		input,
@@ -55,11 +45,6 @@ function App() {
 		setDirectory,
 		setFolders,
 		setHomeRender,
-		setToggleHomeFolderMenu,
-		setHomeAddFolderInput,
-		setHomeRenameFolderInput,
-		setHomeFoldersSettings,
-		setSortHomeFolders,
 		setNotesScrolling,
 		setFoldersScrolling,
 		setInput,
@@ -96,8 +81,7 @@ function App() {
 		this.background = ''
 		this.folders = {}
 		this.notes = {}
-		this.sortFolders = 'NAME'
-		this.sortNotes = 'date'
+		this.settings = { sortFolders: 'date', sortNotes: 'date' }
 	}
 
 	// CONSTRUCTOR METHOD TO CREATE NEW FOLDER
@@ -155,13 +139,14 @@ function App() {
 
 	// console.log(directoryChain,'directoryChain')
 	// console.log(currentFolder, 'currentFolder')
+	console.log(currentFolder.notes, 'currentFolder.notes')
+	// console.log(currentFolder.folders,'currentFolder.folders')
 	// console.log( vars.foldersScrolling )
 	// console.log( foldersScrolling )
-	// console.log(currentFolder.notes)
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
 	// console.log( renderCurrentFolder,'renderCurrentFolder')
-	console.log(render, 'render')
+	// console.log(render, 'render')
 	// console.log(directory, 'directory')
 	// console.log(content,'content')
 	// console.log(input)

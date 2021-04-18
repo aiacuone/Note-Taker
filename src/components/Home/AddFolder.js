@@ -65,7 +65,7 @@ export default function AddFolder({
 					class="home_add_folder_input"
 					autoFocus
 					type="text"
-					value={state.input}
+					value={state.input&&state.input.toUpperCase()}
 					onChange={(e) => setState.setInput(e.target.value)}
 					style={{ textAlign: 'center' }}
 					placeholder="Title"

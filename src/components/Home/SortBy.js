@@ -5,6 +5,8 @@ export default function SortBy({
 	setState = { setState },
 	vars = { vars },
 }) {
+	let homeOrCurrent = state.directory.length == 0 ? 'home' : 'current'
+	
 	function handleSort(option) {
 		let newSettings = { ...state.settings, sortHomeFolders: option }
 		setState.setSettings(newSettings)

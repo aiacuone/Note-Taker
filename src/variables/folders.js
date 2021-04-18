@@ -115,8 +115,7 @@ let folders = {
 			},
 		},
 		folderColor: '#355BC9',
-		sortFolders: 'RECENT',
-		sortNotes: 'date',
+		settings : { sortFolders: 'date', sortNotes: 'date' }
 	},
 }
 

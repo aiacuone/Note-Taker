@@ -21,6 +21,7 @@
 	z-index: 10;
 	/* background: orange; */
 	filter: drop-shadow(0px 50px 50px rgb(24, 24, 24));
+	padding: 10px 0;
 }
 
 .current_page_nav {
@@ -43,14 +44,20 @@
 
 .current_page_nav_button.back {
 	position: absolute;
-	left: 0px;
+	left: 30px;
 
-	top: 0px;
+	/* top: 0px; */
 	color: white;
 	/* margin: 5px 0 0 0; */
 	/* font-size:15px; */
 	/* background: green; */
 	padding: 5px 20px;
+	/* background: blue; */
+}
+
+.current_page_nav_button.home_nav{
+	/* background: blue; */
+	/* height: 50px; */
 }
 
 .current_page_directory {
@@ -89,9 +96,16 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 0 10px 0;
+	padding: 7px 0;
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
+	/* background: green; */
+}
+
+.current_page_folders{
+display: grid;
+place-items: center;
+grid-auto-flow: column;
 	/* background: green; */
 }
 
@@ -248,16 +262,12 @@
 }
 
 .current_folder_add_note {
-	/* height: 20px; */
-	/* opacity: .8; */
-	/* background: green; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	/* flex-direction: column; */
 	position: absolute;
-	bottom: 5px;
-	right: 50px;
+	right: 30px;
 	cursor: pointer;
 	color: white;
 }
@@ -391,15 +401,14 @@
 }
 
 .notes_nav_container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	place-items: center;
 	flex-direction: column;
 	width: 100%;
 	/* height: 50px; */
 	position: relative;
 	/* background: rgb(51, 51, 51); */
-	/* background: yellow; */
+	/* background: green; */
 	/* overflow: scroll; */
 }
 
@@ -410,8 +419,8 @@
 	/* flex-direction: column; */
 	/* margin: 0 10px 0 0; */
 	position: absolute;
-	right: 0px;
-	top: 0px;
+	right: 10px;
+	/* top: 0px; */
 	cursor: pointer;
 	/* background: green; */
 	padding: 5px 15px;
@@ -472,22 +481,34 @@
 
 .current_folder_footer {
 	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	place-items: center;
 	bottom: 0;
-	height: 40px;
 	width: 100%;
 	background: rgb(39, 39, 39);
 	filter: drop-shadow(0px -30px 40px rgb(8, 8, 8));
+	/* background: green; */
+}
+
+.current_folder_footer_nav{
+	width: 100%;
+	/* height: 100%; */
+	/* display: grid;
+	place-items: center; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background: green; */
+	padding: 10px 0;
 }
 
 .current_folder_footer_menu_button {
-	/* background: green; */
 	position: absolute;
 	left: 40px;
-	bottom: 5px;
 	height: 30px;
+	cursor: pointer;
+		/* background: green; */
+		/* background: orange; */
 }
 
 .current_folder_folder_settings_colors_container {
@@ -684,3 +705,25 @@
 	cursor: pointer;
 }
 
+.settings_option {
+	color: white;
+	width: 300px;
+	/* background: green; */
+	padding: 10px;
+	margin: 20px 0;
+	border: 1px grey solid;
+	border-radius: 10px;
+	position: relative;
+	background: rgb(27, 27, 27);
+}
+
+.settings_option_header {
+	position: absolute;
+	top: -20px;
+}
+
+.settings_options_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

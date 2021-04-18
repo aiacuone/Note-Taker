@@ -8,22 +8,25 @@ export default function Note_s({ state, setState, vars }) {
 		Object.keys(vars.currentFolder.notes).map((note) => {
 			arr.push(vars.currentFolder.notes[note])
 		})
-		if (vars.currentFolder.sortNotes == 'date') {
+		if (vars.currentFolder.settings.sortNotes == 'date') {
+			console.log('date')
 			return arr.sort((a, b) => {
 				return a['dateCreated'] - b['dateCreated']
 			})
-		} else if (vars.currentFolder.sortNotes == 'recent') {
+		} else if (vars.currentFolder.settings.sortNotes == 'recent') {
+			console.log('recent')
 			return arr
 				.sort((a, b) => {
 					return a['lastSelected'] - b['lastSelected']
 				})
 				.reverse()
-		} else if (vars.currentFolder.sortNotes == 'name') {
+		} else if (vars.currentFolder.settings.sortNotes == 'name') {
+			console.log('name')
 			return arr.sort((a, b) => {
-				if (a['name'] < b['name']) {
+				if (a['title'] < b['title']) {
 					return -1
 				}
-				if (a['name'] > b['name']) {
+				if (a['title'] > b['title']) {
 					return 1
 				}
 				return 0

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import Folder from './Folder'
+import Folders from './Folders'
 
 export default function FoldersSection({ state, setState, vars }) {
 	let scroller = useRef()
@@ -71,22 +72,23 @@ export default function FoldersSection({ state, setState, vars }) {
 		}
 	}, [])
 
-	let folders = Object.keys(vars.currentFolder.folders).map((folder) => {
-		// console.log(vars.currentFolder.folders[folder],'folder')
-		return (
-			<Folder
-				key={folder}
-				state={state}
-				setState={setState}
-				vars={vars}
-				folder={vars.currentFolder.folders[folder]}
-			/>
-		)
-	})
+	// let folders = Object.keys(vars.currentFolder.folders).map((folder) => {
+	// 	// console.log(vars.currentFolder.folders[folder],'folder')
+	// 	return (
+	// 		<Folder
+	// 			key={folder}
+	// 			state={state}
+	// 			setState={setState}
+	// 			vars={vars}
+	// 			folder={vars.currentFolder.folders[folder]}
+	// 		/>
+	// 	)
+	// })
 
 	return (
 		<div class="current_page_folders_container" ref={scroller}>
-			{folders}
+			<Folders state={state} setState={setState} vars={vars} />
+			{/* {folders} */}
 		</div>
 	)
 }
