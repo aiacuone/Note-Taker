@@ -436,6 +436,7 @@
 	align-items: center;
 	/* background: green; */
 	margin: 0 0 150px 0;
+	position: relative;
 }
 .current_page_add_folder_input_title {
 	color: white;
@@ -641,6 +642,7 @@
 .confirm_delete_container {
 	display: grid;
 	place-items: center;
+	position: relative;
 }
 
 .current_folder_folder_settings_rename {
@@ -652,3 +654,33 @@
 .current_folder_folder_settings_add {
 	color: white;
 }
+
+.current_add_folder_addcolors {
+	width: 100%;
+	display: flex;
+}
+
+.current_folder_color_option {
+	height: 30px;
+	width: 45px;
+	border-radius: 2px;
+	cursor: pointer;
+	margin: 10px 5px;
+}
+
+.current_edit_folder_delete_button{
+	height: 40px;
+	position: absolute;
+	bottom: -150px;
+	cursor: pointer;
+	/* left: 50px; */
+}
+
+.confirm_delete_container_delete{
+	position: absolute;
+	bottom: -40px;
+	color: red;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+

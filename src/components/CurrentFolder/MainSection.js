@@ -8,6 +8,7 @@ import DeleteFolder from './DeleteFolder'
 import RenameFolder from './RenameFolder'
 import FolderColor from './FolderColor'
 import ConfirmDeleteFolder from './ConfirmDeleteFolder'
+import EditFolder from './EditFolder'
 
 export default function MainSection({ state, setState, vars }) {
 	return (
@@ -33,8 +34,11 @@ export default function MainSection({ state, setState, vars }) {
 			{state.render[1] === 'folderColor' && (
 				<FolderColor state={state} setState={setState} vars={vars} />
 			)}
-			{state.render[1] === 'confirmDeleteFolder' && (
+			{/* {state.render[1] === 'confirmDeleteFolder' && (
 				<ConfirmDeleteFolder state={state} setState={setState} vars={vars} />
+			)} */}
+			{state.render[1] === 'editFolder' && (
+				<EditFolder state={state} setState={setState} vars={vars} />
 			)}
 			{state.render2 && (
 				<Footer state={state} setState={setState} vars={vars} />

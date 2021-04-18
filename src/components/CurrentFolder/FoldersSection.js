@@ -72,13 +72,14 @@ export default function FoldersSection({ state, setState, vars }) {
 	}, [])
 
 	let folders = Object.keys(vars.currentFolder.folders).map((folder) => {
+		// console.log(vars.currentFolder.folders[folder],'folder')
 		return (
 			<Folder
 				key={folder}
 				state={state}
 				setState={setState}
 				vars={vars}
-				folder={folder}
+				folder={vars.currentFolder.folders[folder]}
 			/>
 		)
 	})
