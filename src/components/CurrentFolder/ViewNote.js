@@ -16,12 +16,14 @@ export default function ViewNote({ state, setState, vars, Folder, Note }) {
 
 	return (
 		<div class="view_note">
+			{/* <div class='view_note_gap_fill'/>  */}
 			<h1 class="view_note_title">{note.title.toUpperCase()}</h1>
 			<div class="view_note_content">{ReactHtmlParser(note.content)}</div>
 			<p class="view_note_exit_button" onClick={handleBack}>
 				BACK
 			</p>
 			<img class="view_note_settings" src={menu} onClick={handleEdit} />
+			<div class='view_note_gap_fill'/> 
 		</div>
 	)
 }

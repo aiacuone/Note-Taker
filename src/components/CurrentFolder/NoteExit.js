@@ -5,7 +5,6 @@ export default function NoteExit({ state, setState, vars }) {
 		setState.setInput()
 		setState.setContent()
 		setState.setRender(['mainSection'])
-		
 	}
 
 	function handleStay() {

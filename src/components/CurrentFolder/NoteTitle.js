@@ -30,7 +30,7 @@ export default function NoteTitle({
 	}
 	function handleMousemove(e) {
 		if (!isDown) return
-		setState.setRenderCurrentFolder(['mainSection'])
+		setState.setRender(['mainSection'])
 		// clearTimeout(timer)
 		const x = e.pageX - page_title_ref.current.offsetLeft
 		const walk = (x - startX) * 5

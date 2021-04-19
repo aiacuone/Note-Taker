@@ -42,5 +42,11 @@ export default function Folders({ state, setState, vars }) {
 		)
 	})
 
-    return <div class="current_page_folders">{ folders}</div>
+	return (
+		<div class="current_page_folders">
+			{' '}
+			<div class="current_folders_section_gap_fill" />
+			{folders} <div class="current_folders_section_gap_fill" />
+		</div>
+	)
 }

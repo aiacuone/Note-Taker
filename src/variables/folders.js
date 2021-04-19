@@ -32,7 +32,91 @@ let folders = {
 					},
 				},
 				folderColor: '#4FC12F',
-				settings : { sortFolders: 'date', sortNotes: 'date' }
+				settings: { sortFolders: 'date', sortNotes: 'date' },
+			},
+			alignment: {
+				name: 'alignment',
+				dateCreated: Date.now(),
+				lastSelected: Date.now(),
+				timesSelected: 1,
+				background: '',
+				folders: {},
+				notes: {
+					welcome: {
+						title: 'welcome',
+						dateCreated: Date.now(),
+						lastSelected: '',
+						timesSelected: 0,
+						noteOutline: 'grey',
+						content: 'This is the content',
+					},
+					'note 2': {
+						title: 'note 2',
+						dateCreated: Date.now(),
+						lastSelected: '',
+						timesSelected: 0,
+						noteOutline: 'grey',
+						content: '',
+					},
+				},
+				folderColor: '#4FC12F',
+				settings: { sortFolders: 'date', sortNotes: 'date' },
+			},
+			'font sizes': {
+				name: 'font sizes',
+				dateCreated: Date.now(),
+				lastSelected: Date.now(),
+				timesSelected: 1,
+				background: '',
+				folders: {},
+				notes: {
+					welcome: {
+						title: 'welcome',
+						dateCreated: Date.now(),
+						lastSelected: '',
+						timesSelected: 0,
+						noteOutline: 'grey',
+						content: 'This is the content',
+					},
+					'note 2': {
+						title: 'note 2',
+						dateCreated: Date.now(),
+						lastSelected: '',
+						timesSelected: 0,
+						noteOutline: 'grey',
+						content: '',
+					},
+				},
+				folderColor: '#4FC12F',
+				settings: { sortFolders: 'date', sortNotes: 'date' },
+			},
+			'font colours': {
+				name: 'font colours',
+				dateCreated: Date.now(),
+				lastSelected: Date.now(),
+				timesSelected: 1,
+				background: '',
+				folders: {},
+				notes: {
+					welcome: {
+						title: 'welcome',
+						dateCreated: Date.now(),
+						lastSelected: '',
+						timesSelected: 0,
+						noteOutline: 'grey',
+						content: 'This is the content',
+					},
+					'note 2': {
+						title: 'note 2',
+						dateCreated: Date.now(),
+						lastSelected: '',
+						timesSelected: 0,
+						noteOutline: 'grey',
+						content: '',
+					},
+				},
+				folderColor: '#4FC12F',
+				settings: { sortFolders: 'date', sortNotes: 'date' },
 			},
 			videos: {
 				name: 'videos',
@@ -60,7 +144,7 @@ let folders = {
 					},
 				},
 				folderColor: '#355BC9',
-				settings : { sortFolders: 'date', sortNotes: 'date' }
+				settings: { sortFolders: 'date', sortNotes: 'date' },
 			},
 			lists: {
 				name: 'lists',
@@ -88,7 +172,7 @@ let folders = {
 					},
 				},
 				folderColor: '#FFA300',
-				settings : { sortFolders: 'date', sortNotes: 'date' }
+				settings: { sortFolders: 'date', sortNotes: 'date' },
 			},
 		},
 
@@ -102,17 +186,27 @@ let folders = {
 				content:
 					'<p>Welcome to Note Taker!</p><br/><p>An easy yet efficient way to take all types of notes!</p>',
 			},
-			evernote: {
-				title: 'evernote',
+			note1: {
+				title: 'note1',
 				dateCreated: Date.now(),
 				lastSelected: '',
 				timesSelected: 0,
 				noteOutline: 'grey',
-				content: '<p>Who needs evernote right?<br></p>',
+				content:
+					'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis blandit ligula ut sagittis tristique. Duis vitae dignissim purus, sit amet condimentum lectus. Pellentesque in sem mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus ac mi sit amet mauris consequat dictum nec eu urna. Sed fringilla in nunc sed luctus. Curabitur id erat nec sem porttitor tempus nec id nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec augue neque, tincidunt ut lorem quis, porttitor tincidunt enim. Suspendisse dictum lacinia lacus at viverra. In ut quam fermentum, interdum lectus tristique, ornare elit. Mauris velit nibh, porttitor in eros nec, bibendum laoreet libero. Phasellus non rutrum elit. Sed ornare nisl vitae diam luctus convallis. Praesent ut magna ante. Mauris auctor id odio mattis sagittis.Proin at lacus bibendum, efficitur sapien nec, tempor ex. Cras congue, turpis vitae rhoncus tristique, ex leo dapibus urna, eu imperdiet nulla nisl eget metus. Phasellus iaculis ligula et metus convallis accumsan. Quisque vel nisl auctor, sodales nisi id, faucibus eros. Duis nec tincidunt elit. Donec hendrerit, sem ut mattis pretium, massa ligula mollis felis, a tempor libero lacus non neque. Nunc ac efficitur odio.Maecenas egestas eu neque ac viverra. In non vulputate lectus. Maecenas accumsan consequat metus a vestibulum. Aenean eget ornare quam. Cras efficitur odio vitae metus rhoncus, at lobortis quam tempor. Nam mattis at diam sit amet pretium. Vestibulum ultrices nec velit a laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam non risus ex. Etiam eget molestie quam. Duis malesuada turpis ut elementum aliquam. Donec quis dui nulla. Fusce volutpat diam diam, sed egestas odio venenatis at. Nulla non hendrerit purus, eu condimentum massa.Quisque aliquet nibh id luctus dignissim. Integer id libero a massa auctor vehicula. Aliquam eu eros maximus lectus semper interdum. Nullam ut dignissim risus. Nulla placerat leo ac elit feugiat, id pellentesque dui volutpat. Nunc tincidunt odio quis mauris fringilla condimentum. Nam semper tempus diam, non interdum lorem sagittis quis. Sed placerat urna in laoreet vulputate.Nulla faucibus urna sit amet vulputate ornare. Fusce consectetur purus dolor, ac sollicitudin metus facilisis quis. Proin ut tellus in augue fermentum consequat in at leo. Aenean ullamcorper, velit at luctus dictum, massa risus sagittis elit, eget lacinia ex mauris sed ipsum. Phasellus rutrum nibh fringilla dignissim blandit. Fusce nec sollicitudin odio, ac ultrices nisl. Aliquam rhoncus vitae lectus eu pretium. Cras dapibus arcu a odio molestie commodo. Vestibulum quam mi, facilisis non bibendum vel, malesuada at urna. Morbi vehicula ipsum vel vestibulum egestas. Morbi feugiat enim ut justo pulvinar viverra.Integer nec ipsum ligula. Integer vel nibh posuere, tempor urna ut, bibendum nisl. Sed varius odio vel varius ornare. Nam nec dapibus quam. Curabitur convallis metus ligula, vel lobortis nunc blandit vel. Cras vitae tellus molestie odio tincidunt rutrum. Curabitur aliquam risus ut orci tristique cursus. Mauris a tortor ac sem efficitur finibus. Sed ipsum ex, vehicula id molestie ullamcorper, mollis ut turpis. Donec consectetur lacus nec eros mattis, eu hendrerit ipsum hendrerit. Morbi maximus ultricies justo, vitae ullamcorper justo dictum dapibus.Nunc vestibulum molestie odio, ac cursus leo tincidunt nec. Suspendisse nunc lacus, tincidunt eget elit ac, pulvinar ullamcorper lectus. Cras rhoncus, nulla nec pellentesque lacinia, libero risus fringilla nunc, quis venenatis lacus nunc ut libero. Praesent rhoncus, quam vel congue rutrum, lacus purus viverra turpis, id elementum arcu arcu ut diam. Sed sed luctus lacus. Proin metus ipsum, commodo et semper vitae, placerat tristique lorem. Ut orci dolor, sollicitudin sed purus at, finibus eleifend enim. Nunc pharetra aliquam velit volutpat fringilla. Vivamus et vehicula.<br></p>',
+			},
+			note2: {
+				title: 'note2',
+				dateCreated: Date.now(),
+				lastSelected: '',
+				timesSelected: 0,
+				noteOutline: 'grey',
+				content:
+					'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis blandit ligula ut sagittis tristique. Duis vitae dignissim purus, sit amet condimentum lectus. Pellentesque in sem mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus ac mi sit amet mauris consequat dictum nec eu urna. Sed fringilla in nunc sed luctus. Curabitur id erat nec sem porttitor tempus nec id nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec augue neque, tincidunt ut lorem quis, porttitor tincidunt enim. Suspendisse dictum lacinia lacus at viverra. In ut quam fermentum, interdum lectus tristique, ornare elit. Mauris velit nibh, porttitor in eros nec, bibendum laoreet libero. Phasellus non rutrum elit. Sed ornare nisl vitae diam luctus convallis. Praesent ut magna ante. Mauris auctor id odio mattis sagittis.Proin at lacus bibendum, efficitur sapien nec, tempor ex. Cras congue, turpis vitae rhoncus tristique, ex leo dapibus urna, eu imperdiet nulla nisl eget metus. Phasellus iaculis ligula et metus convallis accumsan. Quisque vel nisl auctor, sodales nisi id, faucibus eros. Duis nec tincidunt elit. Donec hendrerit, sem ut mattis pretium, massa ligula mollis felis, a tempor libero lacus non neque. Nunc ac efficitur odio.Maecenas egestas eu neque ac viverra. In non vulputate lectus. Maecenas accumsan consequat metus a vestibulum. Aenean eget ornare quam. Cras efficitur odio vitae metus rhoncus, at lobortis quam tempor. Nam mattis at diam sit amet pretium. Vestibulum ultrices nec velit a laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam non risus ex. Etiam eget molestie quam. Duis malesuada turpis ut elementum aliquam. Donec quis dui nulla. Fusce volutpat diam diam, sed egestas odio venenatis at. Nulla non hendrerit purus, eu condimentum massa.Quisque aliquet nibh id luctus dignissim. Integer id libero a massa auctor vehicula. Aliquam eu eros maximus lectus semper interdum. Nullam ut dignissim risus. Nulla placerat leo ac elit feugiat, id pellentesque dui volutpat. Nunc tincidunt odio quis mauris fringilla condimentum. Nam semper tempus diam, non interdum lorem sagittis quis. Sed placerat urna in laoreet vulputate.Nulla faucibus urna sit amet vulputate ornare. Fusce consectetur purus dolor, ac sollicitudin metus facilisis quis. Proin ut tellus in augue fermentum consequat in at leo. Aenean ullamcorper, velit at luctus dictum, massa risus sagittis elit, eget lacinia ex mauris sed ipsum. Phasellus rutrum nibh fringilla dignissim blandit. Fusce nec sollicitudin odio, ac ultrices nisl. Aliquam rhoncus vitae lectus eu pretium. Cras dapibus arcu a odio molestie commodo. Vestibulum quam mi, facilisis non bibendum vel, malesuada at urna. Morbi vehicula ipsum vel vestibulum egestas. Morbi feugiat enim ut justo pulvinar viverra.Integer nec ipsum ligula. Integer vel nibh posuere, tempor urna ut, bibendum nisl. Sed varius odio vel varius ornare. Nam nec dapibus quam. Curabitur convallis metus ligula, vel lobortis nunc blandit vel. Cras vitae tellus molestie odio tincidunt rutrum. Curabitur aliquam risus ut orci tristique cursus. Mauris a tortor ac sem efficitur finibus. Sed ipsum ex, vehicula id molestie ullamcorper, mollis ut turpis. Donec consectetur lacus nec eros mattis, eu hendrerit ipsum hendrerit. Morbi maximus ultricies justo, vitae ullamcorper justo dictum dapibus.Nunc vestibulum molestie odio, ac cursus leo tincidunt nec. Suspendisse nunc lacus, tincidunt eget elit ac, pulvinar ullamcorper lectus. Cras rhoncus, nulla nec pellentesque lacinia, libero risus fringilla nunc, quis venenatis lacus nunc ut libero. Praesent rhoncus, quam vel congue rutrum, lacus purus viverra turpis, id elementum arcu arcu ut diam. Sed sed luctus lacus. Proin metus ipsum, commodo et semper vitae, placerat tristique lorem. Ut orci dolor, sollicitudin sed purus at, finibus eleifend enim. Nunc pharetra aliquam velit volutpat fringilla. Vivamus et vehicula.<br></p>',
 			},
 		},
 		folderColor: '#355BC9',
-		settings : { sortFolders: 'date', sortNotes: 'date' }
+		settings: { sortFolders: 'date', sortNotes: 'date' },
 	},
 }
 

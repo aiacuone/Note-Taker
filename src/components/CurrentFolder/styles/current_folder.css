@@ -20,7 +20,7 @@
 	flex-direction: column;
 	z-index: 10;
 	/* background: orange; */
-	filter: drop-shadow(0px 50px 50px rgb(24, 24, 24));
+	filter: drop-shadow(0px 20px 10px rgb(24, 24, 24));
 	padding: 10px 0;
 }
 
@@ -62,9 +62,8 @@
 	/* background: orange; */
 	overflow: scroll;
 	white-space: nowrap;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	place-items: center;
 	/* height: 100px; */
 	margin: 5px 0;
 }
@@ -78,8 +77,8 @@
 	font-size: 17px;
 	width: 300px;
 	overflow: scroll;
-	display: flex;
-	justify-content: center;
+	display: grid;
+	place-items: center;
 
 	/* background: purple; */
 }
@@ -88,9 +87,8 @@
 	width: 100%;
 	/* background: rgb(51, 51, 51); */
 	overflow: scroll;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	place-items: center;
 	padding: 7px 0;
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
@@ -114,6 +112,7 @@
 	border-radius: 10px;
 	/* filter: drop-shadow(5px 5px 5px rgb(20, 20, 20)); */
 	/* background: green; */
+	white-space: nowrap;
 	cursor: pointer;
 }
 
@@ -313,9 +312,9 @@
 	align-items: center;
 	/* margin: auto; */
 	cursor: context-menu;
-	overflow-y: scroll;
+	/* overflow: scroll; */
 	color: white;
-	/* padding: 0 20px; */
+	/* padding:  100px 0; */
 	/* background: green; */
 }
 
@@ -336,7 +335,7 @@
 }
 
 .curret_page_note {
-	margin: 10px 0;
+	margin: 20px 0;
 	background: rgb(51, 51, 51);
 	width: 90%;
 	max-width: 500px;
@@ -345,18 +344,42 @@
 	border-radius: 10px;
 	filter: drop-shadow(0 0 10px rgb(15, 15, 15));
 	cursor: pointer;
+	max-height: 500px;
+	overflow: hidden;
+	/* background: blue; */
 }
+
+/* .curret_page_note:last-child:after{
+	content: "";
+  width: 30px;
+  height: 200px;
+  position: absolute;
+  background: blue;
+  left: 0px;
+  bottom: -150px;
+} */
+
 
 .curret_page_notes {
 	width: 100%;
 	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+	display: grid;
+	grid-auto-flow: row;
+	place-items: center;
+	grid-auto-rows: max-content;
 	word-wrap: break-word;
+	overflow-y: scroll;
 	/* background: green; */
 	/* margin: 5000px 0 0 0; */
+	/* padding: 100px 0; */
+}
+
+.current_notes_gap_fill{
+	/* position: absolute; */
+	/* bottom: 0; */
+	width: 100%;
+	height: 80px;
+	/* background: green; */
 }
 
 .current_folder_note_menu_button {
@@ -482,7 +505,7 @@
 	bottom: 0;
 	width: 100%;
 	background: rgb(39, 39, 39);
-	filter: drop-shadow(0px -30px 40px rgb(8, 8, 8));
+	filter: drop-shadow(0px -20px 10px rgb(24, 24, 24));
 	/* background: green; */
 }
 
@@ -722,4 +745,42 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.current_note_dots_container {
+	display: flex;
+	/* place-items: center; */
+	justify-content: center;
+	align-items: center;
+	height: 20px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background: rgb(51, 51, 51);
+	/* margin: 0 0 20px; */
+}
+
+.current_note_dots_wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.current_note_dots {
+	/* height: 30px; */
+	width: 100px;
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	font-size: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* padding: 0 0 10px 0; */
+}
+
+.current_folders_section_gap_fill{
+	width: 50px;
+	height: 100%;
+	/* background: blue; */
 }

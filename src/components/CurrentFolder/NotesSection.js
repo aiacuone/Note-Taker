@@ -13,39 +13,56 @@ export default function NotesSection({
 	let startY
 	let scrollUp
 
+	function handleMouseDown(e) {
+		e.preventDefault()
+		isDown = true
+		if (notesRef && notesRef.current) {
+			notesRef.current.classList.add('active')
+			startY = e.pageY - notesRef.current.offsetTop
+			scrollUp = notesRef.current.scrollUp
+		}
+
+		// console.log(notesRef.current)
+		// console.log('mousedown', startY,scrollUp)
+	}
+	function handleMouseleave() {
+		clearTimeout(timeout)
+		timeout = setTimeout(() => {
+			setState.setFoldersScrolling(false)
+		}, 10)
+		isDown = false
+		if (notesRef && notesRef.current) {
+			notesRef.current.classList.remove('active')
+		}
+	}
+	function handleMouseup() {
+		clearTimeout(timeout)
+		timeout = setTimeout(() => {
+			setState.setRender2(true)
+		}, 1500)
+		isDown = false
+		if (notesRef && notesRef.current) {
+			notesRef.current.classList.remove('active')
+		}
+	}
+	function handleMousemove(e) {
+		if (!isDown) return
+		// setState.setRender2(false)
+		// clearTimeout(timeout)
+		if (notesRef && notesRef.current) {
+			const y = e.pageY - notesRef.current.offsetTop
+			const walk = (y - startY) * 3
+			notesRef.current.scrollUp = scrollUp - walk
+			// console.log({ y, walk })
+		}
+	}
+
 	function handleScroll() {
 		setState.setRender2(false)
 		clearTimeout(timeout)
 		timeout = setTimeout(() => {
 			setState.setRender2(true)
-		}, 3000)
-	}
-
-	function handleMouseDown(e) {
-		e.preventDefault()
-		isDown = true
-		notesRef.current.classList.add('active')
-		startY = e.pageY - notesRef.current.offsetTop
-		scrollUp = notesRef.current.scrollUp
-	}
-	function handleMouseleave() {
-		isDown = false
-		notesRef.current.classList.remove('active')
-	}
-	function handleMouseup() {
-		isDown = false
-		notesRef.current.classList.remove('active')
-		timeout = setTimeout(() => {
-			setState.setRender2(true)
-		}, 1500)
-	}
-	function handleMousemove(e) {
-		if (!isDown) return
-		setState.setRender2(false)
-		clearTimeout(timeout)
-		const y = e.pageY - notesRef.current.offsetTop
-		const walk = (y - startY) * 3
-		notesRef.current.scrollUp = scrollUp - walk
+		}, 2000)
 	}
 
 	useEffect(() => {
@@ -66,7 +83,7 @@ export default function NotesSection({
 				notesRef.current.removeEventListener('mousemove', handleMousemove)
 			}
 		}
-	})
+	},[])
 
 	return (
 		<div class="notes_container" ref={notesRef}>

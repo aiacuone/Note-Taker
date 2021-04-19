@@ -13,6 +13,7 @@ export default function DeleteNote({ state, setState, vars }) {
 		_.set(newFolders, directory.join('.'), newCurrentNotes)
 		setState.setFolders(newFolders)
 		setState.setRender(['mainSection'])
+		setState.setInput()
 	}
 
 	function handleExit() {

@@ -130,8 +130,6 @@ function App() {
 
 	/*
 	BUGS
-	- folders section scrolling
-	- notes scrolling, as well as mouse down scrolling
 	- need to limit title for notes and folders
 	- restrict folder and note titles to letters and numbers only
 	- add folder in notes warning for existing folder and folder name length doesnt exist

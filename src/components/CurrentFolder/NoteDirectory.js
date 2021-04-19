@@ -35,7 +35,7 @@ export default function NoteDirectory({
 		function handleMousemove(e) {
 			if (!isDown) return
 			if (notesNavRef && notesNavRef.current) {
-				setState.setRenderCurrentFolder(['mainSection'])
+				setState.setRender(['mainSection'])
 				// clearTimeout(timer)
 				const x = e.pageX - notesNavRef.current.offsetLeft
 				const walk = (x - startX) * 3
