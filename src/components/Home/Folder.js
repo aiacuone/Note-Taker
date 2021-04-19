@@ -20,6 +20,7 @@ export default function Folder({ state, setState, vars, folder }) {
 		
 		let newFolders = { ...state.folders }
 		newFolders[folder.name].lastSelected = Date.now()
+		newFolders[folder.name].timesSelected+=1
 		setState.setFolders(newFolders)
 		setState.setDirectory([folder.name])
 	}

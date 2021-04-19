@@ -6,8 +6,8 @@ import NoteExit from './NoteExit'
 import NoteNameWarning from './NoteNameWarning'
 
 export default function EditNote({ state, setState, vars }) {
-	let selectedNote = state.render[1]
-	let currentNote = vars.currentFolder.notes[selectedNote]
+	let currentNote = state.render[1]
+	let selectedNote = currentNote.title
 	let input = state.input
 	let inputRef = useRef()
 
@@ -75,8 +75,8 @@ export default function EditNote({ state, setState, vars }) {
 	}
 
 	let renderError = () => {
-		if (state.input&&error()) {
-				return <NoteNameWarning state={state} setState={setState} vars={vars} />
+		if (state.input && error()) {
+			return <NoteNameWarning state={state} setState={setState} vars={vars} />
 		}
 	}
 
@@ -100,7 +100,6 @@ export default function EditNote({ state, setState, vars }) {
 					type="text"
 				/>
 				{renderError()}
-	
 			</div>
 
 			<SunEditor

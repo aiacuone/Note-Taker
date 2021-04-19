@@ -9,19 +9,19 @@ export default function Note_s({ state, setState, vars }) {
 			arr.push(vars.currentFolder.notes[note])
 		})
 		if (vars.currentFolder.settings.sortNotes == 'date') {
-			console.log('date')
+			// console.log('date')
 			return arr.sort((a, b) => {
 				return a['dateCreated'] - b['dateCreated']
 			})
 		} else if (vars.currentFolder.settings.sortNotes == 'recent') {
-			console.log('recent')
+			// console.log('recent')
 			return arr
 				.sort((a, b) => {
 					return a['lastSelected'] - b['lastSelected']
 				})
 				.reverse()
 		} else if (vars.currentFolder.settings.sortNotes == 'name') {
-			console.log('name')
+			// console.log('name')
 			return arr.sort((a, b) => {
 				if (a['title'] < b['title']) {
 					return -1

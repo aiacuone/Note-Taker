@@ -139,7 +139,7 @@ function App() {
 
 	// console.log(directoryChain,'directoryChain')
 	// console.log(currentFolder, 'currentFolder')
-	console.log(currentFolder.notes, 'currentFolder.notes')
+	// console.log(currentFolder.notes, 'currentFolder.notes')
 	// console.log(currentFolder.folders,'currentFolder.folders')
 	// console.log( vars.foldersScrolling )
 	// console.log( foldersScrolling )

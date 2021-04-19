@@ -23,7 +23,7 @@ let folders = {
 						content: 'This is the content',
 					},
 					'note 2': {
-						title: 'Note 2',
+						title: 'note 2',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -32,8 +32,7 @@ let folders = {
 					},
 				},
 				folderColor: '#4FC12F',
-				sortFolders: 'RECENT',
-				sortNotes: 'date',
+				settings : { sortFolders: 'date', sortNotes: 'date' }
 			},
 			videos: {
 				name: 'videos',
@@ -44,7 +43,7 @@ let folders = {
 				folders: {},
 				notes: {
 					'note 1': {
-						title: 'Note 1',
+						title: 'note 1',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -52,7 +51,7 @@ let folders = {
 						content: 'This is the content',
 					},
 					'note 2': {
-						title: 'Note 2',
+						title: 'note 2',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -61,8 +60,7 @@ let folders = {
 					},
 				},
 				folderColor: '#355BC9',
-				sortFolders: 'RECENT',
-				sortNotes: 'date',
+				settings : { sortFolders: 'date', sortNotes: 'date' }
 			},
 			lists: {
 				name: 'lists',
@@ -73,7 +71,7 @@ let folders = {
 				folders: {},
 				notes: {
 					'note 1': {
-						title: 'Note 1',
+						title: 'note 1',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -81,7 +79,7 @@ let folders = {
 						content: 'This is the content',
 					},
 					'note 2': {
-						title: 'Note 2',
+						title: 'note 2',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -90,8 +88,7 @@ let folders = {
 					},
 				},
 				folderColor: '#FFA300',
-				sortFolders: 'RECENT',
-				sortNotes: 'date',
+				settings : { sortFolders: 'date', sortNotes: 'date' }
 			},
 		},
 

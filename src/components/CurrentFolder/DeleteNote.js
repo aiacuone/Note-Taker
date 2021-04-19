@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import _ from 'lodash'
 
 export default function DeleteNote({ state, setState, vars }) {
-	let selectedNote = state.render[1].toLowerCase()
+	let note = state.render[1]
+	let selectedNote = note.title.toLowerCase()
+	
 	function handleDelete() {
 		let directory = [...vars.directoryChain(), 'notes']
 		let newCurrentNotes = { ...vars.currentFolder.notes }

@@ -1,5 +1,6 @@
 import React from 'react'
 import useLongPress from '../../hooks/useLongPress'
+import _ from 'lodash'
 
 export default function Folder({ state, setState, vars, folder }) {
 	let color = () => {
@@ -8,7 +9,6 @@ export default function Folder({ state, setState, vars, folder }) {
 			return a[b]
 		}, state.folders)
 	}
-	// console.log(folder)
 	let selectedFolder = state.render[2]
 
 	function handleLongPress() {
@@ -24,6 +24,15 @@ export default function Folder({ state, setState, vars, folder }) {
 
 	function handleClick() {
 		if (!state.foldersScrolling) {
+			//CHANGING FOLDER PROPERTIES
+			let directory = [...vars.directoryChain(), 'folders']
+			let newFolders = { ...state.folders }
+			let newCurrentFolders = { ...vars.currentFolder.folders }
+			newCurrentFolders[folder.name].timesSelected += 1
+			newCurrentFolders[folder.name].lastSelected = Date.now()
+			_.set(newFolders, directory.join('.'), newCurrentFolders)
+			setState.setFolders(newFolders)
+			//RENDER
 			let arr = [...state.directory]
 			arr.push(folder.name)
 			setState.setDirectory(arr)
