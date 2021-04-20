@@ -20,8 +20,8 @@ export default function Settings({ state, setState, vars }) {
 
 
     return (
-		<div class='settings'>
-			<h1 class="settings_header">SETTINGS</h1>
+		<div className='settings'>
+			<h1 className="settings_header">SETTINGS</h1>
             <SettingsSortFolders state={state} setState={setState} vars={vars} />
             <SettingsSortNotes state={state} setState={setState} vars={vars}/>
 		</div>

@@ -12,7 +12,7 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 							newArr[0] = item
 							setState.setHomeFoldersSettings(newArr)
 						}}
-						class="home_folder_settings_option">
+						className="home_folder_settings_option">
 						{item}
 					</p>
 				</div>
@@ -30,7 +30,7 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 							setState.setSortHomeFolders(item)
 							setState.setHomeFoldersSettings(null)
 						}}
-						class="home_folder_settings_option">
+						className="home_folder_settings_option">
 						{item}
 					</p>
 				</div>
@@ -50,7 +50,7 @@ export default function HomeFoldersSettings({ vars, state, setState }) {
 		}
 	}, [])
 	return (
-		<div class="home_folder_settings">
+		<div className="home_folder_settings">
 			{!state.homeFoldersSettings[0] && settingsOptions()}
 			{state.homeFoldersSettings[0] == 'SORT BY' && sortByOptions()}
 		</div>

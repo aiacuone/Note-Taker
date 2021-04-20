@@ -19,9 +19,9 @@ export default function Settings({
 		}
 	})
 	return (
-		<div class='settings'>
-			<h1 class="settings_header">SETTINGS</h1>
-			<SortBy state={state} setState={setState} vars={vars}/>
+		<div className="settings">
+			<h1 className="settings_header">SETTINGS</h1>
+			<SortBy state={state} setState={setState} vars={vars} />
 		</div>
 	)
 }

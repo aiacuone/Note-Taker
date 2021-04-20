@@ -34,7 +34,7 @@ export default function AddNote({ state, setState, vars }) {
 	}
 
 	function handleAdd() {
-		if (!error()) {
+		if (!error() && state.input && state.content) {
 			let newFolders = { ...state.folders }
 			let newNotes = { ...vars.currentFolder.notes }
 
@@ -57,11 +57,11 @@ export default function AddNote({ state, setState, vars }) {
 	}
 
 	return (
-		<div class="add_note_container">
-			<div class="add_note_input_wrapper">
+		<div className="add_note_container">
+			<div className="add_note_input_wrapper">
 				<input
-					class="add_note_input"
-					placeHolder="TITLE"
+					className="add_note_input"
+					placeholder="TITLE"
 					type="text"
 					onChange={(e) => setState.setInput(e.target.value.toUpperCase())}
 					value={state.input}
@@ -104,10 +104,10 @@ export default function AddNote({ state, setState, vars }) {
 				}}
 			/>
 
-			<p class="add_button_submit" onClick={handleAdd}>
+			<p className="add_button_submit" onClick={handleAdd}>
 				ADD NOTE
 			</p>
-			<p onClick={handleExit} class="add_note_exit_button">
+			<p onClick={handleExit} className="add_note_exit_button">
 				EXIT
 			</p>
 			{state.render.indexOf('exit') > -1 && (

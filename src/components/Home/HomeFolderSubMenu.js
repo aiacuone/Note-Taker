@@ -2,11 +2,10 @@ import React from 'react'
 
 export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 	let colors = vars.colors.map((item, index) => {
-		
 		if (index >= vars.colors.length / 2) {
 			return (
 				<div
-					class="home_folder_color_option"
+					className="home_folder_color_option"
 					onMouseDown={() => {
 						let newFolders = { ...state.folders }
 						newFolders[state.toggleHomeFolderMenu[0]].folderColor = item
@@ -32,7 +31,7 @@ export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 			return (
 				<div>
 					<p
-						class="home_folder_delete_confirm"
+						className="home_folder_delete_confirm"
 						style={{ color: 'red' }}
 						onClick={() => {
 							let newFolders = { ...state.folders }
@@ -47,11 +46,5 @@ export default function HomeFolderSubMenu({ folder, state, setState, vars }) {
 		}
 	}
 
-
-	return (
-		<div class="home_folder_sub_menu">
-
-			{subMenu()}
-		</div>
-	)
+	return <div className="home_folder_sub_menu">{subMenu()}</div>
 }

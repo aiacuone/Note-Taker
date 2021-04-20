@@ -9,7 +9,9 @@ export default function NoteNameWarning({ state, setState, vars }) {
 	if (warningForNotesSection) {
 		message = vars.currentFolder.notes[state.input.toLowerCase()]
 			? 'That title already Exists'
-			: state.input.length > 15 && 'Too many characters'
+			: state.input.length > 15
+			? 'Too many characters'
+			: vars.currentFolder.folders[state.input] && 'That title already Exists'
 	} else {
 		message = state.folders[state.input.toLowerCase()]
 			? 'That title already Exists'
@@ -17,11 +19,11 @@ export default function NoteNameWarning({ state, setState, vars }) {
 	}
 
 	return (
-		<div class="current_folder_add_note_warning">
-			<div class="current_folder_add_note_warning_wrapper">
-				<p class="current_folder_add_note_warning_text">{message}</p>
+		<div className="current_folder_add_note_warning">
+			<div className="current_folder_add_note_warning_wrapper">
+				<p className="current_folder_add_note_warning_text">{message}</p>
 			</div>
-			<img class="current_folder_add_note_warning_point" src={point} />
+			<img className="current_folder_add_note_warning_point" src={point} />
 		</div>
 	)
 }

@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function NoteTitle({
 	state = { state },
 	setState = { setState },
 	vars = { vars },
 }) {
+	let [element, setElement] = useState()
 	let page_title_ref = useRef()
 	let isDown = false
 	let startX
@@ -24,25 +25,25 @@ export default function NoteTitle({
 	function handleMouseup() {
 		isDown = false
 		page_title_ref.current.classList.remove('active')
-		// timer = setTimeout(() => {
-		// 	setState.setRenderCurrentFolder(['mainSection', 'header'])
-		// }, 1500)
 	}
 	function handleMousemove(e) {
 		if (!isDown) return
 		setState.setRender(['mainSection'])
-		// clearTimeout(timer)
 		const x = e.pageX - page_title_ref.current.offsetLeft
 		const walk = (x - startX) * 5
 		page_title_ref.current.scrollLeft = scrollLeft - walk
 	}
-
+	let scrollbarHeight
 	useEffect(() => {
 		if (page_title_ref && page_title_ref.current) {
 			page_title_ref.current.addEventListener('mousedown', handleMouseDown)
 			page_title_ref.current.addEventListener('mouseleave', handleMouseleave)
 			page_title_ref.current.addEventListener('mouseup', handleMouseup)
 			page_title_ref.current.addEventListener('mousemove', handleMousemove)
+			setElement({
+				offsetHeight: page_title_ref.current.offsetHeight,
+				clientHeight: page_title_ref.current.clientHeight,
+			})
 		}
 
 		return () => {
@@ -58,9 +59,23 @@ export default function NoteTitle({
 		}
 	}, [])
 
+	if (element) {
+		scrollbarHeight = element.offsetHeight - element.clientHeight
+	}
+
 	return (
-		<h1 class="current_page_title" ref={page_title_ref}>
-			{vars.currentFolder.name.toUpperCase()}
-		</h1>
+		<div className="current_page_title">
+			<div className="current_page_title_parent">
+				<h1
+					className="current_page_title_child"
+					ref={page_title_ref}
+					style={{
+						paddingBottom: element && scrollbarHeight + 'px',
+						height: element && element.height - scrollbarHeight + 'px',
+					}}>
+					{vars.currentFolder.name.toUpperCase()}
+				</h1>
+			</div>
+		</div>
 	)
 }

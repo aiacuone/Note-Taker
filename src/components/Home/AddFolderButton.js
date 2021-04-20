@@ -11,9 +11,9 @@ export default function AddFolderButton({
 		setState.setHomeRender(['addFolder', '#A0A0A0'])
 	}
 	return (
-		<div class="home_add_folder_button" onClick={handlePageChange}>
-			<img src={add_note} class="home_add_folder_img" />
-			<p class="home_add_folder_text">FOLDER</p>
+		<div className="home_add_folder_button" onClick={handlePageChange}>
+			<img src={add_note} className="home_add_folder_img" />
+			<p className="home_add_folder_text">FOLDER</p>
 		</div>
 	)
 }

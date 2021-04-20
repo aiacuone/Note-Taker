@@ -22,7 +22,8 @@ export default function SettingsSortFolders({
 	let options = optionsArr.map((option) => {
 		return (
 			<p
-				class="settings_sortBy_option"
+				key={option}
+				className="settings_sortBy_option"
 				onClick={(e) => handleSort(option)}
 				style={{
 					background: selectedOption == option && 'white',
@@ -36,9 +37,9 @@ export default function SettingsSortFolders({
 	})
 
 	return (
-		<div class="settings_option">
-			<h1 class="settings_option_header">SORT FOLDERS:</h1>
-			<div class="settings_options_container">{options}</div>
+		<div className="settings_option">
+			<h1 className="settings_option_header">SORT FOLDERS:</h1>
+			<div className="settings_options_container">{options}</div>
 		</div>
 	)
 }

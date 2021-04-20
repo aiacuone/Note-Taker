@@ -81,19 +81,19 @@ export default function EditNote({ state, setState, vars }) {
 	}
 
 	return (
-		<div class="current_folder_edit_note">
+		<div className="current_folder_edit_note">
 			<img
-				class="current_folder_edit_note_delete_button"
+				className="current_folder_edit_note_delete_button"
 				src={delete_note}
 				onClick={handleDelete}
 			/>
-			<p class="current_folder_edit_note_exit" onClick={handleExit}>
+			<p className="current_folder_edit_note_exit" onClick={handleExit}>
 				EXIT
 			</p>
-			<div class="current_folder_edit_note_wrapper">
+			<div className="current_folder_edit_note_wrapper">
 				<input
 					ref={inputRef}
-					class="current_folder_edit_note_input"
+					className="current_folder_edit_note_input"
 					onChange={(e) => setState.setInput(e.target.value.toLowerCase())}
 					value={state.input.toUpperCase()}
 					placeholder="Title"
@@ -127,7 +127,7 @@ export default function EditNote({ state, setState, vars }) {
 					],
 				}}
 			/>
-			<p class="current_folder_edit_note_edit_button" onClick={handleEdit}>
+			<p className="current_folder_edit_note_edit_button" onClick={handleEdit}>
 				EDIT
 			</p>
 			{state.render[2] == 'exit' && (

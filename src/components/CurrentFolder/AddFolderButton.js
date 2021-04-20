@@ -13,10 +13,10 @@ export default function AddFolderButton({
 	}
 	return (
 		<div
-			class="current_folder_add_folder_button"
+		className="current_folder_add_folder_button"
 			onClick={handlePageChange}>
-			<img src={add_note} class="current_folder_add_folder_img" />
-			<p class="current_folder_add_folder_text">FOLDER</p>
+			<img src={add_note} className="current_folder_add_folder_img" />
+			<p className="current_folder_add_folder_text">FOLDER</p>
 		</div>
 	)
 }

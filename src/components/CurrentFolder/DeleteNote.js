@@ -35,20 +35,20 @@ export default function DeleteNote({ state, setState, vars }) {
 	}, [])
 
 	return (
-		<div class="current_folder_delete_note">
-			<p class="current_folder_delete_note_p">
+		<div className="current_folder_delete_note">
+			<p className="current_folder_delete_note_p">
 				Are you sure you want to Delete?
 			</p>
-			<div class="current_folder_delete_note_confirm_container">
+			<div className="current_folder_delete_note_confirm_container">
 				{' '}
 				<p
-					class="current_folder_delete_note_confirm yes"
+					className="current_folder_delete_note_confirm yes"
 					onClick={handleDelete}>
 					YES{' '}
 				</p>
-				<p class="current_folder_delete_note_confirm">/ </p>
+				<p className="current_folder_delete_note_confirm">/ </p>
 				<p
-					class="current_folder_delete_note_confirm confirm_no"
+					className="current_folder_delete_note_confirm confirm_no"
 					onClick={handleExit}>
 					NO
 				</p>

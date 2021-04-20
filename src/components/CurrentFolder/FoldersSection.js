@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Folder from './Folder'
 import Folders from './Folders'
 
 export default function FoldersSection({ state, setState, vars }) {
+	let [element, setElement] = useState()
 	let scroller = useRef()
 	let isDown = false
 	let startX
@@ -17,7 +18,6 @@ export default function FoldersSection({ state, setState, vars }) {
 			startX = e.pageX - scroller.current.offsetLeft
 			scrollLeft = scroller.current.scrollLeft
 		}
-		console.log({ startX, scrollLeft })
 	}
 	function handleMouseleave() {
 		clearTimeout(timeout)
@@ -41,6 +41,10 @@ export default function FoldersSection({ state, setState, vars }) {
 	}
 	function handleMousemove(e) {
 		if (!isDown) return
+		setState.setFoldersScrolling(true)
+		timeout = setTimeout(() => {
+			setState.setFoldersScrolling(false)
+		}, 500)
 		if (scroller && scroller.current) {
 			const x = e.pageX - scroller.current.offsetLeft
 			const walk = (x - startX) * 2
@@ -48,8 +52,8 @@ export default function FoldersSection({ state, setState, vars }) {
 		}
 	}
 	function handleScroll() {
-		setState.setFoldersScrolling(true)
-		clearTimeout(timeout)
+		// setState.setFoldersScrolling(true)
+		// clearTimeout(timeout)
 	}
 
 	function handleWheel(e) {
@@ -57,13 +61,7 @@ export default function FoldersSection({ state, setState, vars }) {
 			scroller.current.scrollLeft += e.deltaY * 25
 		}
 	}
-
-	// useEffect(() => {
-
-	// 	return () => {
-
-	// 	}
-	// },[])
+	let scrollbarHeight
 	useEffect(() => {
 		if (scroller && scroller.current) {
 			scroller.current.addEventListener('wheel', handleWheel)
@@ -72,7 +70,15 @@ export default function FoldersSection({ state, setState, vars }) {
 			scroller.current.addEventListener('mouseleave', handleMouseleave)
 			scroller.current.addEventListener('mouseup', handleMouseup)
 			scroller.current.addEventListener('mousemove', handleMousemove)
+			setElement({
+				offsetHeight: scroller.current.offsetHeight,
+				clientHeight: scroller.current.clientHeight,
+			})
 		}
+
+		// if (scroller && scroller.current) {
+
+		// }
 
 		return () => {
 			if (scroller && scroller.current) {
@@ -86,9 +92,24 @@ export default function FoldersSection({ state, setState, vars }) {
 		}
 	}, [])
 
+	if (element) {
+		scrollbarHeight = element.offsetHeight - element.clientHeight
+	}
+
 	return (
-		<div class="current_page_folders_container" ref={scroller}>
-			<Folders state={state} setState={setState} vars={vars} />
+		<div className="current_page_folders_container">
+			<div className="current_page_folders_wrapper_parent">
+				<div
+					className="current_page_folders_wrapper_child"
+					ref={scroller}
+					style={{
+						paddingBottom: element && scrollbarHeight + 'px',
+						height:element&&element.height-scrollbarHeight+'px'
+
+					}}>
+					<Folders state={state} setState={setState} vars={vars} />
+				</div>
+			</div>
 		</div>
 	)
 }

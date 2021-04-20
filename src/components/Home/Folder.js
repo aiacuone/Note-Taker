@@ -17,10 +17,9 @@ export default function Folder({ state, setState, vars, folder }) {
 	}
 
 	function handleClickFolder() {
-		
 		let newFolders = { ...state.folders }
 		newFolders[folder.name].lastSelected = Date.now()
-		newFolders[folder.name].timesSelected+=1
+		newFolders[folder.name].timesSelected += 1
 		setState.setFolders(newFolders)
 		setState.setDirectory([folder.name])
 	}
@@ -31,11 +30,11 @@ export default function Folder({ state, setState, vars, folder }) {
 
 	return (
 		<p
-			class="home_folder"
+			className="home_folder"
 			style={{ background: folder.folderColor }}
 			onClick={handleClick}>
 			{folder.name.toUpperCase()}
-			<img class="home_folder_menu_button" src={menu_button} />
+			<img className="home_folder_menu_button" src={menu_button} />
 		</p>
 	)
 }

@@ -18,7 +18,7 @@ export default function AddFolder({
 	let selectedColor = state.homeRender[1]
 
 	function handleAddFolder() {
-		if (!error()&&state.input.length>0) {
+		if (!error() && state.input.length > 0) {
 			let newFolders = { ...state.folders }
 			newFolders[state.input.toLowerCase()] = new vars.Folder({
 				name: state.input.toLowerCase(),
@@ -57,15 +57,15 @@ export default function AddFolder({
 	}
 
 	return (
-		<div class="home_add_folder">
-			<h3 class="home_add_folder_title">ADD FOLDER</h3>
+		<div className="home_add_folder">
+			<h3 className="home_add_folder_title">ADD FOLDER</h3>
 			<AddFolderColors state={state} setState={setState} vars={vars} />
-			<div class="home_add_folder_input_wrapper">
+			<div className="home_add_folder_input_wrapper">
 				<input
-					class="home_add_folder_input"
+					className="home_add_folder_input"
 					autoFocus
 					type="text"
-					value={state.input&&state.input.toUpperCase()}
+					value={state.input && state.input.toUpperCase()}
 					onChange={(e) => setState.setInput(e.target.value)}
 					style={{ textAlign: 'center' }}
 					placeholder="Title"
@@ -75,7 +75,7 @@ export default function AddFolder({
 				)}
 			</div>
 			<AddFolderColors2 state={state} setState={setState} vars={vars} />
-			<p class="home_add_folder_add" onClick={handleAddFolder}>
+			<p className="home_add_folder_add" onClick={handleAddFolder}>
 				ADD
 			</p>
 		</div>

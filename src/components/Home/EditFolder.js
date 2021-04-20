@@ -79,12 +79,12 @@ export default function EditFolder({
 	}
 
 	return (
-		<div class="home_edit_folder">
-			<h1 class="home_edit_folder_title">EDIT FOLDER</h1>
+		<div className="home_edit_folder">
+			<h1 className="home_edit_folder_title">EDIT FOLDER</h1>
 			<AddFolderColors state={state} setState={setState} vars={vars} />
-			<div class="home_edit_folder_input_wrapper">
+			<div className="home_edit_folder_input_wrapper">
 				<input
-					class="home_edit_folder_input"
+					className="home_edit_folder_input"
 					autoFocus
 					type="text"
 					value={state.input && state.input.toUpperCase()}
@@ -97,11 +97,11 @@ export default function EditFolder({
 				)}
 			</div>
 			<AddFolderColors2 state={state} setState={setState} vars={vars} />
-			<p class="home_edit_folder_edit" onClick={handleEdit}>
+			<p className="home_edit_folder_edit" onClick={handleEdit}>
 				EDIT
 			</p>
 			<img
-				class="home_edit_folder_delete_button"
+				className="home_edit_folder_delete_button"
 				src={delete_button}
 				onClick={handleClickDelete}
 			/>

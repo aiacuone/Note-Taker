@@ -18,8 +18,8 @@ function App() {
 	let [directory, setDirectory] = useState([])
 	// let [folders, setFolders] = useState({}) //ORIGINAL
 	let [folders, setFolders] = useState(tempFolders)
-	let [input, setInput] = useState()
-	let [content, setContent] = useState()
+	let [input, setInput] = useState('')
+	let [content, setContent] = useState('')
 	let [settings, setSettings] = useState({ sortHomeFolders: 'date' })
 	//HOME
 	let [homeRender, setHomeRender] = useState(['folders'])
@@ -130,21 +130,23 @@ function App() {
 
 	/*
 	BUGS
-	- need to limit title for notes and folders
-	- restrict folder and note titles to letters and numbers only
-	- add folder in notes warning for existing folder and folder name length doesnt exist
+
 	*/
 
+	// useEffect(() => {
+	// 	console.log(foldersScrolling, 'foldersScrolling')
+	// })
 	// console.log(directoryChain,'directoryChain')
 	// console.log(currentFolder, 'currentFolder')
 	// console.log(currentFolder.notes, 'currentFolder.notes')
 	// console.log(currentFolder.folders,'currentFolder.folders')
 	// console.log( vars.foldersScrolling )
-	// console.log( foldersScrolling )
+	// console.log(foldersScrolling, 'foldersScrolling')
 	// console.log(folders)
 	// console.log(currentFolderMainSection)
 	// console.log( renderCurrentFolder,'renderCurrentFolder')
 	// console.log(render, 'render')
+	// console.log(render2, 'render2')
 	// console.log(directory, 'directory')
 	// console.log(content,'content')
 	// console.log(input)

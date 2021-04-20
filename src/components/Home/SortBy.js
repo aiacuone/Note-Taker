@@ -6,7 +6,7 @@ export default function SortBy({
 	vars = { vars },
 }) {
 	let homeOrCurrent = state.directory.length == 0 ? 'home' : 'current'
-	
+
 	function handleSort(option) {
 		let newSettings = { ...state.settings, sortHomeFolders: option }
 		setState.setSettings(newSettings)
@@ -17,7 +17,8 @@ export default function SortBy({
 	let options = optionsArr.map((option) => {
 		return (
 			<p
-				class="settings_sortBy_option"
+				key={option}
+				className="settings_sortBy_option"
 				onClick={(e) => handleSort(option)}
 				style={{
 					background: state.settings.sortHomeFolders == option && 'white',
@@ -33,9 +34,9 @@ export default function SortBy({
 	})
 
 	return (
-		<div class="settings_sortBy">
-			<h1 class="settings_sortBy_header">SORT FOLDERS:</h1>
-			<div class="settings_sortBy_options_container">{options}</div>
+		<div className="settings_sortBy">
+			<h1 className="settings_sortBy_header">SORT FOLDERS:</h1>
+			<div className="settings_sortBy_options_container">{options}</div>
 		</div>
 	)
 }

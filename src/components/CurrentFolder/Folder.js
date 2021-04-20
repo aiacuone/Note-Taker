@@ -42,7 +42,7 @@ export default function Folder({ state, setState, vars, folder }) {
 
 	return (
 		<div
-			class="current_page_folder_menu_folder"
+		className="current_page_folder_menu_folder"
 			{...useLongPress(
 				() => handleLongPress(),
 				() => handleClick(),
@@ -52,12 +52,12 @@ export default function Folder({ state, setState, vars, folder }) {
 				background: selectedFolder == folder.name ? 'white' : color(),
 			}}>
 			<p
-				class="current_page_folder_menu_title"
+				className="current_page_folder_menu_title"
 				style={{
 					color:
 						selectedFolder == folder.name
 							? 'black'
-							: color() == '#FFED0D' || color() == '#FFA300'
+							: color() == 'rgb(236, 236, 80)' || color() == '#FFA300'
 							? 'black'
 							: 'white',
 				}}>

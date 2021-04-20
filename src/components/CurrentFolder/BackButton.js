@@ -13,7 +13,7 @@ export default function BackButton({
 		setState.setRender(['mainSection'])
 	}
 	return (
-		<h3 onClick={handleBack} class="current_page_nav_button back">
+		<h3 onClick={handleBack} className="current_page_nav_button back">
 			BACK
 		</h3>
 	)

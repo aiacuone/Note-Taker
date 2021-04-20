@@ -69,23 +69,23 @@ export default function EditFolder({ state, setState, vars }) {
 	}
 
 	return (
-		<div class="current_page_add_folder_input_container">
-			<p class="current_page_add_folder_input_title">EDIT FOLDER</p>
+		<div className="current_page_add_folder_input_container">
+			<p className="current_page_add_folder_input_title">EDIT FOLDER</p>
 			<FolderColors state={state} setState={setState} vars={vars} />
 			<input
 				autoFocus
-				class="current_page_add_folder_input"
+				className="current_page_add_folder_input"
 				onChange={(e) => setState.setInput(e.target.value.toLowerCase())}
 				ref={inputRef}
 				placeholder="Add Folder"
 				type="text"
 				value={state.input && state.input.toUpperCase()}></input>
 			<FolderColors2 state={state} setState={setState} vars={vars} />
-			<p class="current_page_add_folder_input_add" onClick={handleEdit}>
+			<p className="current_page_add_folder_input_add" onClick={handleEdit}>
 				EDIT
 			</p>
 			<img
-				class="current_edit_folder_delete_button"
+				className="current_edit_folder_delete_button"
 				src={delete_button}
 				onClick={handleClickDelete}
 			/>

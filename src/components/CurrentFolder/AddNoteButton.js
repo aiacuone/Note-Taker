@@ -11,9 +11,9 @@ export default function AddNoteButton({
 		setState.setRender(['addNote'])
 	}
 	return (
-		<div class="current_folder_add_note" onMouseDown={handlePageChange}>
-			<img src={add_note} class="current_folder_add_note_img" />
-			<p class="add_note_button_text">NOTE</p>
+		<div className="current_folder_add_note" onMouseDown={handlePageChange}>
+			<img src={add_note} className="current_folder_add_note_img" />
+			<p className="add_note_button_text">NOTE</p>
 		</div>
 	)
 }

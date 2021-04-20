@@ -98,18 +98,29 @@ body {
 	width: 100%;
 }
 
-.view_note_content {
+.view_note_content_parent {
 	height: 100%;
-	overflow-y: scroll;
+	overflow: hidden;
 	width: 100%;
 	max-width: 500px;
-	padding: 0 20px;
+	margin:0 0 0 20px;
+	/* padding: 0 20px; */
+}
+
+.view_note_content_child{
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	color: white;
+	box-sizing: content-box;
+	display: grid;
+	place-items: center;
 }
 
 .view_note_title {
 	margin: 0 0 20px 0;
 	font-size: 1.5rem;
-	margin: 20px 0 0 0;
+	margin: 20px 0 20px 0;
 }
 
 .view_note_title,

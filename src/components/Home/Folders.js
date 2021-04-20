@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import menu_button from 'images/menu.svg'
 import Folder from './Folder'
 
 export default function Folders({ state, setState, vars }) {
-	let sortHomeFolders=state.settings.sortHomeFolders
+	let [element, setElement] = useState()
+	let sortHomeFolders = state.settings.sortHomeFolders
 
 	let sortedFolders = () => {
 		let arr = []
@@ -45,6 +46,36 @@ export default function Folders({ state, setState, vars }) {
 			/>
 		)
 	})
+	let wrapperRef = useRef()
+	let scrollbarWidth
+	useEffect(() => {
+		if (wrapperRef && wrapperRef.current) {
+			setElement({
+				offsetWidth: wrapperRef.current.offsetWidth,
+				clientWidth: wrapperRef.current.clientWidth,
+			})
+			// scrollbarWidth =
+			// 	wrapperRef.current.offsetWidth - wrapperRef.current.clientWidth
+		}
+	}, [])
 
-	return <div>{folders}</div>
+	if (element) {
+		scrollbarWidth = element.offsetWidth - element.clientWidth
+	}
+
+	return (
+		<div className="home_folders">
+			<div className="home_folders_wrapper_parent">
+				<div
+					className="home_folders_wrapper_child"
+					ref={wrapperRef}
+					style={{
+						paddingRight: element && scrollbarWidth + 'px',
+						marginLeft: element && scrollbarWidth + 'px',
+					}}>
+					{folders}
+				</div>
+			</div>
+		</div>
+	)
 }

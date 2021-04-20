@@ -207,9 +207,29 @@
 	cursor: pointer;
 }
 
-.home_logo{
+.home_logo {
 	position: absolute;
 	top: 20px;
 	left: 20px;
 	height: 80px;
 }
+
+.home_folders {
+	max-height: 700px;
+	/* width: 100%; */
+	overflow-y: hidden;
+}
+
+.home_folders_wrapper_parent {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.home_folders_wrapper_child {
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	box-sizing: content-box; 
+}
+

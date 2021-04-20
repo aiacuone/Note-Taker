@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 
 export default function NoteDirectory({
 	state = { state },
@@ -9,6 +9,9 @@ export default function NoteDirectory({
 	let isDown = false
 	let startX
 	let scrollLeft
+	let scrollbarHeight
+
+	let [element, setElement] = useState()
 
 	useEffect(() => {
 		function handleMouseDown(e) {
@@ -27,16 +30,11 @@ export default function NoteDirectory({
 			if (notesNavRef && notesNavRef.current) {
 				notesNavRef.current.classList.remove('active')
 			}
-			
-			// timer = setTimeout(() => {
-			// 	setState.setRenderCurrentFolder(['mainSection', 'header'])
-			// }, 1500)
 		}
 		function handleMousemove(e) {
 			if (!isDown) return
 			if (notesNavRef && notesNavRef.current) {
 				setState.setRender(['mainSection'])
-				// clearTimeout(timer)
 				const x = e.pageX - notesNavRef.current.offsetLeft
 				const walk = (x - startX) * 3
 				notesNavRef.current.scrollLeft = scrollLeft - walk
@@ -48,6 +46,10 @@ export default function NoteDirectory({
 			notesNavRef.current.addEventListener('mouseleave', handleMouseleave)
 			notesNavRef.current.addEventListener('mouseup', handleMouseup)
 			notesNavRef.current.addEventListener('mousemove', handleMousemove)
+			setElement({
+				offsetHeight: notesNavRef.current.offsetHeight,
+				clientHeight: notesNavRef.current.clientHeight,
+			})
 		}
 
 		return () => {
@@ -59,9 +61,24 @@ export default function NoteDirectory({
 			}
 		}
 	}, [])
+
+	if (element) {
+		scrollbarHeight = element.offsetHeight - element.clientHeight
+	}
+
 	return (
-		<p class="current_page_directory" ref={notesNavRef}>
-			{state.directory.join('-').toUpperCase()}
-		</p>
+		<div className="current_page_directory">
+			<div className="current_page_directory_wrapper_parent">
+				<div
+					className="current_page_directory_wrapper_child"
+					ref={notesNavRef}
+					style={{
+						paddingBottom: element && scrollbarHeight + 'px',
+						height: element && element.height - scrollbarHeight + 'px',
+					}}>
+					{state.directory.join('-').toUpperCase()}
+				</div>
+			</div>
+		</div>
 	)
 }

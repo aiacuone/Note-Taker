@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 export default function DeleteFolder({
 	state = { state },
@@ -15,21 +15,21 @@ export default function DeleteFolder({
 
 	function handleExit() {}
 
-    function handleDelete() {
-        let newFolders = { ...state.folders }
-        delete newFolders[selectedFolder]
-        setState.setFolders(newFolders)
-        setState.setHomeRender(['folders'])
-    }
+	function handleDelete() {
+		let newFolders = { ...state.folders }
+		delete newFolders[selectedFolder]
+		setState.setFolders(newFolders)
+		setState.setHomeRender(['folders'])
+	}
 
 	let confirmDelete = () => {
 		return (
-			<p class="home_delete_folder_confirm_delete" onClick={handleDelete}>
+			<p className="home_delete_folder_confirm_delete" onClick={handleDelete}>
 				DELETE
 			</p>
 		)
-    }
-    
+	}
+
 	function handleExit(e) {
 		if (e.target.className == 'home') {
 			setState.setHomeRender(['folders'])
@@ -48,13 +48,13 @@ export default function DeleteFolder({
 	}, [])
 
 	return (
-		<div class="home_delete_folder">
+		<div className="home_delete_folder">
 			<p>Are you sure you wanto Delete this folder?</p>
-			<div class="home_delete_folder_option_container">
-				<p class="home_delete_folder_yes" onClick={handleYes}>
+			<div className="home_delete_folder_option_container">
+				<p className="home_delete_folder_yes" onClick={handleYes}>
 					YES
 				</p>
-				<p class="home_delete_folder_no" onClick={handleExit}>
+				<p className="home_delete_folder_no" onClick={handleExit}>
 					NO
 				</p>
 			</div>

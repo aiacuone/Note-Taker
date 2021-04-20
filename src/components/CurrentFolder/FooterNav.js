@@ -8,10 +8,10 @@ export default function FooterNav({ state, setState, vars }) {
 		setState.setRender(['mainSection'])
 	}
 	return (
-		<div class="current_folder_footer_nav">
+		<div className="current_folder_footer_nav">
 			<AddFolderButton state={state} setState={setState} vars={vars} />
 			<BackButton state={state} setState={setState} vars={vars} />
-			<h3 onClick={handleClick} class="current_page_nav_button home_nav">
+			<h3 onClick={handleClick} className="current_page_nav_button home_nav">
 				HOME
 			</h3>
 		</div>

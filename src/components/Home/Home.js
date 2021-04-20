@@ -16,11 +16,11 @@ export default function Home({ state, setState, vars, Folder }) {
 	}
 
 	return (
-		<div class="home">
-			<img class="home_logo" src={logo} />
+		<div className="home">
+			<img className="home_logo" src={logo} />
 			<img
 				onMouseDown={handleRenderSettings}
-				class="home_folder_settings_button"
+				className="home_folder_settings_button"
 				src={menuButton}
 				style={{ cursor: 'pointer' }}
 			/>
@@ -43,8 +43,6 @@ export default function Home({ state, setState, vars, Folder }) {
 			{state.homeRender[0] == 'deleteFolder' && (
 				<DeleteFolder state={state} setState={setState} vars={vars} />
 			)}
-
-			<div class="test"></div>
 		</div>
 	)
 }

@@ -17,12 +17,13 @@ export default function AddFolderColors({ state, setState, vars }) {
 		if (index < vars.colors.length / 2) {
 			return (
 				<div
-					class="home_folder_color_option"
+					key={color}
+					className="home_folder_color_option"
 					onMouseDown={() => handleColorChange(color)}
 					style={style}></div>
 			)
 		}
 	})
 
-	return <div class="home_add_folder_addcolors">{colors}</div>
+	return <div className="home_add_folder_addcolors">{colors}</div>
 }

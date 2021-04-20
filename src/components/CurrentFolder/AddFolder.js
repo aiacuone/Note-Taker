@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import _ from 'lodash'
 import FolderColors from './FolderColors'
 import FolderColors2 from './FolderColors2'
+import NoteNameWarning from './NoteNameWarning'
 
 export default function AddFolder({ state, setState, vars }) {
 	let add_folder_input = useRef()
@@ -53,22 +54,33 @@ export default function AddFolder({ state, setState, vars }) {
 		}
 	}, [state.input])
 
+	let error = () => {
+		if (state.input) {
+			if (vars.currentFolder.folders[state.input.toLowerCase()] || state.input.length > 15) {
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+
 	return (
-		<div class="current_page_add_folder_input_container">
-			<p class="current_page_add_folder_input_title">ADD FOLDER</p>
+		<div className="current_page_add_folder_input_container">
+			<p className="current_page_add_folder_input_title">ADD FOLDER</p>
 			<FolderColors state={state} setState={setState} vars={vars} />
 			<input
 				autoFocus
-				class="current_page_add_folder_input"
+				className="current_page_add_folder_input"
 				onChange={(e) => setState.setInput(e.target.value.toLowerCase())}
 				ref={add_folder_input}
 				placeholder="Add Folder"
 				type="text"
 				value={state.input && state.input.toUpperCase()}></input>
 			<FolderColors2 state={state} setState={setState} vars={vars} />
-			<p class="current_page_add_folder_input_add" onClick={handleAddFolder}>
+			<p className="current_page_add_folder_input_add" onClick={handleAddFolder}>
 				ADD
 			</p>
+			{error()&&<NoteNameWarning state={state} setState={setState} vars={vars} />}
 		</div>
 	)
 }

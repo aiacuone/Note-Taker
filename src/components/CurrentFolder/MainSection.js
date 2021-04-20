@@ -1,5 +1,4 @@
 import React from 'react'
-
 import NotesSection from './NotesSection'
 import AddFolder from './AddFolder'
 import Footer from './Footer'
@@ -10,7 +9,7 @@ import Settings from './Settings'
 
 export default function MainSection({ state, setState, vars }) {
 	return (
-		<div class="main_section_container">
+		<div className="main_section_container">
 			{state.render2 && (
 				<Header state={state} setState={setState} vars={vars} />
 			)}

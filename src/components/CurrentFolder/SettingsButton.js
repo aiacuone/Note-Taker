@@ -3,12 +3,12 @@ import menu from 'images/menu.svg'
 
 export default function SettingsButton({ state, setState, vars }) {
 	function handleClick() {
-		setState.setRender(['mainSection','settings'])
+		setState.setRender(['mainSection', 'settings'])
 	}
 
 	return (
 		<img
-			class="current_folder_footer_menu_button"
+			className="current_folder_footer_menu_button"
 			src={menu}
 			onClick={handleClick}
 		/>

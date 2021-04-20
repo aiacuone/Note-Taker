@@ -20,7 +20,7 @@
 	flex-direction: column;
 	z-index: 10;
 	/* background: orange; */
-	filter: drop-shadow(0px 20px 10px rgb(24, 24, 24));
+	/* filter: drop-shadow(0px 20px 10px rgb(24, 24, 24)); */
 	padding: 10px 0;
 }
 
@@ -56,16 +56,29 @@
 }
 
 .current_page_directory {
-	width: 100%;
-	max-width: 300px;
-	/* height: 25px; */
-	/* background: orange; */
-	overflow: scroll;
+	width: 300px;
+	height: 30px;
 	white-space: nowrap;
 	display: grid;
 	place-items: center;
-	/* height: 100px; */
-	margin: 5px 0;
+	/* background: green; */
+	margin: 5px 0 0 0;
+}
+
+.current_page_directory_wrapper_parent {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.current_page_directory_wrapper_child {
+	padding-top: 7px;
+	width: 100%;
+	height: 100%;
+	overflow-x: scroll;
+	box-sizing: content-box;
+	display: grid;
+	place-items: center;
 }
 
 .current_page_title,
@@ -76,23 +89,50 @@
 .current_page_title {
 	font-size: 17px;
 	width: 300px;
-	overflow: scroll;
+	height: 30px;
 	display: grid;
 	place-items: center;
-
 	/* background: purple; */
+}
+
+.current_page_title_parent {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.current_page_title_child {
+	padding-top: 3px;
+	width: 100%;
+	height: 100%;
+	box-sizing: content-box;
+	display: grid;
+	place-items: center;
+	overflow-x: scroll;
+	font-size: 1.3rem;
 }
 
 .current_page_folders_container {
 	width: 100%;
-	/* background: rgb(51, 51, 51); */
-	overflow: scroll;
+	overflow: hidden;
 	display: grid;
 	place-items: center;
-	padding: 7px 0;
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
-	/* background: green; */
+}
+
+.current_page_folders_wrapper_parent {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.current_page_folders_wrapper_child {
+	width: 100%;
+	height: 100%;
+	overflow-x: scroll;
+	box-sizing: content-box;
+	display: grid;
+	place-items: center;
+	padding-top: 5px;
 }
 
 .current_page_folders {
@@ -103,17 +143,15 @@
 }
 
 .current_page_folder_menu_folder {
-	/* border: 2px solid orange; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	/* display: flex; */
+	/* justify-content: center;
+	align-items: center; */
 	margin: 0px 10px;
 	padding: 5px 10px;
 	border-radius: 10px;
-	/* filter: drop-shadow(5px 5px 5px rgb(20, 20, 20)); */
-	/* background: green; */
 	white-space: nowrap;
 	cursor: pointer;
+	/* background: green; */
 }
 
 .current_page_folder_menu_title {
@@ -307,15 +345,12 @@
 .notes_container {
 	height: 100%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* margin: auto; */
+	display: grid;
+	place-items: center;
 	cursor: context-menu;
-	/* overflow: scroll; */
 	color: white;
-	/* padding:  100px 0; */
-	/* background: green; */
+	/* background: blue; */
+	overflow: hidden;
 }
 
 .add_note_button_text {
@@ -359,27 +394,42 @@
   bottom: -150px;
 } */
 
-
 .curret_page_notes {
 	width: 100%;
 	height: 100%;
-	display: grid;
-	grid-auto-flow: row;
-	place-items: center;
-	grid-auto-rows: max-content;
+	/* grid-auto-rows: max-content; */
 	word-wrap: break-word;
-	overflow-y: scroll;
-	/* background: green; */
-	/* margin: 5000px 0 0 0; */
-	/* padding: 100px 0; */
+	overflow: hidden;
+	padding: 0 0 0 20px;
 }
 
-.current_notes_gap_fill{
+.curret_page_notes_wrapper_parent {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.curret_page_notes_wrapper_child {
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	box-sizing: content-box;
+	display: grid;
+	place-items: center;
+	grid-auto-rows: max-content;
+}
+
+.current_notes_gap_fill_top {
 	/* position: absolute; */
 	/* bottom: 0; */
 	width: 100%;
 	height: 80px;
 	/* background: green; */
+}
+
+.current_notes_gap_fill_bottom {
+	width: 100%;
+	height: 100px;
 }
 
 .current_folder_note_menu_button {
@@ -417,6 +467,7 @@
 	/* background: green; */
 	width: 100%;
 	height: 100%;
+	padding: 20px;
 }
 
 .notes_nav_container {
@@ -424,7 +475,7 @@
 	place-items: center;
 	flex-direction: column;
 	width: 100%;
-	/* height: 50px; */
+	height: 60px;
 	position: relative;
 	/* background: rgb(51, 51, 51); */
 	/* background: green; */
@@ -506,7 +557,6 @@
 	width: 100%;
 	background: rgb(39, 39, 39);
 	filter: drop-shadow(0px -20px 10px rgb(24, 24, 24));
-	/* background: green; */
 }
 
 .current_folder_footer_nav {
@@ -779,7 +829,7 @@
 	/* padding: 0 0 10px 0; */
 }
 
-.current_folders_section_gap_fill{
+.current_folders_section_gap_fill {
 	width: 50px;
 	height: 100%;
 	/* background: blue; */

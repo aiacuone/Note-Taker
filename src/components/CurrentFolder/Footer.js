@@ -11,7 +11,7 @@ export default function Footer({ state, setState, vars }) {
 	}
 
 	return (
-		<div class="current_folder_footer">
+		<div className="current_folder_footer">
 						{Object.keys(vars.currentFolder.folders).length > 0 && (
 				<FoldersSection state={state} setState={setState} vars={vars} />
 			)}

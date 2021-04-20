@@ -31,11 +31,12 @@ export default function FolderColors({ state, setState, vars }) {
 		if (index < vars.colors.length / 2) {
 			return (
 				<div
-					class="current_folder_color_option"
+					key={ color}
+					className="current_folder_color_option"
 					onMouseDown={() => handleColorChange(color)}
 					style={style}></div>
 			)
 		}
 	})
-	return <div class="current_add_folder_addcolors">{colors}</div>
+	return <div className="current_add_folder_addcolors">{colors}</div>
 }

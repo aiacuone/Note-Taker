@@ -50,9 +50,7 @@ export default function Scroll({ state, setState, vars }) {
 
 	return (
 		<div>
-			<div ref={scroller} class="scroll">
-				asfjasdflka;jsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalkjsfdlksajfklasflkasjfdaksjffalk;sdjflajsdf;lkjasfdjklasfj;
-			</div>
+			<div ref={scroller} className="scroll"></div>
 		</div>
 	)
 }
