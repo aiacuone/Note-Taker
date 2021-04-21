@@ -14,21 +14,14 @@ let folders = {
 				background: '',
 				folders: {},
 				notes: {
-					'hello :)': {
-						title: 'hello :)',
+					'who needs evernote?': {
+						title: 'who needs evernote?',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
 						noteOutline: 'grey',
-						content: 'content',
-					},
-					'note 2': {
-						title: 'note 2',
-						dateCreated: Date.now(),
-						lastSelected: '',
-						timesSelected: 0,
-						noteOutline: 'grey',
-						content: '',
+						content:
+							'<div class="se-component se-image-container __se__float-center" contenteditable="false"><figure style="margin: auto; width: 300px;"><img src="https://i.ibb.co/zJwhxch/meme.jpg" alt="" data-rotate="0" data-proportion="true" style="width: 300px; height: auto;" data-align="center" data-size="300px,auto" data-index="0" data-file-name="meme.jpg" data-file-size="0" data-origin="300px,auto"></figure></div>',
 					},
 				},
 				folderColor: '#ED3A3A',

@@ -19,6 +19,7 @@ export default function Note({ state, setState, vars, note }) {
 		setState.setFolders(newFolders)
 		//RENDER
 		setState.setRender(['viewNote', note])
+		console.log(note.content)
 	}
 
 	function handlePageChangeEdit() {
