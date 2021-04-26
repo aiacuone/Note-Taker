@@ -8,7 +8,7 @@ import AddNote from 'components/CurrentFolder/AddNote'
 import EditNote from 'components/CurrentFolder/EditNote'
 import DeleteNote from 'components/CurrentFolder/DeleteNote'
 import ViewNote from 'components/CurrentFolder/ViewNote'
-import { KeyboardAvoidingView} from 'react-native'
+
 // import CurrentFolder from './CurrentFolder/CurrentFolder'
 
 // import {AddNote,MainSection,EditNote, DeleteNote,ViewNote} from './components/CurrentFolder'
