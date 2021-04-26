@@ -14,8 +14,8 @@ let folders = {
 				background: '',
 				folders: {},
 				notes: {
-					'who needs evernote?': {
-						title: 'who needs evernote?',
+					'evernote?': {
+						title: 'evernote?',
 						dateCreated: Date.now(),
 						lastSelected: '',
 						timesSelected: 0,
@@ -42,7 +42,7 @@ let folders = {
 						timesSelected: 0,
 						noteOutline: 'grey',
 						content:
-							'<p>Add videos to your notes!</p><p><br></p><p>Here are some highlights from my most favourite basketball game ever, even though im a Celts fan!</p><p><br></p><div class="se-component se-video-container __se__float-center" contenteditable="false"><figure style="height: 200px; padding-bottom: 200px; margin: auto; width: 300px;"><iframe src="https://www.youtube.com/embed/rN17J-KMWnY?&amp;t=605s&amp;ab_channel=HouseofHighlights" data-proportion="true" style="width: 300px; height: 200px;" data-size="300px,200px" data-align="center" data-file-name="rN17J-KMWnY?&amp;t=605s&amp;ab_channel=HouseofHighlights" data-file-size="0" data-origin="300px,200px" data-index="0" frameborder="0"></iframe></figure></div>',
+							'<p>Add videos to your notes!</p><p><br></p><p>Here are some highlights from my favourite basketball game.</p><p><br></p><div class="se-component se-video-container __se__float-center" contenteditable="false"><figure style="height: 200px; padding-bottom: 200px; margin: auto; width: 300px;"><iframe src="https://www.youtube.com/embed/rN17J-KMWnY?&amp;t=605s&amp;ab_channel=HouseofHighlights" data-proportion="true" style="width: 300px; height: 200px;" data-size="300px,200px" data-align="center" data-file-name="rN17J-KMWnY?&amp;t=605s&amp;ab_channel=HouseofHighlights" data-file-size="0" data-origin="300px,200px" data-index="0" frameborder="0"></iframe></figure></div>',
 					},
 				},
 				folderColor: '#FFA300',
@@ -188,7 +188,7 @@ let folders = {
 				timesSelected: 0,
 				noteOutline: 'grey',
 				content:
-					'<p style="text-align: center;"><span style="font-size: 20px;">Welcome to Note Taker!</span></p><p><br></p><p>An easy yet efficient way to take all types of notes!</p><p>This project was made with the intention of being able creating an API that gives the user the ability to Add, Remove and Edit information within an Application.</p><p><br></p><p>Select one of the coloured folders below to explore the projects capabilities!<br></p>',
+					'<p style="text-align: center;"><span style="font-size: 20px;">Welcome to Note Taker!</span></p><p><br></p><p>A streamlined way to take all types of notes!</p><p>This project was made with the intention of being able creating an API that gives the user the ability to Add, Remove and Edit information within an Application.</p><p><br></p><p>Select one of the coloured folders below to explore the projects capabilities!<br></p>',
 			},
 		},
 		folderColor: '#355BC9',

@@ -1,4 +1,5 @@
 import React from 'react'
+import back from 'images/back.svg'
 
 export default function BackButton({
 	state = { state },
@@ -13,8 +14,10 @@ export default function BackButton({
 		setState.setRender(['mainSection'])
 	}
 	return (
-		<h3 onClick={handleBack} className="current_page_nav_button back">
-			BACK
-		</h3>
+		<img src={back} onClick={handleBack} className="current_page_nav_button back"/>
+		// <h3 onClick={handleBack} className="current_page_nav_button back">
+		// 	BACK
+
+		// </h3>
 	)
 }

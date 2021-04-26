@@ -8,6 +8,7 @@ import AddNote from 'components/CurrentFolder/AddNote'
 import EditNote from 'components/CurrentFolder/EditNote'
 import DeleteNote from 'components/CurrentFolder/DeleteNote'
 import ViewNote from 'components/CurrentFolder/ViewNote'
+import { KeyboardAvoidingView} from 'react-native'
 // import CurrentFolder from './CurrentFolder/CurrentFolder'
 
 // import {AddNote,MainSection,EditNote, DeleteNote,ViewNote} from './components/CurrentFolder'
@@ -151,6 +152,7 @@ function App() {
 	// console.log(content,'content')
 	// console.log(input)
 	// console.log(homeRender, 'homeRender')
+	console.log(document)
 
 	let renderHome = directory.length == 0 ? true : false
 
