@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react'
-import menu_button from 'images/menu.svg'
 import Folder from './Folder'
 
 export default function Folders({ state, setState, vars }) {
@@ -54,8 +53,6 @@ export default function Folders({ state, setState, vars }) {
 				offsetWidth: wrapperRef.current.offsetWidth,
 				clientWidth: wrapperRef.current.clientWidth,
 			})
-			// scrollbarWidth =
-			// 	wrapperRef.current.offsetWidth - wrapperRef.current.clientWidth
 		}
 	}, [])
 

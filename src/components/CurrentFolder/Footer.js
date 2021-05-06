@@ -1,6 +1,4 @@
 import React from 'react'
-import AddNoteButton from './AddNoteButton'
-import SettingsButton from './SettingsButton'
 import FoldersSection from './FoldersSection'
 import FooterNav from './FooterNav'
 

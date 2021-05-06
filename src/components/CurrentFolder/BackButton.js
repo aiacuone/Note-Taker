@@ -15,9 +15,5 @@ export default function BackButton({
 	}
 	return (
 		<img src={back} onClick={handleBack} className="current_page_nav_button back"/>
-		// <h3 onClick={handleBack} className="current_page_nav_button back">
-		// 	BACK
-
-		// </h3>
 	)
 }

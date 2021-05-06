@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import Notes from './Notes'
-import AddNoteButton from './AddNoteButton'
 
 export default function NotesSection({
 	state = { state },

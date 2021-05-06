@@ -31,7 +31,6 @@ export default function ViewNote({ state, setState, vars, Folder, Note }) {
 		scrollbarWidth = element.offsetWidth - element.clientWidth
 	}
 
-
 	return (
 		<div className="view_note">
 			<h1 className="view_note_title">{note.title.toUpperCase()}</h1>

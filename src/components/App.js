@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
 import tempFolders from '../variables/folders'
-// import CurrentFolder from './CurrentFolder/CurrentFolder'
 import Home from './Home/Home'
 import MainSection from 'components/CurrentFolder/MainSection'
 import 'components/CurrentFolder/styles/current_folder.css'
@@ -8,10 +7,6 @@ import AddNote from 'components/CurrentFolder/AddNote'
 import EditNote from 'components/CurrentFolder/EditNote'
 import DeleteNote from 'components/CurrentFolder/DeleteNote'
 import ViewNote from 'components/CurrentFolder/ViewNote'
-
-// import CurrentFolder from './CurrentFolder/CurrentFolder'
-
-// import {AddNote,MainSection,EditNote, DeleteNote,ViewNote} from './components/CurrentFolder'
 
 function App() {
 	// STATE & USEREF
@@ -128,31 +123,6 @@ function App() {
 		event.stopPropagation()
 		return false
 	}
-
-	/*
-	BUGS
-
-	*/
-
-	// useEffect(() => {
-	// 	console.log(foldersScrolling, 'foldersScrolling')
-	// })
-	// console.log(directoryChain,'directoryChain')
-	// console.log(currentFolder, 'currentFolder')
-	// console.log(currentFolder.notes, 'currentFolder.notes')
-	// console.log(currentFolder.folders,'currentFolder.folders')
-	// console.log( vars.foldersScrolling )
-	// console.log(foldersScrolling, 'foldersScrolling')
-	// console.log(folders)
-	// console.log(currentFolderMainSection)
-	// console.log( renderCurrentFolder,'renderCurrentFolder')
-	// console.log(render, 'render')
-	// console.log(render2, 'render2')
-	// console.log(directory, 'directory')
-	// console.log(content,'content')
-	// console.log(input)
-	// console.log(homeRender, 'homeRender')
-	console.log(document)
 
 	let renderHome = directory.length == 0 ? true : false
 

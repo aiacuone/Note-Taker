@@ -91,6 +91,7 @@ body {
 	width: 100%;
 	display: grid;
 	place-items: center;
+
 }
 
 .view_note_gap_fill {
@@ -113,8 +114,6 @@ body {
 	overflow-y: scroll;
 	color: white;
 	box-sizing: content-box;
-	display: grid;
-	place-items: center;
 }
 
 .view_note_title {
