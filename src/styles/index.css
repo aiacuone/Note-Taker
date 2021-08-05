@@ -9,11 +9,12 @@
 }
 
 body {
-  background: rgb(187, 187, 187);
+  /* background: rgb(187, 187, 187); */
   width: 100vw;
   height: 100vh;
   display: grid;
   place-items: center;
+  background: rgb(230, 230, 230);
 }
 
 .app {
@@ -31,7 +32,7 @@ body {
   /* min-width: 1200px; */
   max-width: 1200px;
   /* max-height: 900px; */
-  background: rgb(230, 230, 230);
+  /* background: rgb(230, 230, 230); */
 }
 
 .settings_icon {

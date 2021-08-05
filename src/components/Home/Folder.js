@@ -60,7 +60,7 @@ export default function Folder({ state, setState, vars, folder }) {
         label={folder.name.toUpperCase()}
         onDelete={handleDelete}
         icon={<MoreVertIcon style={{ color: "white" }} />}
-        style={{ background: folder.folderColor }}
+        style={{ background: folder.folderColor, padding: "20px" }}
         onClick={handleClick}
       ></Chip>
 

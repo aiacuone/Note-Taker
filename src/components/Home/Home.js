@@ -39,20 +39,19 @@ export default function Home({ state, setState, vars, Folder }) {
       /> */}
       <AppBar
         position="static"
-        color="transparent"
-        style={{ position: "absolute", top: 0 }}
+        style={{ position: "absolute", top: 0, background: "grey" }}
       >
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu">
-            <MoreVertIcon onClick={handleRenderSettings} />
+            <MoreVertIcon onClick={handleRenderSettings} fontSize="large" />
           </IconButton>
           <Grid container style={{ width: "100%" }} justify="center">
-            <Typography variant="h6" color="inherit">
-              Home
-            </Typography>
+            {/* <Typography variant="h6" color="inherit">
+              HOME
+            </Typography> */}
           </Grid>
           <IconButton edge="start" color="inherit" aria-label="menu">
-            <AddIcon onClick={handleAddFolder} />
+            <AddIcon onClick={handleAddFolder} fontSize="large" />
           </IconButton>
         </Toolbar>
       </AppBar>
