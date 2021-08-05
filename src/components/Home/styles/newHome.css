@@ -1,6 +1,6 @@
 
 
-.home_folder {
+/* .home_folder {
 	color: white;
 	font-size: 17px;
 	width: 300px;
@@ -12,8 +12,7 @@
 	filter: drop-shadow(5px 5px 5px rgb(20, 20, 20));
 	cursor: pointer;
 	position: relative;
-	/* z-index: 10; */
-}
+} */
 
 .home_folder_menu_button {
 	position: absolute;
