@@ -6,6 +6,15 @@ import { useState } from "react";
 import Popover from "@material-ui/core/Popover";
 import DeleteFolder from "./DeleteFolder";
 import { Grid } from "@material-ui/core";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+
+import FolderIcon from "@material-ui/icons/Folder";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function Folder({ state, setState, vars, folder }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -43,7 +52,7 @@ export default function Folder({ state, setState, vars, folder }) {
 
   const handleClick = (e) => {
     // !e.target.textContent ? setAnchorEl(e.currentTarget) : handleClickFolder();
-    !e.target.textContent ? handleClickSettings() : handleClickFolder();
+    // !e.target.textContent ? handleClickSettings() : handleClickFolder();
   };
 
   const handleClose = () => {
@@ -54,32 +63,49 @@ export default function Folder({ state, setState, vars, folder }) {
   const id = open ? "simple-popover" : undefined;
 
   return (
-    <Grid item style={{ textAlign: "center", padding: "10px" }}>
-      <Chip
-        className="home_folder"
-        label={folder.name.toUpperCase()}
-        onDelete={handleDelete}
-        icon={<MoreVertIcon style={{ color: "white" }} />}
-        style={{ background: folder.folderColor, padding: "20px" }}
-        onClick={handleClick}
-      ></Chip>
+    // <Grid item style={{ textAlign: "center", padding: "10px" }}>
+    //   <Chip
+    //     className="home_folder"
+    //     label={folder.name.toUpperCase()}
+    //     onDelete={handleDelete}
+    //     icon={<MoreVertIcon style={{ color: "white" }} />}
+    //     style={{ background: folder.folderColor, padding: "20px" }}
+    //     onClick={handleClick}
+    //   ></Chip>
 
-      <Popover
-        open={open}
-        // style={{ padding: "30px" }}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-      >
-        <DeleteFolder vars={vars} state={state} setState={setState} />
-      </Popover>
-    </Grid>
+    //   <Popover
+    //     open={open}
+    //     // style={{ padding: "30px" }}
+    //     anchorEl={anchorEl}
+    //     onClose={handleClose}
+    //     anchorOrigin={{
+    //       vertical: "top",
+    //       horizontal: "left",
+    //     }}
+    //     transformOrigin={{
+    //       vertical: "bottom",
+    //       horizontal: "center",
+    //     }}
+    //   >
+    //     <DeleteFolder vars={vars} state={state} setState={setState} />
+    //   </Popover>
+    // </Grid>
+    <ListItem>
+      <ListItemAvatar onClick={handleClickFolder}>
+        <Avatar>
+          <FolderIcon />
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText
+        onClick={handleClickFolder}
+        primary={folder.name.toUpperCase()}
+        // secondary={secondary ? "Secondary text" : null}
+      />
+      <ListItemSecondaryAction>
+        <IconButton edge="end" aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
   );
 }

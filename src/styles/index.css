@@ -14,7 +14,11 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  background: rgb(230, 230, 230);
+  /* background: rgb(230, 230, 230); */
+  background-image: url("./background/bricks.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .app {
